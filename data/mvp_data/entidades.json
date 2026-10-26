@@ -1,0 +1,7 @@
+[
+  {"numero_registro": "001", "denominacion": "Asociación Atlántico", "area_nombre": "Discapacidad"},
+  {"numero_registro": "002", "denominacion": "Red de Apoyo Insular", "area_nombre": "Exclusión Social"},
+  {"numero_registro": "003", "denominacion": "Fundación Tiempo Compartido", "area_nombre": "Tercera Edad"},
+  {"numero_registro": "004", "denominacion": "Escuela de Futuro", "area_nombre": "Menores Y Juventud"},
+  {"numero_registro": "005", "denominacion": "Manos Solidarias", "area_nombre": "Voluntariado"}
+]

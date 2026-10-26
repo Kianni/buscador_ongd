@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registre_ongd>
+  <entitat><n_mero_registre>001</n_mero_registre><nom_de_l_entitat>Associació Camins</nom_de_l_entitat><ambit>Educació</ambit></entitat>
+  <entitat><n_mero_registre>002</n_mero_registre><nom_de_l_entitat>Fundació Benestar</nom_de_l_entitat><ambit>Salut mental</ambit></entitat>
+  <entitat><n_mero_registre>003</n_mero_registre><nom_de_l_entitat>Xarxa Oberta</nom_de_l_entitat><ambit>Inclusió social</ambit></entitat>
+  <entitat><n_mero_registre>004</n_mero_registre><nom_de_l_entitat>Projecte Impuls</nom_de_l_entitat><ambit>Ocupació</ambit></entitat>
+  <entitat><n_mero_registre>005</n_mero_registre><nom_de_l_entitat>Espai Comunitari</nom_de_l_entitat><ambit>Cultura</ambit></entitat>
+</registre_ongd>
