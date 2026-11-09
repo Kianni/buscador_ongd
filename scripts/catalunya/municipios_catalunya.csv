@@ -1,0 +1,894 @@
+﻿municipi_xml,nombre_oficial,codigo_ine,provincia_codigo,provincia_nombre
+Abrera,Abrera,08001,08,Barcelona
+AguilardeSegarra,Aguilar de Segarra,08002,08,Barcelona
+Aiguafreda,Aiguafreda,08014,08,Barcelona
+Alella,Alella,08003,08,Barcelona
+Alpens,Alpens,08004,08,Barcelona
+ArenysdeMar,Arenys de Mar,08005,08,Barcelona
+ArenysdeMunt,Arenys de Munt,08006,08,Barcelona
+Argençola,Argençola,08007,08,Barcelona
+Argentona,Argentona,08008,08,Barcelona
+Artés,Artés,08009,08,Barcelona
+Avià,Avià,08010,08,Barcelona
+Avinyó,Avinyó,08011,08,Barcelona
+AvinyonetdelPenedès,Avinyonet del Penedès,08012,08,Barcelona
+Badalona,Badalona,08013,08,Barcelona
+BadiadelVallès,Badia del Vallès,08904,08,Barcelona
+Balenyà,Balenyà,08016,08,Barcelona
+Balsareny,Balsareny,08017,08,Barcelona
+BarberàdelVallès,Barberà del Vallès,08018,08,Barcelona
+Barcelona,Barcelona,08019,08,Barcelona
+Begues,Begues,08020,08,Barcelona
+Bellprat,Bellprat,08021,08,Barcelona
+Berga,Berga,08022,08,Barcelona
+BiguesiRiellsdelFai,Bigues i Riells del Fai,08023,08,Barcelona
+Borredà,Borredà,08024,08,Barcelona
+CabreradAnoia,Cabrera d'Anoia,08025,08,Barcelona
+CabreradeMar,Cabrera de Mar,08028,08,Barcelona
+Cabrils,Cabrils,08029,08,Barcelona
+Calaf,Calaf,08030,08,Barcelona
+Calders,Calders,08031,08,Barcelona
+CaldesdeMontbui,Caldes de Montbui,08032,08,Barcelona
+CaldesdEstrac,Caldes d'Estrac,08033,08,Barcelona
+Calella,Calella,08034,08,Barcelona
+Calldetenes,Calldetenes,08035,08,Barcelona
+Callús,Callús,08037,08,Barcelona
+CalongedeSegarra,Calonge de Segarra,08038,08,Barcelona
+Campins,Campins,08039,08,Barcelona
+CanetdeMar,Canet de Mar,08040,08,Barcelona
+Canovelles,Canovelles,08041,08,Barcelona
+CànovesiSamalús,Cànoves i Samalús,08042,08,Barcelona
+Canyelles,Canyelles,08043,08,Barcelona
+Capellades,Capellades,08044,08,Barcelona
+Capolat,Capolat,08045,08,Barcelona
+Cardedeu,Cardedeu,08046,08,Barcelona
+Cardona,Cardona,08047,08,Barcelona
+Carme,Carme,08048,08,Barcelona
+Casserres,Casserres,08049,08,Barcelona
+CastelldelAreny,Castell de l'Areny,08050,08,Barcelona
+CastellardenHug,Castellar de n'Hug,08051,08,Barcelona
+CastellardelRiu,Castellar del Riu,08052,08,Barcelona
+CastellardelVallès,Castellar del Vallès,08053,08,Barcelona
+CastellbellielVilar,Castellbell i el Vilar,08054,08,Barcelona
+Castellbisbal,Castellbisbal,08055,08,Barcelona
+Castelldefels,Castelldefels,08056,08,Barcelona
+CastelletilaGornal,Castellet i la Gornal,08057,08,Barcelona
+CastellfollitdelBoix,Castellfollit del Boix,08058,08,Barcelona
+CastellfollitdeRiubregós,Castellfollit de Riubregós,08059,08,Barcelona
+Castellgalí,Castellgalí,08060,08,Barcelona
+CastellnoudeBages,Castellnou de Bages,08061,08,Barcelona
+Castellolí,Castellolí,08062,08,Barcelona
+Castellterçol,Castellterçol,08903,08,Barcelona
+CastellvídelaMarca,Castellví de la Marca,08064,08,Barcelona
+CastellvídeRosanes,Castellví de Rosanes,08065,08,Barcelona
+Centelles,Centelles,08066,08,Barcelona
+Cercs,Cercs,08067,08,Barcelona
+CerdanyoladelVallès,Cerdanyola del Vallès,08068,08,Barcelona
+Cervelló,Cervelló,08069,08,Barcelona
+Collbató,Collbató,08071,08,Barcelona
+Collsuspina,Collsuspina,08072,08,Barcelona
+Copons,Copons,08073,08,Barcelona
+CorberadeLlobregat,Corbera de Llobregat,08074,08,Barcelona
+CornellàdeLlobregat,Cornellà de Llobregat,08075,08,Barcelona
+Cubelles,Cubelles,08076,08,Barcelona
+Dosrius,Dosrius,08077,08,Barcelona
+Esparreguera,Esparreguera,08078,08,Barcelona
+EspluguesdeLlobregat,Esplugues de Llobregat,08079,08,Barcelona
+Espunyola,Espunyola,08080,08,Barcelona
+lEstany,l'Estany,08081,08,Barcelona
+FigaróMontmany,Figaró-Montmany,08082,08,Barcelona
+Fígols,Fígols,08083,08,Barcelona
+FogarsdelaSelva,Fogars de la Selva,08084,08,Barcelona
+FogarsdeMontclús,Fogars de Montclús,08085,08,Barcelona
+Folgueroles,Folgueroles,08086,08,Barcelona
+Fonollosa,Fonollosa,08087,08,Barcelona
+Fontrubí,Font-rubí,08088,08,Barcelona
+LesFranquesesdelVallès,Les Franqueses del Vallès,08089,08,Barcelona
+Gallifa,Gallifa,08090,08,Barcelona
+Gavà,Gavà,08092,08,Barcelona
+Gelida,Gelida,08093,08,Barcelona
+Gironella,Gironella,08094,08,Barcelona
+Gisclareny,Gisclareny,08095,08,Barcelona
+Granera,Granera,08096,08,Barcelona
+Granollers,Granollers,08097,08,Barcelona
+Gualba,Gualba,08098,08,Barcelona
+SantSalvadordeGuardiola,Sant Salvador de Guardiola,08099,08,Barcelona
+GuardioladeBerguedà,Guardiola de Berguedà,08100,08,Barcelona
+Gurb,Gurb,08101,08,Barcelona
+LHospitaletdeLlobregat,L'Hospitalet de Llobregat,08102,08,Barcelona
+ElsHostaletsdePierola,Els Hostalets de Pierola,08103,08,Barcelona
+Igualada,Igualada,08104,08,Barcelona
+Jorba,Jorba,08105,08,Barcelona
+LaLlacuna,La Llacuna,08106,08,Barcelona
+LaLlagosta,La Llagosta,08107,08,Barcelona
+LliçàdAmunt,Lliçà d'Amunt,08108,08,Barcelona
+LliçàdeVall,Lliçà de Vall,08109,08,Barcelona
+LlinarsdelVallès,Llinars del Vallès,08110,08,Barcelona
+Lluçà,Lluçà,08111,08,Barcelona
+MalgratdeMar,Malgrat de Mar,08112,08,Barcelona
+Malla,Malla,08113,08,Barcelona
+Manlleu,Manlleu,08114,08,Barcelona
+Manresa,Manresa,08115,08,Barcelona
+Marganell,Marganell,08116,08,Barcelona
+Martorell,Martorell,08117,08,Barcelona
+Martorelles,Martorelles,08118,08,Barcelona
+MasiesdeRoda,Masies de Roda,08119,08,Barcelona
+LesMasiesdeVoltregà,Les Masies de Voltregà,08120,08,Barcelona
+ElMasnou,El Masnou,08121,08,Barcelona
+Masquefa,Masquefa,08122,08,Barcelona
+Matadepera,Matadepera,08123,08,Barcelona
+Mataró,Mataró,08124,08,Barcelona
+Mediona,Mediona,08125,08,Barcelona
+Moià,Moià,08126,08,Barcelona
+MolinsdeRei,Molins de Rei,08127,08,Barcelona
+MolletdelVallès,Mollet del Vallès,08128,08,Barcelona
+MonistroldeCalders,Monistrol de Calders,08129,08,Barcelona
+MonistroldeMontserrat,Monistrol de Montserrat,08130,08,Barcelona
+MontcadaiReixac,Montcada i Reixac,08131,08,Barcelona
+Montclar,Montclar,08132,08,Barcelona
+Montesquiu,Montesquiu,08133,08,Barcelona
+Montgat,Montgat,08134,08,Barcelona
+Montmajor,Montmajor,08135,08,Barcelona
+Montmaneu,Montmaneu,08136,08,Barcelona
+Montmeló,Montmeló,08137,08,Barcelona
+MontornèsdelVallès,Montornès del Vallès,08138,08,Barcelona
+Montseny,Montseny,08139,08,Barcelona
+Muntanyola,Muntanyola,08140,08,Barcelona
+Mura,Mura,08141,08,Barcelona
+Navarcles,Navarcles,08142,08,Barcelona
+Navàs,Navàs,08143,08,Barcelona
+Òdena,Òdena,08144,08,Barcelona
+Olèrdola,Olèrdola,08145,08,Barcelona
+OlesadeBonesvalls,Olesa de Bonesvalls,08146,08,Barcelona
+OlesadeMontserrat,Olesa de Montserrat,08147,08,Barcelona
+Olivella,Olivella,08148,08,Barcelona
+Olost,Olost,08149,08,Barcelona
+Olvan,Olvan,08150,08,Barcelona
+Orís,Orís,08151,08,Barcelona
+Oristà,Oristà,08152,08,Barcelona
+Orpí,Orpí,08153,08,Barcelona
+Òrrius,Òrrius,08154,08,Barcelona
+PacsdelPenedès,Pacs del Penedès,08155,08,Barcelona
+Palafolls,Palafolls,08156,08,Barcelona
+PalausolitàiPlegamans,Palau-solità i Plegamans,08157,08,Barcelona
+Pallejà,Pallejà,08158,08,Barcelona
+LaPalmadeCervelló,La Palma de Cervelló,08905,08,Barcelona
+ElPapiol,El Papiol,08160,08,Barcelona
+ParetsdelVallès,Parets del Vallès,08161,08,Barcelona
+Perafita,Perafita,08162,08,Barcelona
+Piera,Piera,08163,08,Barcelona
+PinedadeMar,Pineda de Mar,08164,08,Barcelona
+ElPladelPenedès,El Pla del Penedès,08165,08,Barcelona
+LaPobladeClaramunt,La Pobla de Claramunt,08166,08,Barcelona
+LaPobladeLillet,La Pobla de Lillet,08167,08,Barcelona
+Polinyà,Polinyà,08168,08,Barcelona
+ElPontdeVilomaraiRocafort,El Pont de Vilomara i Rocafort,08169,08,Barcelona
+Pontons,Pontons,08170,08,Barcelona
+ElPratdeLlobregat,El Prat de Llobregat,08171,08,Barcelona
+PratsdeLluçanès,Prats de Lluçanès,08172,08,Barcelona
+ElsPratsdeRei,Els Prats de Rei,08173,08,Barcelona
+PremiàdeDalt,Premià de Dalt,08174,08,Barcelona
+PremiàdeMar,Premià de Mar,08175,08,Barcelona
+Puigdàlber,Puigdàlber,08176,08,Barcelona
+Puigreig,Puig-reig,08177,08,Barcelona
+Pujalt,Pujalt,08178,08,Barcelona
+LaQuar,La Quar,08179,08,Barcelona
+Rajadell,Rajadell,08180,08,Barcelona
+Rellinars,Rellinars,08181,08,Barcelona
+Ripollet,Ripollet,08182,08,Barcelona
+RodadeTer,Roda de Ter,08183,08,Barcelona
+Rubí,Rubí,08184,08,Barcelona
+Rubió,Rubió,08185,08,Barcelona
+RupitiPruit,Rupit i Pruit,08186,08,Barcelona
+Sabadell,Sabadell,08187,08,Barcelona
+Sallent,Sallent,08188,08,Barcelona
+SantAdriàdeBesòs,Sant Adrià de Besòs,08189,08,Barcelona
+SantAgustídeLluçanès,Sant Agustí de Lluçanès,08190,08,Barcelona
+SantAndreudelaBarca,Sant Andreu de la Barca,08191,08,Barcelona
+SantAndreudeLlavaneres,Sant Andreu de Llavaneres,08192,08,Barcelona
+SantAntonideVilamajor,Sant Antoni de Vilamajor,08193,08,Barcelona
+SantBartomeudelGrau,Sant Bartomeu del Grau,08194,08,Barcelona
+SantBoideLlobregat,Sant Boi de Llobregat,08195,08,Barcelona
+SantBoideLluçanès,Sant Boi de Lluçanès,08196,08,Barcelona
+SantCebriàdeVallalta,Sant Cebrià de Vallalta,08197,08,Barcelona
+SantCeloni,Sant Celoni,08198,08,Barcelona
+SantClimentdeLlobregat,Sant Climent de Llobregat,08199,08,Barcelona
+SantCugatdelVallès,Sant Cugat del Vallès,08200,08,Barcelona
+SantCugatSesgarrigues,Sant Cugat Sesgarrigues,08201,08,Barcelona
+SantEstevedePalautordera,Sant Esteve de Palautordera,08202,08,Barcelona
+SantEsteveSesrovires,Sant Esteve Sesrovires,08203,08,Barcelona
+SantFeliudeCodines,Sant Feliu de Codines,08204,08,Barcelona
+SantFeliudeLlobregat,Sant Feliu de Llobregat,08205,08,Barcelona
+SantFeliuSasserra,Sant Feliu Sasserra,08206,08,Barcelona
+SantFostdeCampsentelles,Sant Fost de Campsentelles,08207,08,Barcelona
+SantFruitósdeBages,Sant Fruitós de Bages,08208,08,Barcelona
+SantHipòlitdeVoltregà,Sant Hipòlit de Voltregà,08209,08,Barcelona
+SantIscledeVallalta,Sant Iscle de Vallalta,08210,08,Barcelona
+SantJaumedeFrontanyà,Sant Jaume de Frontanyà,08211,08,Barcelona
+SantJoandeVilatorrada,Sant Joan de Vilatorrada,08212,08,Barcelona
+SantJoanDespí,Sant Joan Despí,08213,08,Barcelona
+SantJuliàdeCerdanyola,Sant Julià de Cerdanyola,08214,08,Barcelona
+SantJuliàdeVilatorta,Sant Julià de Vilatorta,08215,08,Barcelona
+SantJustDesvern,Sant Just Desvern,08216,08,Barcelona
+SantLlorençdHortons,Sant Llorenç d'Hortons,08217,08,Barcelona
+SantLlorençSavall,Sant Llorenç Savall,08218,08,Barcelona
+SantMartídAlbars,Sant Martí d'Albars,08219,08,Barcelona
+SantMartídeCentelles,Sant Martí de Centelles,08220,08,Barcelona
+SantMartídeTous,Sant Martí de Tous,08221,08,Barcelona
+SantMartíSarroca,Sant Martí Sarroca,08222,08,Barcelona
+SantMateudeBages,Sant Mateu de Bages,08223,08,Barcelona
+SantPeredeRibes,Sant Pere de Ribes,08224,08,Barcelona
+SantPeredeRiudebitlles,Sant Pere de Riudebitlles,08225,08,Barcelona
+SantPeredeTorelló,Sant Pere de Torelló,08226,08,Barcelona
+SantPeredeVilamajor,Sant Pere de Vilamajor,08227,08,Barcelona
+SantPoldeMar,Sant Pol de Mar,08228,08,Barcelona
+SantQuintídeMediona,Sant Quintí de Mediona,08229,08,Barcelona
+SantQuirzeSafaja,Sant Quirze Safaja,08230,08,Barcelona
+SantQuirzedelVallès,Sant Quirze del Vallès,08231,08,Barcelona
+SantQuirzedeBesora,Sant Quirze de Besora,08232,08,Barcelona
+SantSadurnídAnoia,Sant Sadurní d'Anoia,08233,08,Barcelona
+SantSadurnídOsormort,Sant Sadurní d'Osormort,08234,08,Barcelona
+SantVicençdeCastellet,Sant Vicenç de Castellet,08235,08,Barcelona
+SantVicençdeMontalt,Sant Vicenç de Montalt,08236,08,Barcelona
+SantVicençdeTorelló,Sant Vicenç de Torelló,08237,08,Barcelona
+SantVicençdelsHorts,Sant Vicenç dels Horts,08238,08,Barcelona
+SantaCecíliadeVoltregà,Santa Cecília de Voltregà,08239,08,Barcelona
+SantaColomadeCervelló,Santa Coloma de Cervelló,08240,08,Barcelona
+SantaColomadeGramenet,Santa Coloma de Gramenet,08241,08,Barcelona
+SantaEugèniadeBerga,Santa Eugènia de Berga,08242,08,Barcelona
+SantaEulàliadeRiuprimer,Santa Eulàlia de Riuprimer,08243,08,Barcelona
+SantaEulàliadeRonçana,Santa Eulàlia de Ronçana,08244,08,Barcelona
+SantaFedelPenedès,Santa Fe del Penedès,08245,08,Barcelona
+SantaMargaridadeMontbui,Santa Margarida de Montbui,08246,08,Barcelona
+SantaMargaridaielsMonjos,Santa Margarida i els Monjos,08247,08,Barcelona
+SantaMariadeBesora,Santa Maria de Besora,08248,08,Barcelona
+SantaMariadeMartorelles,Santa Maria de Martorelles,08249,08,Barcelona
+SantaMariadeMerlès,Santa Maria de Merlès,08250,08,Barcelona
+SantaMariadeMiralles,Santa Maria de Miralles,08251,08,Barcelona
+SantaMariadePalautordera,Santa Maria de Palautordera,08252,08,Barcelona
+SantaMariadOló,Santa Maria d'Oló,08253,08,Barcelona
+SantaPerpètuadeMogoda,Santa Perpètua de Mogoda,08254,08,Barcelona
+SantaSusanna,Santa Susanna,08255,08,Barcelona
+Santpedor,Santpedor,08256,08,Barcelona
+Sentmenat,Sentmenat,08257,08,Barcelona
+Seva,Seva,08258,08,Barcelona
+Sitges,Sitges,08259,08,Barcelona
+Sobremunt,Sobremunt,08260,08,Barcelona
+Sora,Sora,08261,08,Barcelona
+Subirats,Subirats,08263,08,Barcelona
+Súria,Súria,08264,08,Barcelona
+Tagamanent,Tagamanent,08265,08,Barcelona
+Talamanca,Talamanca,08266,08,Barcelona
+Taradell,Taradell,08267,08,Barcelona
+Tavernoles,Tavernoles,08268,08,Barcelona
+Tavertet,Tavertet,08269,08,Barcelona
+Teià,Teià,08270,08,Barcelona
+Terrassa,Terrassa,08271,08,Barcelona
+Tiana,Tiana,08272,08,Barcelona
+Tona,Tona,08273,08,Barcelona
+Tordera,Tordera,08274,08,Barcelona
+Torelló,Torelló,08275,08,Barcelona
+Torrelavit,Torrelavit,08276,08,Barcelona
+TorrellesdeFoix,Torrelles de Foix,08277,08,Barcelona
+TorrellesdeLlobregat,Torrelles de Llobregat,08278,08,Barcelona
+Ullastrell,Ullastrell,08279,08,Barcelona
+Vacarisses,Vacarisses,08280,08,Barcelona
+VallbonadAnoia,Vallbona d'Anoia,08281,08,Barcelona
+Vallcebre,Vallcebre,08282,08,Barcelona
+Vallgorguina,Vallgorguina,08283,08,Barcelona
+Vallirana,Vallirana,08284,08,Barcelona
+Vallromanes,Vallromanes,08285,08,Barcelona
+Veciana,Veciana,08286,08,Barcelona
+Vic,Vic,08287,08,Barcelona
+Vilada,Vilada,08288,08,Barcelona
+Viladecans,Viladecans,08289,08,Barcelona
+Viladecavalls,Viladecavalls,08290,08,Barcelona
+VilafrancadelPenedès,Vilafranca del Penedès,08291,08,Barcelona
+VilalbaSasserra,Vilalba Sasserra,08292,08,Barcelona
+VilanovadeSau,Vilanova de Sau,08293,08,Barcelona
+VilanovadelCamí,Vilanova del Camí,08294,08,Barcelona
+VilanovadelVallès,Vilanova del Vallès,08295,08,Barcelona
+VilanovailaGeltrú,Vilanova i la Geltrú,08296,08,Barcelona
+VilassardeDalt,Vilassar de Dalt,08297,08,Barcelona
+VilassardeMar,Vilassar de Mar,08298,08,Barcelona
+VilobídelPenedès,Vilobí del Penedès,08299,08,Barcelona
+ViveriSerrateix,Viver i Serrateix,08300,08,Barcelona
+SantMartídeSesgueioles,Sant Martí de Sesgueioles,08301,08,Barcelona
+SantaMariadeCorcó,Santa Maria de Corcó,08305,08,Barcelona
+Agullana,Agullana,17001,17,Girona
+Aiguaviva,Aiguaviva,17002,17,Girona
+Albanyà,Albanyà,17003,17,Girona
+AlbONS,AlbONS,17004,17,Girona
+Alp,Alp,17005,17,Girona
+Amer,Amer,17006,17,Girona
+Anglès,Anglès,17007,17,Girona
+Arbúcies,Arbúcies,17008,17,Girona
+Argelaguer,Argelaguer,17009,17,Girona
+LArmentera,L'Armentera,17010,17,Girona
+AvinyonetdePuigventós,Avinyonet de Puigventós,17011,17,Girona
+Banyoles,Banyoles,17012,17,Girona
+Bàscara,Bàscara,17013,17,Girona
+Begur,Begur,17014,17,Girona
+BellcairedEmpordà,Bellcaire d'Empordà,17015,17,Girona
+Besalú,Besalú,17016,17,Girona
+Bescanó,Bescanó,17017,17,Girona
+Beuda,Beuda,17018,17,Girona
+LaBisbaldEmpordà,La Bisbal d'Empordà,17019,17,Girona
+Blanes,Blanes,17020,17,Girona
+BoadellailesEscaules,Boadella i les Escaules,17021,17,Girona
+Bolvir,Bolvir,17022,17,Girona
+Bordils,Bordils,17023,17,Girona
+Borrassà,Borrassà,17024,17,Girona
+Breda,Breda,17025,17,Girona
+BrunyolaiSantMartíSapresa,Brunyola i Sant Martí Sapresa,17026,17,Girona
+Cabanelles,Cabanelles,17027,17,Girona
+Cabanes,Cabanes,17028,17,Girona
+Cadaqués,Cadaqués,17029,17,Girona
+CaldesdeMalavella,Caldes de Malavella,17030,17,Girona
+CalongeiSantAntoni,Calonge i Sant Antoni,17031,17,Girona
+Camós,Camós,17032,17,Girona
+Campdevànol,Campdevànol,17033,17,Girona
+Campelles,Campelles,17034,17,Girona
+Campllong,Campllong,17035,17,Girona
+Camprodon,Camprodon,17036,17,Girona
+CanetdAdri,Canet d'Adri,17037,17,Girona
+Cantallops,Cantallops,17038,17,Girona
+Capmany,Capmany,17039,17,Girona
+CassàdelaSelva,Cassà de la Selva,17040,17,Girona
+CastellfollitdelaRoca,Castellfollit de la Roca,17041,17,Girona
+CastellódEmpúries,Castelló d'Empúries,17042,17,Girona
+CastellPlatjadAro,Castell-Platja d'Aro,17043,17,Girona
+Celrà,Celrà,17044,17,Girona
+CerviàdeTer,Cervià de Ter,17045,17,Girona
+Cistella,Cistella,17046,17,Girona
+Colera,Colera,17047,17,Girona
+Colomers,Colomers,17048,17,Girona
+CornellàdelTerri,Cornellà del Terri,17049,17,Girona
+Crespià,Crespià,17050,17,Girona
+Dardius,Dardius,17051,17,Girona
+Darnius,Darnius,17052,17,Girona
+Das,Das,17053,17,Girona
+LEscala,L'Escala,17054,17,Girona
+Espinelves,Espinelves,17055,17,Girona
+Espolla,Espolla,17056,17,Girona
+Esponellà,Esponellà,17057,17,Girona
+ElFardEmpordà,El Far d'Empordà,17058,17,Girona
+Figueres,Figueres,17059,17,Girona
+Flaçà,Flaçà,17060,17,Girona
+Foixà,Foixà,17061,17,Girona
+FontanalsdeCerdanya,Fontanals de Cerdanya,17062,17,Girona
+Fontanilles,Fontanilles,17063,17,Girona
+Fontcoberta,Fontcoberta,17064,17,Girona
+Forallac,Forallac,17065,17,Girona
+FornellsdelaSelva,Fornells de la Selva,17066,17,Girona
+Fortià,Fortià,17067,17,Girona
+Garrigàs,Garrigàs,17068,17,Girona
+Garrigoles,Garrigoles,17069,17,Girona
+Garriguella,Garriguella,17070,17,Girona
+Girona,Girona,17071,17,Girona
+Gombren,Gombren,17072,17,Girona
+Gualta,Gualta,17073,17,Girona
+GuilsdeCerdanya,Guils de Cerdanya,17074,17,Girona
+Hostalric,Hostalric,17075,17,Girona
+Jafre,Jafre,17076,17,Girona
+LaJonquera,La Jonquera,17077,17,Girona
+Juià,Juià,17078,17,Girona
+Lladó,Lladó,17079,17,Girona
+Llagostera,Llagostera,17080,17,Girona
+Llambilles,Llambilles,17081,17,Girona
+Llanars,Llanars,17082,17,Girona
+Llançà,Llançà,17083,17,Girona
+Llers,Llers,17084,17,Girona
+Llívia,Llívia,17085,17,Girona
+LloretdeMar,Lloret de Mar,17086,17,Girona
+LesLlosses,Les Llosses,17087,17,Girona
+MaçanetdeCabrenys,Maçanet de Cabrenys,17088,17,Girona
+MaçanetdelaSelva,Maçanet de la Selva,17089,17,Girona
+Madremanya,Madremanya,17090,17,Girona
+MaiàdeMontcal,Maià de Montcal,17091,17,Girona
+Masarac,Masarac,17092,17,Girona
+Massanes,Massanes,17093,17,Girona
+Meranges,Meranges,17094,17,Girona
+Mieres,Mieres,17095,17,Girona
+MolletdePeralada,Mollet de Peralada,17096,17,Girona
+Molló,Molló,17097,17,Girona
+Montras,Mont-ras,17098,17,Girona
+MontagutiOix,Montagut i Oix,17099,17,Girona
+Navata,Navata,17100,17,Girona
+Ogassa,Ogassa,17101,17,Girona
+Olot,Olot,17102,17,Girona
+Ordis,Ordis,17103,17,Girona
+Osor,Osor,17104,17,Girona
+Palafrugell,Palafrugell,17105,17,Girona
+Palamós,Palamós,17106,17,Girona
+PalaudeSantaEulàlia,Palau de Santa Eulàlia,17107,17,Girona
+Palausator,Palau-sator,17108,17,Girona
+Palausaverdera,Palau-saverdera,17109,17,Girona
+PaloldeRevardit,Palol de Revardit,17110,17,Girona
+Pals,Pals,17111,17,Girona
+Pardines,Pardines,17112,17,Girona
+Parlavà,Parlavà,17113,17,Girona
+Pau,Pau,17114,17,Girona
+PedretiMarzà,Pedret i Marzà,17115,17,Girona
+LaPera,La Pera,17116,17,Girona
+Peralada,Peralada,17117,17,Girona
+Planoles,Planoles,17118,17,Girona
+LesPlanesdHostoles,Les Planes d'Hostoles,17119,17,Girona
+ElPortdelaSelva,El Port de la Selva,17120,17,Girona
+Portbou,Portbou,17121,17,Girona
+LesPreses,Les Preses,17122,17,Girona
+Puigcerdà,Puigcerdà,17123,17,Girona
+Quart,Quart,17124,17,Girona
+Queralbs,Queralbs,17125,17,Girona
+Rabós,Rabós,17126,17,Girona
+Regencós,Regencós,17127,17,Girona
+Ribatallada,Ribatallada,17128,17,Girona
+RibadeTer,Riba de Ter,17129,17,Girona
+RibesdeFreser,Ribes de Freser,17130,17,Girona
+RiellsiViabrea,Riells i Viabrea,17131,17,Girona
+Ripoll,Ripoll,17132,17,Girona
+RiudellotsdelaSelva,Riudellots de la Selva,17133,17,Girona
+Riudarenes,Riudarenes,17134,17,Girona
+Riudaura,Riudaura,17135,17,Girona
+Roses,Roses,17136,17,Girona
+Rupià,Rupià,17137,17,Girona
+SalesdeLlierca,Sales de Llierca,17138,17,Girona
+Salt,Salt,17139,17,Girona
+SantAndreuSalou,Sant Andreu Salou,17140,17,Girona
+SantAnioldeFinestres,Sant Aniol de Finestres,17141,17,Girona
+SantClimentSescebes,Sant Climent Sescebes,17142,17,Girona
+SantFeliudeBuixalleu,Sant Feliu de Buixalleu,17143,17,Girona
+SantFeliudeGuíxols,Sant Feliu de Guíxols,17144,17,Girona
+SantFeliudePallerols,Sant Feliu de Pallerols,17145,17,Girona
+SantFerriol,Sant Ferriol,17146,17,Girona
+SantGregori,Sant Gregori,17147,17,Girona
+SantHilariSacalm,Sant Hilari Sacalm,17148,17,Girona
+SantJaumedeLlierca,Sant Jaume de Llierca,17149,17,Girona
+SantJordiDesvalls,Sant Jordi Desvalls,17150,17,Girona
+SantJoandelesAbadesses,Sant Joan de les Abadesses,17151,17,Girona
+SantJoandeMollet,Sant Joan de Mollet,17152,17,Girona
+SantJoanlesFonts,Sant Joan les Fonts,17153,17,Girona
+SantJuliàdeRamis,Sant Julià de Ramis,17155,17,Girona
+SantJuliàdelLloriBonmatí,Sant Julià del Llor i Bonmatí,17156,17,Girona
+SantLlorençdelaMuga,Sant Llorenç de la Muga,17157,17,Girona
+SantMartídeLlémena,Sant Martí de Llémena,17158,17,Girona
+SantMartíVell,Sant Martí Vell,17159,17,Girona
+SantMiqueldeCampmajor,Sant Miquel de Campmajor,17160,17,Girona
+SantMiqueldeFluvià,Sant Miquel de Fluvià,17161,17,Girona
+SantMori,Sant Mori,17162,17,Girona
+SantPaudeSegúries,Sant Pau de Segúries,17163,17,Girona
+SantPerePescador,Sant Pere Pescador,17164,17,Girona
+SantaColomadeFarners,Santa Coloma de Farners,17165,17,Girona
+SantaCristinadAro,Santa Cristina d'Aro,17166,17,Girona
+SantaLlogaiadÀlguema,Santa Llogaia d'Àlguema,17167,17,Girona
+SantaPau,Santa Pau,17168,17,Girona
+SarriàdeTer,Sarrià de Ter,17169,17,Girona
+"Saus,CamalleraiLlampaies","Saus, Camallera i Llampaies",17170,17,Girona
+LaSelvadeMar,La Selva de Mar,17171,17,Girona
+Serinyà,Serinyà,17172,17,Girona
+SerradeDaró,Serra de Daró,17173,17,Girona
+Setcases,Setcases,17174,17,Girona
+Sils,Sils,17175,17,Girona
+Siurana,Siurana,17176,17,Girona
+Susqueda,Susqueda,17177,17,Girona
+LaTalladadEmpordà,La Tallada d'Empordà,17178,17,Girona
+Terrades,Terrades,17179,17,Girona
+Torrent,Torrent,17180,17,Girona
+TorroelladeFluvià,Torroella de Fluvià,17181,17,Girona
+TorroelladeMontgrí,Torroella de Montgrí,17182,17,Girona
+Tortellà,Tortellà,17183,17,Girona
+Toses,Toses,17184,17,Girona
+TossadeMar,Tossa de Mar,17185,17,Girona
+Ullà,Ullà,17186,17,Girona
+Ullastret,Ullastret,17187,17,Girona
+Ultramort,Ultramort,17188,17,Girona
+Urús,Urús,17189,17,Girona
+LaVajol,La Vajol,17190,17,Girona
+ValldeBianya,Vall de Bianya,17191,17,Girona
+LaValldenBas,La Vall d'en Bas,17192,17,Girona
+Vallllobrega,Vall-llobrega,17193,17,Girona
+Vilabertran,Vilabertran,17194,17,Girona
+Vilablareix,Vilablareix,17195,17,Girona
+Viladamat,Viladamat,17196,17,Girona
+Viladasens,Viladasens,17197,17,Girona
+Vilademuls,Vilademuls,17198,17,Girona
+Viladrau,Viladrau,17199,17,Girona
+Vilafant,Vilafant,17200,17,Girona
+Juia,Juia,17201,17,Girona
+Vilajuïga,Vilajuïga,17202,17,Girona
+VilallongadeTer,Vilallonga de Ter,17203,17,Girona
+Vilamacolum,Vilamacolum,17204,17,Girona
+Vilamalla,Vilamalla,17205,17,Girona
+Vilamaniscle,Vilamaniscle,17206,17,Girona
+Vilanant,Vilanant,17207,17,Girona
+Vilasacra,Vila-sacra,17208,17,Girona
+Ulla,Ulla,17209,17,Girona
+VilobídOnyar,Vilobí d'Onyar,17210,17,Girona
+Vilopriu,Vilopriu,17211,17,Girona
+AbelladelaConca,Abella de la Conca,25001,25,Lleida
+Àger,Àger,25002,25,Lleida
+Agramunt,Agramunt,25003,25,Lleida
+Aitona,Aitona,25004,25,Lleida
+ElsAlamús,Els Alamús,25005,25,Lleida
+AlàsiCerc,Alàs i Cerc,25006,25,Lleida
+LAlbagés,L'Albagés,25007,25,Lleida
+Albatàrrec,Albatàrrec,25008,25,Lleida
+Albesa,Albesa,25009,25,Lleida
+LAlbi,L'Albi,25010,25,Lleida
+Alcanó,Alcanó,25011,25,Lleida
+Alcarràs,Alcarràs,25012,25,Lleida
+Alcoletge,Alcoletge,25013,25,Lleida
+Alfarràs,Alfarràs,25014,25,Lleida
+Alfés,Alfés,25015,25,Lleida
+Algerri,Algerri,25016,25,Lleida
+Alguaire,Alguaire,25017,25,Lleida
+Alins,Alins,25018,25,Lleida
+Almacelles,Almacelles,25019,25,Lleida
+Almatret,Almatret,25020,25,Lleida
+Almenar,Almenar,25021,25,Lleida
+AlòsdeBalaguer,Alòs de Balaguer,25023,25,Lleida
+Alpicat,Alpicat,25024,25,Lleida
+AltÀneu,Alt Àneu,25025,25,Lleida
+Anglesola,Anglesola,25026,25,Lleida
+Arbeca,Arbeca,25027,25,Lleida
+Arres,Arres,25028,25,Lleida
+Arsèguel,Arsèguel,25029,25,Lleida
+ArtesadeLleida,Artesa de Lleida,25030,25,Lleida
+ArtesadeSegre,Artesa de Segre,25031,25,Lleida
+SentiudeSió,Sentiu de Sió,25032,25,Lleida
+LesAvellanesiSantaLinya,Les Avellanes i Santa Linya,25033,25,Lleida
+BaixPallars,Baix Pallars,25035,25,Lleida
+Balaguer,Balaguer,25036,25,Lleida
+Barbens,Barbens,25037,25,Lleida
+Barruera,Barruera,25038,25,Lleida
+Bassella,Bassella,25039,25,Lleida
+Bausen,Bausen,25040,25,Lleida
+Belianes,Belianes,25041,25,Lleida
+Bellaguarda,Bellaguarda,25042,25,Lleida
+BellcairedUrgell,Bellcaire d'Urgell,25043,25,Lleida
+BellllocdUrgell,Bell-lloc d'Urgell,25044,25,Lleida
+BellmuntdUrgell,Bellmunt d'Urgell,25045,25,Lleida
+Bellpuig,Bellpuig,25046,25,Lleida
+BellverdeCerdanya,Bellver de Cerdanya,25047,25,Lleida
+Bellvis,Bellvis,25048,25,Lleida
+BenaventdeSegrià,Benavent de Segrià,25049,25,Lleida
+Biosca,Biosca,25050,25,Lleida
+EsBòrdes,Es Bòrdes,25051,25,Lleida
+BorgesBlanquesLes,Borges Blanques (Les),25052,25,Lleida
+Bossòst,Bossòst,25053,25,Lleida
+Bovera,Bovera,25054,25,Lleida
+Cabanabona,Cabanabona,25055,25,Lleida
+Cabó,Cabó,25056,25,Lleida
+Camarasa,Camarasa,25057,25,Lleida
+Canejan,Canejan,25058,25,Lleida
+CastelldeMur,Castell de Mur,25059,25,Lleida
+CastellardelaRibera,Castellar de la Ribera,25060,25,Lleida
+Castelldans,Castelldans,25061,25,Lleida
+CastellódeFarfanya,Castelló de Farfanya,25062,25,Lleida
+Castellserà,Castellserà,25063,25,Lleida
+Cava,Cava,25064,25,Lleida
+Cervera,Cervera,25065,25,Lleida
+ClarianadeCardener,Clariana de Cardener,25068,25,Lleida
+ElCogul,El Cogul,25069,25,Lleida
+ColldeNargó,Coll de Nargó,25070,25,Lleida
+Corbins,Corbins,25071,25,Lleida
+Cubells,Cubells,25072,25,Lleida
+LEsplugaCalba,L'Espluga Calba,25073,25,Lleida
+Espot,Espot,25074,25,Lleida
+Estamariu,Estamariu,25075,25,Lleida
+Estaràs,Estaràs,25076,25,Lleida
+EsterridÀneu,Esterri d'Àneu,25077,25,Lleida
+EsterrideCardós,Esterri de Cardós,25078,25,Lleida
+Farrera,Farrera,25079,25,Lleida
+FígolsiAlinyà,Fígols i Alinyà,25080,25,Lleida
+LaFloresta,La Floresta,25081,25,Lleida
+Fondarella,Fondarella,25082,25,Lleida
+Foradada,Foradada,25083,25,Lleida
+FuliolaLa,Fuliola (La),25084,25,Lleida
+Fulleda,Fulleda,25085,25,Lleida
+GavetdelaConca,Gavet de la Conca,25086,25,Lleida
+GimenellsielPladelaFont,Gimenells i el Pla de la Font,25087,25,Lleida
+Golmés,Golmés,25088,25,Lleida
+Gósol,Gósol,25089,25,Lleida
+GranadellaLa,Granadella (La),25090,25,Lleida
+GranjadEscarpLa,Granja d'Escarp (La),25091,25,Lleida
+Granyanella,Granyanella,25092,25,Lleida
+GranyenadeSegarra,Granyena de Segarra,25093,25,Lleida
+GranyenadelesGarrigues,Granyena de les Garrigues,25094,25,Lleida
+Guimerà,Guimerà,25095,25,Lleida
+LaGuinguetadÀneu,La Guingueta d'Àneu,25096,25,Lleida
+Guissona,Guissona,25097,25,Lleida
+IvarsdUrgell,Ivars d'Urgell,25098,25,Lleida
+IvarsdeNoguera,Ivars de Noguera,25099,25,Lleida
+Ivorra,Ivorra,25100,25,Lleida
+JosaiTuixén,Josa i Tuixén,25101,25,Lleida
+Juncosa,Juncosa,25102,25,Lleida
+Juneda,Juneda,25103,25,Lleida
+Les,Les,25104,25,Lleida
+Linyola,Linyola,25105,25,Lleida
+Lladorre,Lladorre,25106,25,Lleida
+Lladurs,Lladurs,25107,25,Lleida
+Lardecans,Lardecans,25108,25,Lleida
+LlesdeCerdanya,Lles de Cerdanya,25109,25,Lleida
+Llimiana,Llimiana,25110,25,Lleida
+Llobera,Llobera,25111,25,Lleida
+Lleida,Lleida,25112,25,Lleida
+Maldà,Maldà,25113,25,Lleida
+Massalcoreig,Massalcoreig,25114,25,Lleida
+Massoteres,Massoteres,25115,25,Lleida
+Menàrguens,Menàrguens,25116,25,Lleida
+Miralcamp,Miralcamp,25117,25,Lleida
+Mollerussa,Mollerussa,25118,25,Lleida
+LaMolsosa,La Molsosa,25119,25,Lleida
+MontellàiMartinet,Montellà i Martinet,25120,25,Lleida
+MontferreriCastellbò,Montferrer i Castellbò,25121,25,Lleida
+Montgai,Montgai,25122,25,Lleida
+MontoliudeLleida,Montoliu de Lleida,25123,25,Lleida
+MontoliudeSegarra,Montoliu de Segarra,25124,25,Lleida
+MontornèsdeSegarra,Montornès de Segarra,25125,25,Lleida
+Nalec,Nalec,25126,25,Lleida
+NautAran,Naut Aran,25127,25,Lleida
+Navès,Navès,25128,25,Lleida
+Odèn,Odèn,25129,25,Lleida
+Oliana,Oliana,25130,25,Lleida
+Oliola,Oliola,25131,25,Lleida
+Olius,Olius,25132,25,Lleida
+OlugesLes,Oluges (Les),25133,25,Lleida
+ElsOmellsdenaGaieta,Els Omells de na Gaieta,25134,25,Lleida
+ElsOmellons,Els Omellons,25135,25,Lleida
+Organyà,Organyà,25136,25,Lleida
+OsdeBalaguer,Os de Balaguer,25137,25,Lleida
+OssódeSió,Ossó de Sió,25138,25,Lleida
+PalaudAnglesolaEl,Palau d'Anglesola (El),25139,25,Lleida
+Penelles,Penelles,25140,25,Lleida
+Peramola,Peramola,25141,25,Lleida
+PinelldeSolsonès,Pinell de Solsonès,25142,25,Lleida
+Pinós,Pinós,25143,25,Lleida
+ElsPlansdeSió,Els Plans de Sió,25144,25,Lleida
+ElPoal,El Poal,25145,25,Lleida
+PobladeCérvolesLa,Pobla de Cérvoles (La),25146,25,Lleida
+PobladeSegurLa,Pobla de Segur (La),25147,25,Lleida
+ElPontdeBar,El Pont de Bar,25148,25,Lleida
+ElPontdeSuert,El Pont de Suert,25149,25,Lleida
+Ponts,Ponts,25150,25,Lleida
+PortellaLa,Portella (La),25151,25,Lleida
+PratsiSansor,Prats i Sansor,25152,25,Lleida
+Preixana,Preixana,25153,25,Lleida
+Preixens,Preixens,25154,25,Lleida
+Prullans,Prullans,25155,25,Lleida
+Puiggreli,Puiggreli,25156,25,Lleida
+PuigverddAgramunt,Puigverd d'Agramunt,25157,25,Lleida
+PuigverddeLleida,Puigverd de Lleida,25158,25,Lleida
+Rialp,Rialp,25159,25,Lleida
+RiberadOrdines,Ribera d'Ordines,25160,25,Lleida
+Riner,Riner,25161,25,Lleida
+RiudeCerdanya,Riu de Cerdanya,25162,25,Lleida
+Rosselló,Rosselló,25163,25,Lleida
+SalàsdePallars,Salàs de Pallars,25164,25,Lleida
+Sanaüja,Sanaüja,25165,25,Lleida
+SantEstevedelaSarga,Sant Esteve de la Sarga,25166,25,Lleida
+SantGuimdeFreixenet,Sant Guim de Freixenet,25167,25,Lleida
+SantGuimdelaPlana,Sant Guim de la Plana,25168,25,Lleida
+SantRamon,Sant Ramon,25169,25,Lleida
+SantMartídeRiucorb,Sant Martí de Riucorb,25170,25,Lleida
+SanLorenzodeMorunys,San Lorenzo de Morunys,25171,25,Lleida
+SarrocadeBellera,Sarroca de Bellera,25172,25,Lleida
+SarrocadeLleida,Sarroca de Lleida,25173,25,Lleida
+Senterada,Senterada,25174,25,Lleida
+LaSentiudeSió,La Sentiu de Sió,25175,25,Lleida
+Seròs,Seròs,25176,25,Lleida
+LaSeudUrgell,La Seu d'Urgell,25177,25,Lleida
+Sidamon,Sidamon,25178,25,Lleida
+Solsona,Solsona,25179,25,Lleida
+Soriguera,Soriguera,25180,25,Lleida
+Sort,Sort,25181,25,Lleida
+Soses,Soses,25182,25,Lleida
+Sudanell,Sudanell,25183,25,Lleida
+Sunyer,Sunyer,25184,25,Lleida
+Talarn,Talarn,25185,25,Lleida
+Talavera,Talavera,25186,25,Lleida
+Tàrrega,Tàrrega,25187,25,Lleida
+Tarrés,Tarrés,25188,25,Lleida
+TarrojadeSegarra,Tarroja de Segarra,25189,25,Lleida
+Térmens,Térmens,25190,25,Lleida
+Tírvia,Tírvia,25191,25,Lleida
+Tiurana,Tiurana,25192,25,Lleida
+Torà,Torà,25193,25,Lleida
+Torns,Torns,25194,25,Lleida
+Tornabous,Tornabous,25195,25,Lleida
+LaTorredeCabdella,La Torre de Cabdella,25196,25,Lleida
+Torrebesses,Torrebesses,25197,25,Lleida
+Torrefarrera,Torrefarrera,25198,25,Lleida
+TorrefetaiFlorejacs,Torrefeta i Florejacs,25199,25,Lleida
+Torregrossa,Torregrossa,25200,25,Lleida
+Torrelameu,Torrelameu,25201,25,Lleida
+TorresdeSegre,Torres de Segre,25202,25,Lleida
+Torreserona,Torre-serona,25203,25,Lleida
+Tremp,Tremp,25204,25,Lleida
+LaValldeBoí,La Vall de Boí,25205,25,Lleida
+ValldeCardós,Vall de Cardós,25206,25,Lleida
+VallbonadelesMonges,Vallbona de les Monges,25207,25,Lleida
+VallfogonadeBalaguer,Vallfogona de Balaguer,25208,25,Lleida
+LesVallsdAguilar,Les Valls d'Aguilar,25209,25,Lleida
+LesVallsdeValira,Les Valls de Valira,25210,25,Lleida
+Verdú,Verdú,25211,25,Lleida
+VielhaeMijaran,Vielha e Mijaran,25212,25,Lleida
+VilaSana,Vila Sana,25213,25,Lleida
+Vilagrassa,Vilagrassa,25214,25,Lleida
+Vilaller,Vilaller,25215,25,Lleida
+Vilamòs,Vilamòs,25216,25,Lleida
+VilanovadeBellpuig,Vilanova de Bellpuig,25217,25,Lleida
+VilanovadelaAguda,Vilanova de la Aguda,25218,25,Lleida
+VilanovadeMeià,Vilanova de Meià,25219,25,Lleida
+VilanovadeSegrià,Vilanova de Segrià,25220,25,Lleida
+Vilasana,Vila-sana,25221,25,Lleida
+VilosellEl,Vilosell (El),25222,25,Lleida
+Vinaixa,Vinaixa,25223,25,Lleida
+Aiguamúrcia,Aiguamúrcia,43001,43,Tarragona
+Albinyana,Albinyana,43002,43,Tarragona
+Albiol,Albiol,43003,43,Tarragona
+Alcover,Alcover,43004,43,Tarragona
+Aldover,Aldover,43005,43,Tarragona
+LAldea,L'Aldea,43006,43,Tarragona
+AlfaradeCarles,Alfara de Carles,43007,43,Tarragona
+Alforja,Alforja,43008,43,Tarragona
+Alió,Alió,43009,43,Tarragona
+Almoster,Almoster,43010,43,Tarragona
+Altafulla,Altafulla,43011,43,Tarragona
+LAmetlladeMar,L'Ametlla de Mar,43012,43,Tarragona
+Amposta,Amposta,43013,43,Tarragona
+LArboç,L'Arboç,43014,43,Tarragona
+Arbolí,Arbolí,43015,43,Tarragona
+ArgenteraL,Argentera (L'),43016,43,Tarragona
+Arnes,Arnes,43017,43,Tarragona
+Ascó,Ascó,43018,43,Tarragona
+BanyeresdelPenedès,Banyeres del Penedès,43019,43,Tarragona
+BarberàdelaConca,Barberà de la Conca,43020,43,Tarragona
+Barenys,Barenys,43021,43,Tarragona
+Batea,Batea,43022,43,Tarragona
+BellmuntdelPriorat,Bellmunt del Priorat,43023,43,Tarragona
+Bellvei,Bellvei,43024,43,Tarragona
+Benifallet,Benifallet,43025,43,Tarragona
+Benissanet,Benissanet,43026,43,Tarragona
+ElBisbaldeFalset,El Bisbal de Falset,43027,43,Tarragona
+LaBisbaldelPenedès,La Bisbal del Penedès,43028,43,Tarragona
+Blancafort,Blancafort,43029,43,Tarragona
+Bonastre,Bonastre,43030,43,Tarragona
+LesBorgesdelCamp,Les Borges del Camp,43031,43,Tarragona
+Bot,Bot,43032,43,Tarragona
+Botarell,Botarell,43033,43,Tarragona
+Bràfim,Bràfim,43034,43,Tarragona
+Cabaces,Cabaces,43035,43,Tarragona
+CabradelCamp,Cabra del Camp,43036,43,Tarragona
+Calafell,Calafell,43037,43,Tarragona
+Cambrils,Cambrils,43038,43,Tarragona
+Capafonts,Capafonts,43039,43,Tarragona
+Capçanes,Capçanes,43040,43,Tarragona
+Caseres,Caseres,43041,43,Tarragona
+CastellvelldelCamp,Castellvell del Camp,43042,43,Tarragona
+ElCatllar,El Catllar,43043,43,Tarragona
+SenyoradeMontsià,Senyora de Montsià,43044,43,Tarragona
+Colldejou,Colldejou,43045,43,Tarragona
+Conesa,Conesa,43046,43,Tarragona
+Constantí,Constantí,43047,43,Tarragona
+CorberadEbre,Corbera d'Ebre,43048,43,Tarragona
+CornudelladeMontsant,Cornudella de Montsant,43049,43,Tarragona
+Creixell,Creixell,43050,43,Tarragona
+Cunit,Cunit,43051,43,Tarragona
+Deltebre,Deltebre,43052,43,Tarragona
+Duesaigües,Duesaigües,43053,43,Tarragona
+EsplugadeFrancolíL,Espluga de Francolí (L'),43054,43,Tarragona
+Falset,Falset,43055,43,Tarragona
+FatarellaLa,Fatarella (La),43056,43,Tarragona
+FebróLa,Febró (La),43057,43,Tarragona
+FigueraLa,Figuera (La),43058,43,Tarragona
+FigueroladelCamp,Figuerola del Camp,43059,43,Tarragona
+Flix,Flix,43060,43,Tarragona
+Forès,Forès,43061,43,Tarragona
+Freginals,Freginals,43062,43,Tarragona
+GaleraLa,Galera (La),43063,43,Tarragona
+Gandesa,Gandesa,43064,43,Tarragona
+Garcia,Garcia,43065,43,Tarragona
+GaridellsEls,Garidells (Els),43066,43,Tarragona
+Ginestar,Ginestar,43067,43,Tarragona
+Godall,Godall,43068,43,Tarragona
+Gratallops,Gratallops,43069,43,Tarragona
+ElsGuiamets,Els Guiamets,43070,43,Tarragona
+HortadeSantJoan,Horta de Sant Joan,43071,43,Tarragona
+LloarEl,Lloar (El),43072,43,Tarragona
+Llorac,Llorac,43073,43,Tarragona
+LlorençdelPenedès,Llorenç del Penedès,43074,43,Tarragona
+Marçà,Marçà,43075,43,Tarragona
+Margalef,Margalef,43076,43,Tarragona
+MasdeBarberans,Mas de Barberans,43077,43,Tarragona
+Masdenverge,Masdenverge,43078,43,Tarragona
+Masllorenç,Masllorenç,43079,43,Tarragona
+Maspujols,Maspujols,43080,43,Tarragona
+ElMasroig,El Masroig,43081,43,Tarragona
+ElMilà,El Milà,43082,43,Tarragona
+Miravet,Miravet,43083,43,Tarragona
+ElMolar,El Molar,43084,43,Tarragona
+Montblanc,Montblanc,43085,43,Tarragona
+MontbriódelCamp,Montbrió del Camp,43086,43,Tarragona
+Montferri,Montferri,43087,43,Tarragona
+MontmellEl,Montmell (El),43088,43,Tarragona
+Montral,Mont-ral,43089,43,Tarragona
+MontroigdelCamp,Mont-roig del Camp,43090,43,Tarragona
+MóradEbre,Móra d'Ebre,43091,43,Tarragona
+MóralaNova,Móra la Nova,43092,43,Tarragona
+ElMorell,El Morell,43093,43,Tarragona
+LaNoudeGaià,La Nou de Gaià,43094,43,Tarragona
+Nulles,Nulles,43095,43,Tarragona
+LaPobladeMafumet,La Pobla de Mafumet,43096,43,Tarragona
+LaPobladeMassaluca,La Pobla de Massaluca,43097,43,Tarragona
+LaPobladeMontornès,La Pobla de Montornès,43098,43,Tarragona
+Poboleda,Poboleda,43099,43,Tarragona
+ElPontdArmentera,El Pont d'Armentera,43100,43,Tarragona
+Pontils,Pontils,43101,43,Tarragona
+PradelldelaTeixeta,Pradell de la Teixeta,43102,43,Tarragona
+Prades,Prades,43103,43,Tarragona
+PratdeComte,Prat de Comte,43104,43,Tarragona
+Pratdip,Pratdip,43105,43,Tarragona
+Puigtelig,Puigtelig,43106,43,Tarragona
+Puigpelat,Puigpelat,43107,43,Tarragona
+Querol,Querol,43108,43,Tarragona
+Rasquera,Rasquera,43109,43,Tarragona
+Renau,Renau,43110,43,Tarragona
+Reus,Reus,43111,43,Tarragona
+RibarojadEbre,Riba-roja d'Ebre,43112,43,Tarragona
+Riudecanyes,Riudecanyes,43113,43,Tarragona
+Riudecols,Riudecols,43114,43,Tarragona
+Riudoms,Riudoms,43115,43,Tarragona
+RocafortdeQueralt,Rocafort de Queralt,43116,43,Tarragona
+RodadeBerà,Roda de Berà,43117,43,Tarragona
+Rodonyà,Rodonyà,43118,43,Tarragona
+Roquetes,Roquetes,43119,43,Tarragona
+ElRourell,El Rourell,43120,43,Tarragona
+Salou,Salou,43122,43,Tarragona
+SantCarlesdelaRàpita,Sant Carles de la Ràpita,43123,43,Tarragona
+SantJaumedEnveja,Sant Jaume d'Enveja,43124,43,Tarragona
+SantaBàrbara,Santa Bàrbara,43125,43,Tarragona
+SantaColomadeQueralt,Santa Coloma de Queralt,43126,43,Tarragona
+SantaOliva,Santa Oliva,43127,43,Tarragona
+Sarral,Sarral,43128,43,Tarragona
+SavallàdelComtat,Savallà del Comtat,43129,43,Tarragona
+LaSecuita,La Secuita,43130,43,Tarragona
+LaSelvadelCamp,La Selva del Camp,43131,43,Tarragona
+Senan,Senan,43132,43,Tarragona
+LaSènia,La Sènia,43133,43,Tarragona
+Solivella,Solivella,43134,43,Tarragona
+Tarragona,Tarragona,43135,43,Tarragona
+Tivenys,Tivenys,43136,43,Tarragona
+Tivissa,Tivissa,43137,43,Tarragona
+Torredembarra,Torredembarra,43138,43,Tarragona
+TorrojadelPriorat,Torroja del Priorat,43139,43,Tarragona
+Tortosa,Tortosa,43140,43,Tarragona
+Ulldecona,Ulldecona,43141,43,Tarragona
+Ulldemolins,Ulldemolins,43142,43,Tarragona
+Vallclara,Vallclara,43143,43,Tarragona
+VallfogonadeRiucorb,Vallfogona de Riucorb,43144,43,Tarragona
+Vallmoll,Vallmoll,43145,43,Tarragona
+Valls,Valls,43146,43,Tarragona
+VandellòsilHospitaletdelInfant,Vandellòs i l'Hospitalet de l'Infant,43147,43,Tarragona
+ElVendrell,El Vendrell,43148,43,Tarragona
+VespelladeGaià,Vespella de Gaià,43149,43,Tarragona
+Vilabella,Vilabella,43150,43,Tarragona
+VilalbadelsArcs,Vilalba dels Arcs,43151,43,Tarragona
+VilallongadelCamp,Vilallonga del Camp,43152,43,Tarragona
+VilanovadEscornalbou,Vilanova d'Escornalbou,43153,43,Tarragona
+VilanovadePrades,Vilanova de Prades,43154,43,Tarragona
+Vilaplana,Vilaplana,43155,43,Tarragona
+Vilarodona,Vila-rodona,43156,43,Tarragona
+Vilaseca,Vila-seca,43157,43,Tarragona
+Vilaverd,Vilaverd,43158,43,Tarragona
+LaVilellaAlta,La Vilella Alta,43159,43,Tarragona
+LaVilellaBaixa,La Vilella Baixa,43160,43,Tarragona
+VimbodíiPoblet,Vimbodí i Poblet,43161,43,Tarragona
+Vinebre,Vinebre,43162,43,Tarragona
+VinyolsielsArcs,Vinyols i els Arcs,43163,43,Tarragona
+ElPerelló,El Perelló,43164,43,Tarragona
+HospitaletdeLlobregat(L'),L'Hospitalet de Llobregat,08102,08,Barcelona
+Masnou(El),El Masnou,08121,08,Barcelona
+PratdeLlobregat(El),El Prat de Llobregat,08171,08,Barcelona
+Bisbald'Empordà(La),La Bisbal d'Empordà,17019,17,Girona
+Madrid,Madrid,28079,28,Madrid
