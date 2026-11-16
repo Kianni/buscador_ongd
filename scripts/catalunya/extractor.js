@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline/promises');
 const { stdin, stdout } = require('process');
+const { pathToFileURL } = require('url');
 const { XMLParser } = require('fast-xml-parser');
 
 // ==========================================
@@ -25,94 +26,6 @@ function normalizarTexto(texto) {
 function normalizarClaveMunicipio(texto) {
   const normalizado = normalizarTexto(texto);
   return normalizado ? normalizado.replace(/[^A-Z0-9]/g, '') : null;
-}
-
-const TLDS_COMUNES = ['com', 'org', 'es', 'cat', 'eu', 'net', 'info', 'gob', 'edu'];
-
-// Reparador exclusivo para correos electrónicos.
-function repararEmail(texto) {
-  if (!texto) return null;
-
-  let limpio = String(texto).trim();
-
-  // Corrige únicamente los casos conocidos de TLD pegado al final.
-  for (const tld of TLDS_COMUNES) {
-    const regexFinal = new RegExp(`(?<!\\.)${tld}$`, 'i');
-
-    if (regexFinal.test(limpio)) {
-      limpio = limpio.replace(regexFinal, `.${tld}`);
-      break;
-    }
-  }
-
-  return limpio;
-}
-
-// Reparador exclusivo para URLs.
-function limpiarUrl(urlCruda) {
-  if (!urlCruda) return null;
-
-  let limpia = String(urlCruda).trim();
-
-  // Corrige protocolos repetidos, por ejemplo: http://https://dominio.cat
-  limpia = limpia.replace(/^(?:(?:https?):\/\/)+/i, 'https://');
-
-  // Añade protocolo cuando falta.
-  if (!/^https?:\/\//i.test(limpia)) {
-    limpia = 'http://' + limpia;
-  }
-
-  try {
-    const urlObj = new URL(limpia);
-    let host = urlObj.hostname;
-
-    // Corrige TLD pegados al final del dominio.
-    for (const tld of TLDS_COMUNES) {
-      const regexFinal = new RegExp(`(?<!\\.)${tld}$`, 'i');
-
-      if (regexFinal.test(host)) {
-        host = host.replace(regexFinal, `.${tld}`);
-        break;
-      }
-    }
-
-    // Corrige "www" pegado al nombre del dominio.
-    host = host.replace(/^www([a-zA-Z0-9])/i, 'www.$1');
-
-    urlObj.hostname = host;
-    return urlObj.href;
-  } catch (error) {
-    // Si la URL no se puede interpretar, conserva el texto con el protocolo añadido/corregido.
-    return limpia;
-  }
-}
-
-// Divide campos con varios valores separados por saltos de línea.
-function extraerMultiplesValores(valor) {
-  if (valor === null || valor === undefined) return [];
-
-  return String(valor)
-    .split(/\r?\n/)
-    .map(v => v.trim())
-    .filter(v => v.length > 0);
-}
-
-function concatenarContacto(telefono, movil, email) {
-  const listaTelefonos = extraerMultiplesValores(telefono);
-  const listaMoviles = extraerMultiplesValores(movil);
-  const listaEmails = extraerMultiplesValores(email);
-
-  const emailsReparados = listaEmails.map(correo => {
-    return correo.includes('@') ? repararEmail(correo) : correo;
-  });
-
-  const componentes = [
-    ...listaTelefonos,
-    ...listaMoviles,
-    ...emailsReparados
-  ];
-
-  return componentes.length > 0 ? componentes.join(' | ') : null;
 }
 
 // ==========================================
@@ -177,7 +90,7 @@ function parsearCSV(contenido) {
   return filas;
 }
 
-function cargarDiccionarioDesdeCSV(rutaCSV) {
+function cargarDiccionarioDesdeCSV(rutaCSV, silencioso = false) {
   const diccionario = new Map();
 
   try {
@@ -238,8 +151,10 @@ function cargarDiccionarioDesdeCSV(rutaCSV) {
       }
     }
 
-    console.log(`   Municipios cargados: ${filas.length - 1}`);
-    console.log(`   Claves de búsqueda creadas: ${diccionario.size}`);
+    if (!silencioso) {
+      console.log(`   Municipios cargados: ${filas.length - 1}`);
+      console.log(`   Claves de búsqueda creadas: ${diccionario.size}`);
+    }
   } catch (error) {
     throw new Error(`Error al cargar el CSV: ${error.message}`);
   }
@@ -283,146 +198,199 @@ function resolverMunicipioProvincia(municipi, codiPostal, diccionarioMunicipios)
 }
 
 // ==========================================
-// 3. FUNCIÓN PRINCIPAL DE EXTRACCIÓN Y MAPEO
+// 3. EXTRACCIÓN AL FORMATO COMÚN (usable desde la API y desde consola)
+// ==========================================
+
+const PREFIJO_FUENTE = 'CAT';
+const RUTA_CSV_MUNICIPIOS = path.join(__dirname, 'municipios_catalunya.csv');
+
+const limpiar = valor => {
+  if (valor === null || valor === undefined) return null;
+  const t = String(valor).replace(/\s+/g, ' ').trim();
+  return t === '' ? null : t;
+};
+
+// Municipios con artículo: "Hospitalet de Llobregat, l'" o "Masnou, el" -> "l'Hospitalet de Llobregat".
+function variantesMunicipio(texto) {
+  const t = limpiar(texto);
+  if (!t) return [];
+  const salida = [t];
+  const m = /^(.*?)[\s]*[(,]\s*(l'|el|la|els|les|los|las)\s*\)?$/i.exec(t);
+  if (m) salida.push(`${m[2]}${m[2].endsWith("'") ? '' : ' '}${m[1]}`);
+  return salida;
+}
+
+/**
+ * Convierte el XML del registro de ONGD de Catalunya al formato común.
+ * Regla de datos: se repara solo si el resultado queda válido; si no, se conserva el original y se informa.
+ * @param {string} textoXml
+ * @param {{diccionario?: Map<string, object>}} [opciones]
+ * @returns {Promise<{entidades: object[], informe: object}>}
+ */
+async function extraerCAT(textoXml, opciones = {}) {
+  const libUrl = nombre => pathToFileURL(path.join(__dirname, '..', '..', 'lib', nombre)).href;
+  const { procesarEmails, procesarTelefonos, procesarUrl, SEPARADOR } = await import(libUrl('contacto.mjs'));
+  const { contarPorCategoria, posiblesDuplicados } = await import(libUrl('informe.mjs'));
+  const { separarNombre, normalizarDireccion } = await import(libUrl('nombres.mjs'));
+  const diccionario = opciones.diccionario ?? cargarDiccionarioDesdeCSV(RUTA_CSV_MUNICIPIOS, true);
+  if (!textoXml || textoXml.trim() === '') throw new Error('El archivo XML está vacío.');
+
+  const parsed = new XMLParser({ ignoreAttributes: false, parseTagValue: false, trimValues: true }).parse(textoXml);
+  const bruto = parsed?.registre_ongd?.entitat;
+  if (bruto === undefined) throw new Error('No se encontraron etiquetas <entitat> dentro de <registre_ongd>.');
+  const lista = Array.isArray(bruto) ? bruto : [bruto];
+
+  const informe = {
+    fuente: 'Catalunya',
+    resumen: { leidos: lista.length, cargados: 0, rechazados: 0, duplicados: 0, con_reparaciones: 0, con_avisos: 0 },
+    rechazados: [], duplicados: [], reparados: [], avisos: [],
+    sin_dato_en_origen: { ambito: lista.length, latitud_longitud: lista.length },
+  };
+  const entidades = [];
+  const vistos = new Map();
+
+  lista.forEach((item, indice) => {
+    const fila = indice + 1;
+    let id = limpiar(item.n_mero_registre);
+    const reparados = [], avisos = [];
+    const reparar = (campo, antes, despues, motivo, categoria = 'formato') => reparados.push({ fila, id, campo, categoria, antes, despues, motivo });
+    const avisar = (campo, mensaje, categoria = 'formato') => avisos.push({ fila, id, campo, categoria, mensaje });
+    const rechazar = (campo, motivo, categoria = 'faltante') => informe.rechazados.push({ fila, id, campo, categoria, motivo });
+
+    if (!id) return rechazar('n_mero_registre', 'Falta el número de registro.');
+    if (/^\d{1,3}(\.\d{3})+$/.test(id)) {
+      const limpio = id.replace(/\./g, '');
+      reparar('n_mero_registre', id, limpio, 'Separador de miles eliminado del número de registro.');
+      id = limpio;
+    } else if (!/^\d+$/.test(id)) avisar('n_mero_registre', `El número de registro no es numérico: "${id}".`, 'formato');
+    const firma = JSON.stringify(item);
+    if (vistos.has(id)) {
+      const previo = vistos.get(id);
+      informe.duplicados.push({ fila, id, nombre: limpiar(item.nom_de_l_entitat) || null, fila_original: previo.fila, categoria: 'duplicado', tipo: previo.firma === firma ? 'idéntico' : 'conflicto', accion: `Se conserva la primera aparición (fila ${previo.fila}).` });
+      informe.resumen.duplicados++;
+      return;
+    }
+    vistos.set(id, { firma, fila });
+
+    const nombreOrigen = limpiar(item.nom_de_l_entitat);
+    const nombre = separarNombre(nombreOrigen);
+    if (nombre !== nombreOrigen) reparar('nom_de_l_entitat', nombreOrigen, nombre, 'Nombre pegado en el origen: espacios restaurados y erratas corregidas (lib/correcciones.json).');
+    if (!nombre) return rechazar('nom_de_l_entitat', 'El nombre de la entidad está vacío.');
+
+    // --- Código postal: espacios y ceros iniciales se reparan; si no es un CP de Catalunya se conserva y se avisa.
+    let cp = limpiar(item.codi_postal);
+    if (cp && /^\d{2}\s?\d{3}$|^\d{4}$/.test(cp)) {
+      const arreglado = cp.replace(/\s/g, '').padStart(5, '0');
+      if (arreglado !== cp) reparar('codi_postal', cp, arreglado, /^\d{4}$/.test(cp) ? 'Código postal de 4 dígitos: se añade el cero inicial.' : 'Espacio interno eliminado.');
+      cp = arreglado;
+    }
+    if (cp && !/^\d{5}$/.test(cp)) {
+      avisar('codi_postal', `Código postal con formato no válido: "${cp}". Se conserva el original.`, 'formato');
+    } else if (cp && !TABLA_PROVINCIAS_CP[cp.slice(0, 2)]) {
+      avisar('codi_postal', `Código postal "${cp}" ${(Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00') ? 'fuera de rango (no existe esa provincia)' : 'de fuera de Catalunya'}. Se conserva el original.`, (Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00') ? 'rango' : 'semantico');
+    }
+    if (!cp) avisar('codi_postal', 'La entidad no tiene código postal en el origen.', 'faltante');
+
+    // --- Localidad y provincia (obligatorias). El código INE solo sale del CSV oficial: nunca se inventa.
+    const municipioOrigen = limpiar(item.municipi);
+    let info = null;
+    for (const v of variantesMunicipio(municipioOrigen)) {
+      const clave = normalizarClaveMunicipio(v);
+      if (clave && diccionario.has(clave)) { info = diccionario.get(clave); break; }
+    }
+    if (!info) {
+      return rechazar('municipi', municipioOrigen
+        ? `Municipio sin correspondencia en la tabla oficial (no se inventa el código INE): "${municipioOrigen}".`
+        : 'El municipio está vacío.', municipioOrigen ? 'semantico' : 'faltante');
+    }
+    if (cp && /^\d{5}$/.test(cp) && TABLA_PROVINCIAS_CP[cp.slice(0, 2)] && cp.slice(0, 2) !== info.p_codigo) {
+      avisar('codi_postal', `El código postal ${cp} no corresponde a la provincia ${info.p_codigo} del municipio ${info.l_codigo}. Manda el municipio.`, 'semantico');
+    }
+
+    const direccionOrigen = limpiar(item.adre_a);
+    const direccion = normalizarDireccion(direccionOrigen) || null;
+    if (direccionOrigen && direccion !== direccionOrigen) reparar('adre_a', direccionOrigen, direccion, 'Dirección pegada en el origen: espacios, coma antes del número y erratas corregidas (lib/correcciones.json).');
+    if (!direccionOrigen) avisar('adre_a', 'La entidad no tiene dirección en el origen. direccion = null.', 'faltante');
+
+    // --- Contacto, teléfonos y correo (reparar solo si queda válido)
+    const tel = procesarTelefonos((item.tel_fon ?? '') + (item.tel_fon_m_bil ? '\n' + item.tel_fon_m_bil : ''));
+    const mail = procesarEmails(item.correu_electr_nic);
+    for (const [campo, res] of [['tel_fon', tel], ['correu_electr_nic', mail]]) {
+      if (res.estado === 'reparado') reparar(campo, res.original.trim(), res.valor, 'Valor no válido reparado; el resultado es válido.');
+      if (res.estado === 'conservado') avisar(campo, `No se puede reparar: se conserva el original "${res.valor}".`);
+    }
+    const contactos = [tel.valor, mail.valor].filter(Boolean);
+
+    // --- Web
+    const web = procesarUrl(item.web);
+    if (web.estado === 'reparado') reparar('web', web.original.trim(), web.valor, 'URL reparada; el resultado es válido.');
+    if (web.estado === 'conservado') avisar('web', `No se puede reparar: se conserva el original "${web.valor}".`);
+
+    entidades.push({
+      cod_entidad: `${PREFIJO_FUENTE}:${id}`,
+      nombre,
+      ambito: null,
+      direccion: direccion,
+      codigo_postal: cp,
+      longitud: null,
+      latitud: null,
+      descripcion: limpiar(item.naturalesa),
+      contacto: contactos.length ? contactos.join(SEPARADOR) : null,
+      url: web.valor,
+      en_localidad: {
+        codigo: info.l_codigo,
+        nombre: info.l_nombre,
+        en_provincia: { codigo: info.p_codigo, nombre: info.p_nombre },
+      },
+    });
+    if (reparados.length) { informe.reparados.push(...reparados); informe.resumen.con_reparaciones++; }
+    if (avisos.length) { informe.avisos.push(...avisos); informe.resumen.con_avisos++; }
+  });
+
+  informe.resumen.cargados = entidades.length;
+  informe.resumen.rechazados = informe.rechazados.length;
+  posiblesDuplicados(entidades, informe);
+  contarPorCategoria(informe);
+  return { entidades, informe };
+}
+
+// ==========================================
+// 4. USO DESDE CONSOLA
 // ==========================================
 
 async function ejecutarExtraccion() {
   const consola = readline.createInterface({ input: stdin, output: stdout });
-
   try {
     const nombreIntroducido = (await consola.question(
       'Nombre del archivo XML que quieres convertir (por ejemplo, entidades.xml): '
     )).trim();
     consola.close();
+    if (!nombreIntroducido) throw new Error('Debes indicar el nombre del archivo XML.');
 
-    if (!nombreIntroducido) {
-      throw new Error('Debes indicar el nombre del archivo XML.');
-    }
-
-    // Se admiten nombres con o sin extensi?n .xml, siempre dentro de esta carpeta.
     const nombreXML = path.basename(nombreIntroducido);
     const nombreBase = path.parse(nombreXML).name;
-    const RUTA_XML = path.join(__dirname, nombreXML.toLowerCase().endsWith('.xml')
-      ? nombreXML
-      : `${nombreXML}.xml`);
-    const RUTA_CSV = path.join(__dirname, 'municipios_catalunya.csv');
+    const RUTA_XML = path.join(__dirname, nombreXML.toLowerCase().endsWith('.xml') ? nombreXML : `${nombreXML}.xml`);
     const RUTA_JSON = path.join(__dirname, `${nombreBase}.json`);
+    const RUTA_INFORME = path.join(__dirname, `${nombreBase}.informe.json`);
 
-    console.log('Comprobando archivos...');
+    if (!fs.existsSync(RUTA_XML)) throw new Error(`No se encuentra el XML: '${RUTA_XML}'`);
+    const { entidades, informe } = await extraerCAT(fs.readFileSync(RUTA_XML, 'utf8'));
 
-    if (!fs.existsSync(RUTA_CSV)) {
-      throw new Error(`No se encuentra el CSV: '${RUTA_CSV}'`);
-    }
-
-    if (!fs.existsSync(RUTA_XML)) {
-      throw new Error(`No se encuentra el XML: '${RUTA_XML}'`);
-    }
-
-    console.log('1. Cargando municipios desde el CSV...');
-    const diccionarioOficial = cargarDiccionarioDesdeCSV(RUTA_CSV);
-
-    if (diccionarioOficial.size === 0) {
-      throw new Error('El CSV no contiene municipios válidos.');
-    }
-
-    console.log('2. Parseando archivo XML...');
-    const xmlContent = fs.readFileSync(RUTA_XML, 'utf8');
-
-    if (!xmlContent || xmlContent.trim().length === 0) {
-      throw new Error('El archivo XML está vacío.');
-    }
-
-    const parser = new XMLParser({
-      ignoreAttributes: false,
-      parseNodeValue: false,
-      trimValues: true
-    });
-
-    const parsed = parser.parse(xmlContent);
-
-    const entitatsRaw = parsed.registre_ongd?.entitat || [];
-    const listaEntidades = Array.isArray(entitatsRaw)
-      ? entitatsRaw
-      : [entitatsRaw];
-
-    if (listaEntidades.length === 0) {
-      throw new Error('No se encontraron etiquetas <entitat> dentro de <registre_ongd>.');
-    }
-
-    console.log('3. Transformando datos al esquema global...');
-
-    const entidadesGlobales = listaEntidades.map(item => {
-      let codiPostal = item.codi_postal
-        ? String(item.codi_postal).trim()
-        : null;
-
-      if (codiPostal && codiPostal.length < 5) {
-        codiPostal = codiPostal.padStart(5, '0');
-      }
-
-      const geoData = resolverMunicipioProvincia(
-        item.municipi,
-        codiPostal,
-        diccionarioOficial
-      );
-
-      return {
-        cod_entidad: item.n_mero_registre
-          ? String(item.n_mero_registre)
-          : null,
-        cif_entidad: item.cif_entitat
-          ? String(item.cif_entitat)
-          : null,
-        nombre: item.nom_de_l_entitat
-          ? String(item.nom_de_l_entitat).trim()
-          : null,
-        direccion: item.adre_a
-          ? String(item.adre_a).trim()
-          : null,
-        codigo_postal: codiPostal,
-        descripcion: item.naturalesa
-          ? String(item.naturalesa).trim()
-          : null,
-        contacto: concatenarContacto(
-          item.tel_fon,
-          item.tel_fon_m_bil,
-          item.correu_electr_nic
-        ),
-        url: limpiarUrl(item.web),
-        ambito: null,
-        localidad: {
-          codigo: geoData.localidad_codigo,
-          nombre: geoData.localidad_nombre ||
-            (item.municipi ? String(item.municipi).trim() : null)
-        },
-        provincia: {
-          codigo: geoData.provincia_codigo,
-          nombre: geoData.provincia_nombre
-        },
-        coordenadas: {
-          latitud: null,
-          longitud: null
-        }
-      };
-    });
-
-    console.log('4. Guardando resultados...');
-    fs.writeFileSync(
-      RUTA_JSON,
-      JSON.stringify(entidadesGlobales, null, 2),
-      'utf8'
-    );
-
-    console.log(
-      `¡Éxito! Procesadas ${entidadesGlobales.length} entidades en '${RUTA_JSON}'.`
-    );
+    fs.writeFileSync(RUTA_JSON, JSON.stringify(entidades, null, 2), 'utf8');
+    fs.writeFileSync(RUTA_INFORME, JSON.stringify(informe, null, 2), 'utf8');
+    const r = informe.resumen;
+    console.log(`Leídas ${r.leidos}; cargadas ${r.cargados}; rechazadas ${r.rechazados}; duplicadas ${r.duplicados}; ` +
+      `con reparaciones ${r.con_reparaciones}; con avisos ${r.con_avisos}.`);
+    console.log(`Datos: '${RUTA_JSON}'\nInforme: '${RUTA_INFORME}'`);
   } catch (error) {
     consola.close();
-    console.error('\n❌ ERROR DURANTE LA EXTRACCIÓN:');
+    console.error('\nERROR DURANTE LA EXTRACCIÓN:');
     console.error(error.message);
     console.error('Proceso abortado. No se generó el archivo JSON.\n');
+    process.exitCode = 1;
   }
 }
 
-// Ejecutar el script.
-ejecutarExtraccion();
+module.exports = { extraerCAT, PREFIJO_FUENTE, normalizarClaveMunicipio, parsearCSV };
+
+if (require.main === module) ejecutarExtraccion();

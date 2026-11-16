@@ -1,0 +1,111 @@
+{
+  "fuente": "Comunitat Valenciana",
+  "resumen": {
+    "leidos": 12,
+    "cargados": 10,
+    "rechazados": 0,
+    "duplicados": 2,
+    "con_reparaciones": 3,
+    "con_avisos": 1,
+    "por_categoria": {
+      "formato": {
+        "rechazados": 0,
+        "reparados": 1,
+        "avisos": 0,
+        "duplicados": 0
+      },
+      "faltante": {
+        "rechazados": 0,
+        "reparados": 1,
+        "avisos": 0,
+        "duplicados": 0
+      },
+      "rango": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 1,
+        "duplicados": 0
+      },
+      "duplicado": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 0,
+        "duplicados": 2
+      },
+      "semantico": {
+        "rechazados": 0,
+        "reparados": 1,
+        "avisos": 0,
+        "duplicados": 0
+      }
+    }
+  },
+  "rechazados": [],
+  "duplicados": [
+    {
+      "fila": 6,
+      "id": "1491",
+      "nombre": "Accem - V.T. colect. desfavorecidos Cuenca",
+      "fila_original": 1,
+      "categoria": "duplicado",
+      "tipo": "idéntico",
+      "accion": "Se conserva la primera aparición (fila 1)."
+    },
+    {
+      "fila": 11,
+      "id": "911",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES BALLESOL COSTA BLANCA",
+      "fila_original": 7,
+      "categoria": "duplicado",
+      "tipo": "idéntico",
+      "accion": "Se conserva la primera aparición (fila 7)."
+    }
+  ],
+  "reparados": [
+    {
+      "fila": 2,
+      "id": "66",
+      "campo": "x_25830/y_25830",
+      "categoria": "formato",
+      "antes": "691303 4333847,00",
+      "despues": "691303 4333847",
+      "motivo": "Coma decimal sustituida por punto."
+    },
+    {
+      "fila": 8,
+      "id": "207",
+      "campo": "provincia",
+      "categoria": "semantico",
+      "antes": "València/Valencia",
+      "despues": "Alacant/Alicante",
+      "motivo": "La provincia del origen no coincide con el prefijo 03 del código de municipio 03063; manda el código."
+    },
+    {
+      "fila": 10,
+      "id": "1645",
+      "campo": "x_25830/y_25830",
+      "categoria": "faltante",
+      "antes": "715185 (vacío)",
+      "despues": "715185 4369513",
+      "motivo": "Coordenada no válida o ausente; recuperada del campo WKT."
+    }
+  ],
+  "avisos": [
+    {
+      "fila": 9,
+      "id": "364",
+      "campo": "x_25830/y_25830",
+      "categoria": "rango",
+      "mensaje": "Coordenadas ausentes, de marcador (p. ej. 9999999) o fuera de la Comunitat Valenciana: \"9999999 9999999\". longitud/latitud = null."
+    }
+  ],
+  "marcadores_sin_dato": {
+    "email_zero_gva": 4,
+    "telefono_0": 0
+  },
+  "sin_dato_en_origen": {
+    "codigo_postal": 10,
+    "url": 10
+  },
+  "posibles_duplicados": []
+}

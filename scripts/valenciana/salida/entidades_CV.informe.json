@@ -1,0 +1,912 @@
+{
+  "fuente": "Comunitat Valenciana",
+  "resumen": {
+    "leidos": 1697,
+    "cargados": 1697,
+    "rechazados": 0,
+    "duplicados": 0,
+    "con_reparaciones": 30,
+    "con_avisos": 17,
+    "por_categoria": {
+      "formato": {
+        "rechazados": 0,
+        "reparados": 30,
+        "avisos": 9,
+        "duplicados": 0
+      },
+      "faltante": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 8,
+        "duplicados": 0
+      },
+      "rango": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 0,
+        "duplicados": 0
+      },
+      "duplicado": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 0,
+        "duplicados": 33
+      },
+      "semantico": {
+        "rechazados": 0,
+        "reparados": 0,
+        "avisos": 0,
+        "duplicados": 0
+      }
+    }
+  },
+  "rechazados": [],
+  "duplicados": [],
+  "reparados": [
+    {
+      "fila": 13,
+      "id": "13",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+      "despues": "ajuntament@valldelaguar.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 14,
+      "id": "14",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+      "despues": "ajuntament@valldelaguar.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 15,
+      "id": "15",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+      "despues": "ajuntament@valldelaguar.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 128,
+      "id": "128",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "TORREMANZANA@TORREMANZA.E",
+      "despues": "torremanzana@torremanza.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 131,
+      "id": "131",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "REGISTRO@AIGÜES.ES",
+      "despues": "registro@aigues.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 160,
+      "id": "160",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "TERCERA EDAD @TORREVIEJA.EU",
+      "despues": "terceraedad@torrevieja.eu",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 201,
+      "id": "201",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "C_O_JOSEALCAMI@HOTMAIL",
+      "despues": "c_o_josealcami@hotmail.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 316,
+      "id": "316",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
+      "despues": "alicia@oliva.es, mp@oliva.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 437,
+      "id": "437",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
+      "despues": "alicia@oliva.es, mp@oliva.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 490,
+      "id": "490",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "INFO@XALÓ.ORG",
+      "despues": "info@xalo.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 499,
+      "id": "499",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "CDIAT@DOWNCASTELLÓN.COM",
+      "despues": "cdiat@downcastellon.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 595,
+      "id": "595",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ACLIENTE.NOVAIRESANVICENTE@SARQUAVITAE.E",
+      "despues": "acliente.novairesanvicente@sarquavitae.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 660,
+      "id": "660",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "96 189 90 97",
+      "despues": "961899097",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 688,
+      "id": "688",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "INFO@VINAROS. ORG",
+      "despues": "info@vinaros.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 797,
+      "id": "797",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM",
+      "despues": "recepcion.muchamiel@grupocasaverde.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 804,
+      "id": "804",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "964398869 - 96439828",
+      "despues": "964398869",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 881,
+      "id": "881",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "administracion@avapace.org/contabilidad@avapace.org",
+      "despues": "administracion@avapace.org, contabilidad@avapace.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 884,
+      "id": "884",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC",
+      "despues": "viviendasupervisada@comiteantisidavalencia.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 893,
+      "id": "893",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ADMINISTRACIÓN@CACER.NET",
+      "despues": "administracion@cacer.net",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 978,
+      "id": "978",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "CENTRODEMAYORES@SANTJOAND'ALACANT.ES",
+      "despues": "centrodemayores@santjoandalacant.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1028,
+      "id": "1028",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "DIRECCION2FUNDACIONSALUDINFANTIL.ORG",
+      "despues": "direccion@fundacionsaludinfantil.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1069,
+      "id": "1069",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "964360002; 964367054",
+      "despues": "964360002, 964367054",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1070,
+      "id": "1070",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "LA SALETA@LASALETA.COM",
+      "despues": "lasaleta@lasaleta.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1135,
+      "id": "1135",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "buendiaresidencia@hotmail,com",
+      "despues": "buendiaresidencia@hotmail.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1361,
+      "id": "1361",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1362,
+      "id": "1362",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1363,
+      "id": "1363",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1433,
+      "id": "1433",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "96 486 79 22",
+      "despues": "964867922",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1543,
+      "id": "1543",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "964 51 50 14",
+      "despues": "964515014",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1601,
+      "id": "1601",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "961366865 676422994",
+      "despues": "961366865, 676422994",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    }
+  ],
+  "avisos": [
+    {
+      "fila": 853,
+      "id": "853",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"96265155\"."
+    },
+    {
+      "fila": 857,
+      "id": "857",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"96265155\"."
+    },
+    {
+      "fila": 1090,
+      "id": "1090",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"317649765\"."
+    },
+    {
+      "fila": 1199,
+      "id": "1199",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"300084152\"."
+    },
+    {
+      "fila": 1361,
+      "id": "1361",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
+    },
+    {
+      "fila": 1362,
+      "id": "1362",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
+    },
+    {
+      "fila": 1363,
+      "id": "1363",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
+    },
+    {
+      "fila": 1471,
+      "id": "1471",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"96592161\"."
+    },
+    {
+      "fila": 1508,
+      "id": "1508",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1580,
+      "id": "1580",
+      "campo": "telefono",
+      "categoria": "formato",
+      "mensaje": "No se puede reparar: se conserva el original \"9636301007\"."
+    },
+    {
+      "fila": 1618,
+      "id": "1618",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1619,
+      "id": "1619",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1620,
+      "id": "1620",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1623,
+      "id": "1623",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1640,
+      "id": "1640",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1641,
+      "id": "1641",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    },
+    {
+      "fila": 1642,
+      "id": "1642",
+      "campo": "domici",
+      "categoria": "faltante",
+      "mensaje": "El centro no tiene dirección en el origen. direccion = null."
+    }
+  ],
+  "marcadores_sin_dato": {
+    "email_zero_gva": 413,
+    "telefono_0": 68
+  },
+  "sin_dato_en_origen": {
+    "codigo_postal": 1697,
+    "url": 1697
+  },
+  "posibles_duplicados": [
+    {
+      "id": "7",
+      "nombre": "RESIDENCIA MIXTA MONDUBER",
+      "localidad": "Barx",
+      "duplica_a": "6",
+      "nombre_duplica_a": "RESIDENCIA MIXTA MONDUBER",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "203",
+      "nombre": "RESIDENCIA MIXTA DOMUSVI MONTEARSE",
+      "localidad": "Sagunt/Sagunto",
+      "duplica_a": "202",
+      "nombre_duplica_a": "RESIDENCIA MIXTA DOMUSVI MONTEARSE",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "205",
+      "nombre": "RESIDENCIA MIXTA SAN LORENZO DE BRINDIS",
+      "localidad": "Massamagrell",
+      "duplica_a": "204",
+      "nombre_duplica_a": "RESIDENCIA MIXTA SAN LORENZO DE BRINDIS",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "379",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "380",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "381",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "541",
+      "nombre": "RESIDENCIA MIXTA SANITAS RESIDENCIAL MAS CAMARENA",
+      "localidad": "Bétera",
+      "duplica_a": "540",
+      "nombre_duplica_a": "RESIDENCIA MIXTA SANITAS RESIDENCIAL MAS CAMARENA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "700",
+      "nombre": "RESIDENCIA MIXTA GERISAN",
+      "localidad": "Favara",
+      "duplica_a": "699",
+      "nombre_duplica_a": "RESIDENCIA MIXTA GERISAN",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1023",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "localidad": "Ayora",
+      "duplica_a": "1022",
+      "nombre_duplica_a": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion"
+      ],
+      "accion": "Se distinguen en: descripcion. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1024",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "localidad": "Ayora",
+      "duplica_a": "1022",
+      "nombre_duplica_a": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1061",
+      "nombre": "CENTRO DE TIPOLOGÍA MIXTA DE QUART DE POBLET",
+      "localidad": "Quart de Poblet",
+      "duplica_a": "1060",
+      "nombre_duplica_a": "CENTRO DE TIPOLOGÍA MIXTA DE QUART DE POBLET",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1251",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 2",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1250",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 2",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "ambito"
+      ],
+      "accion": "Se distinguen en: ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1253",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 1",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1252",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 1",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "ambito"
+      ],
+      "accion": "Se distinguen en: ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1395",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1396",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1397",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1398",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1399",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion"
+      ],
+      "accion": "Se distinguen en: descripcion. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1400",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "descripcion",
+        "ambito"
+      ],
+      "accion": "Se distinguen en: descripcion, ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1458",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "direccion",
+        "longitud",
+        "latitud"
+      ],
+      "accion": "Se distinguen en: direccion, longitud, latitud. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1476",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "direccion",
+        "longitud",
+        "latitud"
+      ],
+      "accion": "Se distinguen en: direccion, longitud, latitud. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1483",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "direccion",
+        "contacto",
+        "longitud",
+        "latitud"
+      ],
+      "accion": "Se distinguen en: direccion, contacto, longitud, latitud. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1512",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 3",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1511",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 3",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "distintos",
+      "diferencias": [
+        "ambito"
+      ],
+      "accion": "Se distinguen en: ambito. Parecen recursos distintos del mismo centro. Se conservan ambos."
+    },
+    {
+      "id": "1680",
+      "nombre": "VIVIENDA TUTELADA SUPERVISADA LLUERNA",
+      "localidad": "Paiporta",
+      "duplica_a": "1664",
+      "nombre_duplica_a": "VIVIENDA TUTELADA SUPERVISADA LLUERNA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1681",
+      "nombre": "CENTRO RESIDENCIAL DE CARACTER CONVIVENCIAL DE APOYO LIMITADO O INTERMITENTE PARA PERSONAS CON PROBLEMAS DE SALUD MENTAL \"EL REFUGI\"",
+      "localidad": "Ibi",
+      "duplica_a": "1657",
+      "nombre_duplica_a": "CENTRO RESIDENCIAL DE CARACTER CONVIVENCIAL DE APOYO LIMITADO O INTERMITENTE PARA PERSONAS CON PROBLEMAS DE SALUD MENTAL \"EL REFUGI\"",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1683",
+      "nombre": "VIVIENDA TUTELADA NOVAEDAT ALBERIC",
+      "localidad": "Alberic",
+      "duplica_a": "1662",
+      "nombre_duplica_a": "VIVIENDA TUTELADA NOVAEDAT ALBERIC",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1691",
+      "nombre": "CENTRO SOCIAL MUNICIPAL DE ATENCIÓN PRIMARIA DEL AYUNTAMIENTO DE MONCOFA",
+      "localidad": "Moncofa",
+      "duplica_a": "1658",
+      "nombre_duplica_a": "CENTRO SOCIAL MUNICIPAL DE ATENCIÓN PRIMARIA DEL AYUNTAMIENTO DE MONCOFA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1692",
+      "nombre": "Centre d'Atenció Primària de Serveis Socials Carcaixent",
+      "localidad": "Carcaixent",
+      "duplica_a": "1663",
+      "nombre_duplica_a": "Centre d'Atenció Primària de Serveis Socials Carcaixent",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1697",
+      "nombre": "CENTRO DE DÍA PARA PERSONAS MAYORES DEPENDIENTES",
+      "localidad": "Benaguasil",
+      "duplica_a": "1656",
+      "nombre_duplica_a": "CENTRO DE DÍA PARA PERSONAS MAYORES DEPENDIENTES",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1698",
+      "nombre": "Centro de Día Benicàssim",
+      "localidad": "Benicàssim/Benicasim",
+      "duplica_a": "1654",
+      "nombre_duplica_a": "Centro de Día Benicàssim",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1699",
+      "nombre": "CIM Benicàssim",
+      "localidad": "Benicàssim/Benicasim",
+      "duplica_a": "1655",
+      "nombre_duplica_a": "CIM Benicàssim",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1701",
+      "nombre": "Residencia para Personas Mayores 'La Beneficiencia'",
+      "localidad": "Ontinyent",
+      "duplica_a": "1665",
+      "nombre_duplica_a": "Residencia para Personas Mayores 'La Beneficiencia'",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    },
+    {
+      "id": "1706",
+      "nombre": "SAN JOSÉ",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1666",
+      "nombre_duplica_a": "SAN JOSÉ",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "evidencia": "identica",
+      "diferencias": [],
+      "accion": "Idénticos en todos los campos salvo el id: probable fila repetida del volcado. Se conservan ambos; revisar y borrar uno a mano."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carga del almacén de datos</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/web/carga.css">
+</head>
+<body>
+  <main>
+    <h1>Carga del almacén de datos</h1>
+    <p id="almacen" class="almacen" role="status"></p>
+
+    <form id="formulario" novalidate>
+      <fieldset class="fuentes">
+        <legend>Seleccione fuente:</legend>
+        <div class="lista">
+          <label class="opcion"><input type="checkbox" id="todas"> Seleccionar todas</label>
+          <div id="lista-fuentes"></div>
+        </div>
+      </fieldset>
+
+      <div class="botones">
+        <button type="button" id="cancelar" class="secundario">Cancelar</button>
+        <button type="submit" id="cargar" class="primario" disabled>Cargar</button>
+        <button type="button" id="borrar" class="peligro">Borrar almacén de datos</button>
+      </div>
+    </form>
+
+    <section aria-labelledby="titulo-resultados">
+      <h2 id="titulo-resultados">Resultados de la carga:</h2>
+      <div id="confirmar" class="confirmar" hidden>
+        <span>Se borrarán todas las entidades, localidades y provincias, y se podrá volver a cargar cualquier fuente.</span>
+        <button type="button" id="confirmar-si" class="peligro">Sí, borrar todo</button>
+        <button type="button" id="confirmar-no" class="secundario">No</button>
+      </div>
+      <div id="resultados" class="resultados" aria-live="polite"></div>
+    </section>
+  </main>
+  <script type="module" src="/web/carga.js"></script>
+</body>
+</html>
