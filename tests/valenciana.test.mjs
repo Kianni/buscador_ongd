@@ -55,9 +55,9 @@ test('correos: se repara solo si queda válido; si no, se conserva el original',
   assert.equal(procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES').valor, 'ajumtament@valldelaguar.es');
   assert.equal(procesarEmails('ALICIA@OLIVA.ES  MP@OLIVA.ES').valor, 'alicia@oliva.es, mp@oliva.es');
   assert.equal(procesarEmails('INFO@VINAROS. ORG').valor, 'info@vinaros.org');
-  const truncado = procesarEmails('TORREMANZANA@TORREMANZA.E');
+  const truncado = procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
   assert.equal(truncado.estado, 'conservado');
-  assert.equal(truncado.valor, 'TORREMANZANA@TORREMANZA.E');
+  assert.equal(truncado.valor, 'VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
 });
 
 test('teléfonos: marcador 0, separadores y números incompletos (se conservan)', () => {
@@ -109,4 +109,13 @@ test('parseCsv admite comillas, comas y saltos de línea dentro de campos', () =
 
 test('correos separados por barra se separan', () => {
   assert.equal(procesarEmails('administracion@avapace.org/contabilidad@avapace.org').valor, 'administracion@avapace.org, contabilidad@avapace.org');
+});
+
+test('correos CV: tildes, ,com, .com que falta, .e, apóstrofo y 2 por @', () => {
+  assert.equal(procesarEmails('REGISTRO@AIGÜES.ES').valor, 'registro@aigues.es');
+  assert.equal(procesarEmails('buendiaresidencia@hotmail,com').valor, 'buendiaresidencia@hotmail.com');
+  assert.equal(procesarEmails('C_O_JOSEALCAMI@HOTMAIL').valor, 'c_o_josealcami@hotmail.com');
+  assert.equal(procesarEmails('ACLIENTE.NOVAIRESANVICENTE@SARQUAVITAE.E').valor, 'acliente.novairesanvicente@sarquavitae.es');
+  assert.equal(procesarEmails("CENTRODEMAYORES@SANTJOAND'ALACANT.ES").valor, 'centrodemayores@santjoandalacant.es');
+  assert.equal(procesarEmails('DIRECCION2FUNDACIONSALUDINFANTIL.ORG').valor, 'direccion@fundacionsaludinfantil.org');
 });
