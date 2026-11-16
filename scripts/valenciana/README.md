@@ -69,3 +69,13 @@ Desde la raíz del repositorio: `node --test tests/valenciana.test.mjs`.
 | Dominio cortado en el origen (el texto es el comienzo de un único dominio conocido, mínimo 8 letras) | `VIVIENDASUPERVISADA@COMITEANTISIDAVALENC` (id 884) | `viviendasupervisada@comiteantisidavalencia.org` |
 
 Para corregir un caso nuevo, verifica el dominio oficial y añádelo a esa lista; la regla se aplica a todas las fuentes. Los dominios que no estén en la lista siguen como aviso con el original conservado.
+
+## Posibles duplicados (mismo nombre y localidad, otro id)
+
+Nunca se borran ni se fusionan. El informe compara el resto de campos (dirección, CP, contacto, descripción, ámbito, URL, coordenadas) y lo indica:
+
+| Evidencia | Significado | Qué hacer |
+|---|---|---|
+| `identica` | Idénticos salvo el id: probable fila repetida del volcado (p. ej. ids 1680–1706 repiten 1654–1666) | Revisar y borrar una a mano |
+| `una_incompleta` | Iguales, pero una tiene campos vacíos | Quedarse con la más completa |
+| `distintos` | Se distinguen en descripción/ámbito/otros: recursos distintos del mismo centro | Conservar ambos |

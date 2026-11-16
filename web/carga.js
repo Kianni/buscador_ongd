@@ -94,7 +94,7 @@ function seccion(titulo, filas, columnas) {
 // Resumen por tipo de error: cada cifra distinta de 0 se puede pulsar y muestra los registros concretos.
 const DETALLE = {
   rechazados: i => i.motivo,
-  duplicados: i => i.tipo === 'posible' ? `Se parece al id ${i.duplica_a} (${i.nombre_duplica_a}). Se conservan ambos.` : `${i.tipo}: repite la fila ${i.fila_original ?? '?'}. ${i.accion ?? ''}`,
+  duplicados: i => i.tipo === 'posible' ? `Se parece al id ${i.duplica_a}. ${i.accion}` : `${i.tipo}: repite la fila ${i.fila_original ?? '?'}. ${i.accion ?? ''}`,
   reparados: i => `"${i.antes ?? ''}" → "${i.despues ?? ''}". ${i.motivo ?? ''}`,
   avisos: i => i.mensaje,
 };
@@ -146,7 +146,7 @@ function tarjeta(r) {
     nodo.append(...[
       seccion('Registros rechazados', i.rechazados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['motivo', 'Motivo']]),
       seccion('Duplicados', i.duplicados, [['fila', 'Fila repetida'], ['fila_original', 'Primera aparición'], ['id', 'Id'], ['nombre', 'Entidad'], ['tipo', 'Tipo'], ['accion', 'Acción']]),
-      seccion('Posibles duplicados (se conservan ambos)', i.posibles_duplicados, [['id', 'Id'], ['nombre', 'Entidad'], ['localidad', 'Localidad'], ['duplica_a', 'Se parece al Id'], ['nombre_duplica_a', 'Entidad con la que coincide']]),
+      seccion('Posibles duplicados (se conservan ambos)', i.posibles_duplicados, [['id', 'Id'], ['nombre', 'Entidad'], ['localidad', 'Localidad'], ['duplica_a', 'Se parece al Id'], ['accion', 'Qué dicen las demás columnas']]),
       seccion('Datos reparados', i.reparados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['antes', 'Antes'], ['despues', 'Después'], ['motivo', 'Motivo']]),
       seccion('Avisos (se conserva el original)', i.avisos, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['mensaje', 'Aviso']])].filter(Boolean));
     nodo.append(el('button', { type: 'button', className: 'descargar', textContent: 'Descargar informe completo (JSON)', onclick: () => descargarInforme(r) }));

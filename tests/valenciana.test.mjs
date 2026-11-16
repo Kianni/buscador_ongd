@@ -130,6 +130,9 @@ test('duplicados: el informe indica qué se duplica (fila original y nombre) y l
   const p = extraerCV(csv).informe.posibles_duplicados;
   assert.equal(p.length, 1);
   assert.equal(p[0].duplica_a, '20');
+  assert.equal(p[0].evidencia, 'identica', 'idéntico salvo el id: probable fila repetida del volcado');
+  const otro = extraerCV(csv.replace('PERSONAS MAYORES,PERSONAS MAYORES,1,,,,700000,4370000\n', 'DISCAPACIDAD,DISCAPACIDAD,1,,,,700000,4370000\n').replace(/\n$/, '\n')).informe.posibles_duplicados;
+  assert.ok(otro.length <= 1);
 });
 
 test('correos CV: dominios conocidos (sin @ y dominio cortado)', () => {
