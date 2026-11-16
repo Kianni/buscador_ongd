@@ -1,0 +1,202 @@
+[
+  {
+    "cod_entidad": "CV:1491",
+    "nombre": "Accem - V.T. colect. desfavorecidos Cuenca",
+    "ambito": "INCLUSION_SOCIAL",
+    "direccion": "C/ Cuenca, nº 89, planta 1ª pta. 2",
+    "codigo_postal": null,
+    "longitud": -0.389809,
+    "latitud": 39.462275,
+    "descripcion": "VIVIENDAS TUTELADAS",
+    "contacto": "963496977 | agomezc@accem.es",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46250",
+      "nombre": "València",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:66",
+    "nombre": "CLUB DE CONVIVENCIA DE TERCERA EDAD BICORP",
+    "ambito": "MAYORES",
+    "direccion": "SAN ANTONIO, 20",
+    "codigo_postal": null,
+    "longitud": -0.786718,
+    "latitud": 39.132806,
+    "descripcion": "HOGARES Y CLUBS PARA PERSONAS MAYORES",
+    "contacto": "962269110",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46071",
+      "nombre": "Bicorp",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:394",
+    "nombre": "CLUB DE CONVIVENCIA (FUNDACION SINDROME DE DOWN)",
+    "ambito": "DISCAPACIDAD",
+    "direccion": "AVDA. DE ALCORA, 132 BAJO",
+    "codigo_postal": null,
+    "longitud": -0.060437,
+    "latitud": 39.987326,
+    "descripcion": "OTROS CENTROS PARA PERSONAS CON DIVERSIDAD FUNCIONAL",
+    "contacto": "964251427 | info@downcastellon.com",
+    "url": null,
+    "en_localidad": {
+      "codigo": "12040",
+      "nombre": "Castelló de la Plana",
+      "en_provincia": {
+        "codigo": "12",
+        "nombre": "Castelló/Castellón"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:1616",
+    "nombre": "Centro ocupacional para personas con diversidad funcional AYORA",
+    "ambito": "DISCAPACIDAD",
+    "direccion": "C/ TRINQUETE, 29",
+    "codigo_postal": null,
+    "longitud": -1.05896,
+    "latitud": 39.059046,
+    "descripcion": "CENTRO OCUPACIONAL PARA PERSONAS CON DISCAPACIDAD O DIVERSIDAD FUNCIONAL",
+    "contacto": "961890578",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46044",
+      "nombre": "Ayora",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:1120",
+    "nombre": "CEEM CENTRO TERAPEUTICO MASÍA DE PAVÍA",
+    "ambito": "SALUD_MENTAL",
+    "direccion": "URB. MONTE TESORO 6, CALLE 1, Nº 2",
+    "codigo_postal": null,
+    "longitud": -0.591864,
+    "latitud": 39.394438,
+    "descripcion": "CENTRO ESPECÍFICO PARA ENFERMOS MENTALES CRÓNICOS (CEEM)",
+    "contacto": "962131123",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46248",
+      "nombre": "Turís",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:911",
+    "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES BALLESOL COSTA BLANCA",
+    "ambito": "MAYORES",
+    "direccion": "CALLE TRAMONTANA Nº 2",
+    "codigo_postal": null,
+    "longitud": -0.170292,
+    "latitud": 38.52379,
+    "descripcion": "RESIDENCIAS PARA PERSONAS MAYORES DEPENDIENTES",
+    "contacto": "965857671 | recepcion.lacal@ballesol.es",
+    "url": null,
+    "en_localidad": {
+      "codigo": "03139",
+      "nombre": "la Vila Joiosa/Villajoyosa",
+      "en_provincia": {
+        "codigo": "03",
+        "nombre": "Alacant/Alicante"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:207",
+    "nombre": "T.A.P.I.S. DE DENIA",
+    "ambito": "INCLUSION_SOCIAL",
+    "direccion": "MARQUESA VALERO DE PALMA, 8",
+    "codigo_postal": null,
+    "longitud": 0.096995,
+    "latitud": 38.825748,
+    "descripcion": "TALLER PRELABORAL DE INSERCIÓN SOCIAL",
+    "contacto": "966421555",
+    "url": null,
+    "en_localidad": {
+      "codigo": "03063",
+      "nombre": "Dénia",
+      "en_provincia": {
+        "codigo": "03",
+        "nombre": "Alacant/Alicante"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:364",
+    "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES GERIATRICO DONYA ROSA",
+    "ambito": "MAYORES",
+    "direccion": "Av. Antonio Ramos Carratalá, 17",
+    "codigo_postal": null,
+    "longitud": null,
+    "latitud": null,
+    "descripcion": "RESIDENCIAS PARA PERSONAS MAYORES DEPENDIENTES",
+    "contacto": "965161991 | info@terceraedadalicante.com",
+    "url": null,
+    "en_localidad": {
+      "codigo": "03014",
+      "nombre": "Alacant/Alicante",
+      "en_provincia": {
+        "codigo": "03",
+        "nombre": "Alacant/Alicante"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:1645",
+    "nombre": "Ciudad de la Esperanza (Residencia A)",
+    "ambito": "INCLUSION_SOCIAL",
+    "direccion": "Carretera Plá de Quart, Km 3",
+    "codigo_postal": null,
+    "longitud": -0.499244,
+    "latitud": 39.448312,
+    "descripcion": "ALBERGUES",
+    "contacto": "961507052",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46021",
+      "nombre": "Aldaia",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  },
+  {
+    "cod_entidad": "CV:992",
+    "nombre": "CLUB DE CONVIVENCIA TERCERA EDAD DE EL PERELLO",
+    "ambito": "MAYORES",
+    "direccion": "C/ LES DUNES Nº 9 ( EL PERELLO )",
+    "codigo_postal": null,
+    "longitud": -0.277514,
+    "latitud": 39.277776,
+    "descripcion": "HOGARES Y CLUBS PARA PERSONAS MAYORES",
+    "contacto": "961771046 | perello_ser@cv.gva.es",
+    "url": null,
+    "en_localidad": {
+      "codigo": "46235",
+      "nombre": "Sueca",
+      "en_provincia": {
+        "codigo": "46",
+        "nombre": "València/Valencia"
+      }
+    }
+  }
+]
