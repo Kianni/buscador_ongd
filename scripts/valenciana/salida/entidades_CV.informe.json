@@ -5,13 +5,13 @@
     "cargados": 1697,
     "rechazados": 0,
     "duplicados": 0,
-    "con_reparaciones": 14,
-    "con_avisos": 30,
+    "con_reparaciones": 27,
+    "con_avisos": 20,
     "por_categoria": {
       "formato": {
         "rechazados": 0,
-        "reparados": 14,
-        "avisos": 25,
+        "reparados": 27,
+        "avisos": 12,
         "duplicados": 0
       },
       "faltante": {
@@ -71,12 +71,39 @@
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
+      "fila": 128,
+      "id": "128",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "TORREMANZANA@TORREMANZA.E",
+      "despues": "torremanzana@torremanza.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 131,
+      "id": "131",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "REGISTRO@AIGÜES.ES",
+      "despues": "registro@aigues.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
       "fila": 160,
       "id": "160",
       "campo": "email",
       "categoria": "formato",
       "antes": "TERCERA EDAD @TORREVIEJA.EU",
       "despues": "terceraedad@torrevieja.eu",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 201,
+      "id": "201",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "C_O_JOSEALCAMI@HOTMAIL",
+      "despues": "c_o_josealcami@hotmail.com",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -95,6 +122,33 @@
       "categoria": "formato",
       "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
       "despues": "alicia@oliva.es, mp@oliva.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 490,
+      "id": "490",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "INFO@XALÓ.ORG",
+      "despues": "info@xalo.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 499,
+      "id": "499",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "CDIAT@DOWNCASTELLÓN.COM",
+      "despues": "cdiat@downcastellon.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 595,
+      "id": "595",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ACLIENTE.NOVAIRESANVICENTE@SARQUAVITAE.E",
+      "despues": "acliente.novairesanvicente@sarquavitae.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -125,6 +179,33 @@
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
+      "fila": 893,
+      "id": "893",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "ADMINISTRACIÓN@CACER.NET",
+      "despues": "administracion@cacer.net",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 978,
+      "id": "978",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "CENTRODEMAYORES@SANTJOAND'ALACANT.ES",
+      "despues": "centrodemayores@santjoandalacant.es",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1028,
+      "id": "1028",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "DIRECCION2FUNDACIONSALUDINFANTIL.ORG",
+      "despues": "direccion@fundacionsaludinfantil.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
       "fila": 1069,
       "id": "1069",
       "campo": "telefono",
@@ -140,6 +221,42 @@
       "categoria": "formato",
       "antes": "LA SALETA@LASALETA.COM",
       "despues": "lasaleta@lasaleta.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1135,
+      "id": "1135",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "buendiaresidencia@hotmail,com",
+      "despues": "buendiaresidencia@hotmail.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1361,
+      "id": "1361",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1362,
+      "id": "1362",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 1363,
+      "id": "1363",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+      "despues": "direccion.ceembenidorm@grupoelcastillo.com",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -171,48 +288,6 @@
     }
   ],
   "avisos": [
-    {
-      "fila": 128,
-      "id": "128",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"TORREMANZANA@TORREMANZA.E\"."
-    },
-    {
-      "fila": 131,
-      "id": "131",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"REGISTRO@AIGÜES.ES\"."
-    },
-    {
-      "fila": 201,
-      "id": "201",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"C_O_JOSEALCAMI@HOTMAIL\"."
-    },
-    {
-      "fila": 490,
-      "id": "490",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"INFO@XALÓ.ORG\"."
-    },
-    {
-      "fila": 499,
-      "id": "499",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"CDIAT@DOWNCASTELLÓN.COM\"."
-    },
-    {
-      "fila": 595,
-      "id": "595",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"ACLIENTE.NOVAIRESANVICENTE@SARQUAVITAE.E\"."
-    },
     {
       "fila": 797,
       "id": "797",
@@ -249,39 +324,11 @@
       "mensaje": "No se puede reparar: se conserva el original \"VIVIENDASUPERVISADA@COMITEANTISIDAVALENC\"."
     },
     {
-      "fila": 893,
-      "id": "893",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"ADMINISTRACIÓN@CACER.NET\"."
-    },
-    {
-      "fila": 978,
-      "id": "978",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"CENTRODEMAYORES@SANTJOAND'ALACANT.ES\"."
-    },
-    {
-      "fila": 1028,
-      "id": "1028",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"DIRECCION2FUNDACIONSALUDINFANTIL.ORG\"."
-    },
-    {
       "fila": 1090,
       "id": "1090",
       "campo": "telefono",
       "categoria": "formato",
       "mensaje": "No se puede reparar: se conserva el original \"317649765\"."
-    },
-    {
-      "fila": 1135,
-      "id": "1135",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"buendiaresidencia@hotmail,com\"."
     },
     {
       "fila": 1199,
@@ -298,13 +345,6 @@
       "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
     },
     {
-      "fila": 1361,
-      "id": "1361",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"dirección.ceembenidorm@grupoelcastillo.com\"."
-    },
-    {
       "fila": 1362,
       "id": "1362",
       "campo": "telefono",
@@ -312,25 +352,11 @@
       "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
     },
     {
-      "fila": 1362,
-      "id": "1362",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"dirección.ceembenidorm@grupoelcastillo.com\"."
-    },
-    {
       "fila": 1363,
       "id": "1363",
       "campo": "telefono",
       "categoria": "formato",
       "mensaje": "No se puede reparar: se conserva el original \"9658150583\"."
-    },
-    {
-      "fila": 1363,
-      "id": "1363",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"dirección.ceembenidorm@grupoelcastillo.com\"."
     },
     {
       "fila": 1471,

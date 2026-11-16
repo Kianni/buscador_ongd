@@ -74,9 +74,9 @@ test('teléfonos: marcador 0, separadores y números incompletos (se conservan)'
 
 test('contacto inválido no se descarta: se conserva el original y se avisa', () => {
   const csv = prueba.split('\n')[0] + '\n' +
-    'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,TORREMANZANA@TORREMANZA.E,96265155,,700000,4370000\n';
+    'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,VIVIENDASUPERVISADA@COMITEANTISIDAVALENC,96265155,,700000,4370000\n';
   const r = extraerCV(csv);
-  assert.equal(r.entidades[0].contacto, '96265155, TORREMANZANA@TORREMANZA.E');
+  assert.equal(r.entidades[0].contacto, '96265155, VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
   assert.ok(r.informe.avisos.some(a => a.campo === 'email' && /conserva el original/.test(a.mensaje)));
 });
 
