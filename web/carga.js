@@ -49,21 +49,19 @@ function pintarFuentes() {
   actualizarBotones();
 }
 
+// Cada fuente puede cargar su archivo de ejemplo o uno elegido por la usuaria.
 function filaArchivo(f) {
-  const entrada = el('input', { type: 'file', accept: f.formato === 'XML' ? '.xml' : f.formato === 'CSV' ? '.csv' : '.json', ariaLabel: `Archivo de ${f.nombre} (opcional)` });
-  const limpiar = el('button', { type: 'button', className: 'limpiar', textContent: 'usar el de la carpeta data', hidden: !estado.archivos.has(f.id) });
+  const nombre = el('span', { className: 'nombre-archivo' });
+  const entrada = el('input', { type: 'file', hidden: true, accept: f.formato === 'XML' ? '.xml' : f.formato === 'CSV' ? '.csv' : '.json' });
+  const pintar = () => { const a = estado.archivos.get(f.id); nombre.textContent = a ? a.name : (f.hayArchivoPorDefecto ? 'archivo de ejemplo' : 'sin archivo'); };
   entrada.addEventListener('change', () => {
     const archivo = entrada.files[0];
-    if (archivo) estado.archivos.set(f.id, archivo); else estado.archivos.delete(f.id);
-    limpiar.hidden = !archivo;
-    if (archivo) document.querySelector(`input[name="fuente"][value="${f.id}"]`).checked = true;
-    actualizarBotones();
+    if (archivo) { estado.archivos.set(f.id, archivo); document.querySelector(`input[name="fuente"][value="${f.id}"]`).checked = true; }
+    pintar(); actualizarBotones();
   });
-  limpiar.addEventListener('click', () => { entrada.value = ''; estado.archivos.delete(f.id); limpiar.hidden = true; });
-  const propio = estado.archivos.get(f.id);
+  pintar();
   return el('div', { className: 'archivo' },
-    el('span', { textContent: propio ? `Archivo: ${propio.name}` : (f.hayArchivoPorDefecto ? `Por defecto: data/${f.archivoPorDefecto}` : 'No hay archivo por defecto; elija uno:') }),
-    entrada, limpiar);
+    el('label', { className: 'elegir' }, 'Elegir archivo…', entrada), nombre);
 }
 
 function actualizarBotones() {
@@ -117,7 +115,7 @@ function tarjeta(r) {
     const i = r.informe;
     nodo.append(...[
       seccion('Registros rechazados', i.rechazados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['motivo', 'Motivo']]),
-      seccion('Duplicados', i.duplicados, [['fila', 'Fila'], ['id', 'Id'], ['tipo', 'Tipo'], ['accion', 'Acción']]),
+      seccion('Duplicados', i.duplicados, [['fila', 'Fila repetida'], ['fila_original', 'Primera aparición'], ['id', 'Id'], ['nombre', 'Entidad'], ['tipo', 'Tipo'], ['accion', 'Acción']]),
       seccion('Datos reparados', i.reparados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['antes', 'Antes'], ['despues', 'Después'], ['motivo', 'Motivo']]),
       seccion('Avisos (se conserva el original)', i.avisos, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['mensaje', 'Aviso']])].filter(Boolean));
     nodo.append(el('button', { type: 'button', className: 'descargar', textContent: 'Descargar informe completo (JSON)', onclick: () => descargarInforme(r) }));

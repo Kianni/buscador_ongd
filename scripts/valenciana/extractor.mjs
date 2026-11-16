@@ -189,12 +189,13 @@ export function extraerCV(textoCsv, opciones = {}) {
     if (!id) return rechazar('id', 'Falta el identificador del centro.');
     const firma = JSON.stringify(valores.map(v => v.trim()));
     if (vistos.has(id)) {
-      const tipo = vistos.get(id) === firma ? 'idéntico' : 'conflicto';
-      informe.duplicados.push({ fila, id, categoria: 'duplicado', tipo, accion: 'Se conserva la primera aparición.' });
+      const previo = vistos.get(id);
+      const tipo = previo.firma === firma ? 'idéntico' : 'conflicto';
+      informe.duplicados.push({ fila, id, nombre: limpiar(r.nombre) || null, fila_original: previo.fila, categoria: 'duplicado', tipo, accion: `Se conserva la primera aparición (fila ${previo.fila}).` });
       informe.resumen.duplicados++;
       return;
     }
-    vistos.set(id, firma);
+    vistos.set(id, { firma, fila });
 
     // --- Nombre (obligatorio)
     const nombre = limpiar(r.nombre);

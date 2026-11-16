@@ -264,11 +264,12 @@ async function extraerCAT(textoXml, opciones = {}) {
     } else if (!/^\d+$/.test(id)) avisar('n_mero_registre', `El número de registro no es numérico: "${id}".`, 'formato');
     const firma = JSON.stringify(item);
     if (vistos.has(id)) {
-      informe.duplicados.push({ fila, id, categoria: 'duplicado', tipo: vistos.get(id) === firma ? 'idéntico' : 'conflicto', accion: 'Se conserva la primera aparición.' });
+      const previo = vistos.get(id);
+      informe.duplicados.push({ fila, id, nombre: limpiar(item.nom_de_l_entitat) || null, fila_original: previo.fila, categoria: 'duplicado', tipo: previo.firma === firma ? 'idéntico' : 'conflicto', accion: `Se conserva la primera aparición (fila ${previo.fila}).` });
       informe.resumen.duplicados++;
       return;
     }
-    vistos.set(id, firma);
+    vistos.set(id, { firma, fila });
 
     const nombre = limpiar(item.nom_de_l_entitat);
     if (!nombre) return rechazar('nom_de_l_entitat', 'El nombre de la entidad está vacío.');
