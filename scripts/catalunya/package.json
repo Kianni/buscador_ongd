@@ -1,0 +1,9 @@
+{
+  "name": "extraccion-ongd",
+  "version": "1.0.0",
+  "description": "Script de extracción y mapeo XML a JSON",
+  "main": "extractor.js",
+  "dependencies": {
+    "fast-xml-parser": "^5.11.2"
+  }
+}
