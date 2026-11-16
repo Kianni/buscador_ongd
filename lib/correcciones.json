@@ -1,15 +1,102 @@
 {
-  "ayuda": "Correcciones conocidas y verificadas a mano. Para automatizar un caso nuevo: añade una errata o un dominio y un ejemplo; `npm test` comprueba que se repara. Se aplica a correos y webs de todas las fuentes.",
+  "ayuda": "Correcciones conocidas y verificadas a mano, comunes a todas las fuentes. Para automatizar un caso nuevo: añade la errata (con «aplica»: correo, url, nombre, direccion), el dominio o la partícula, y un ejemplo; `npm test` comprueba que se repara.",
   "erratas": [
-    { "buscar": "ajumtament", "por": "ajuntament" }
+    {
+      "buscar": "ajumtament",
+      "por": "ajuntament",
+      "aplica": [
+        "correo",
+        "url"
+      ]
+    },
+    {
+      "buscar": "esglèsia",
+      "por": "església",
+      "aplica": [
+        "nombre",
+        "direccion"
+      ]
+    }
   ],
   "dominios_conocidos": [
     "grupocasaverde.com",
     "comiteantisidavalencia.org"
   ],
   "ejemplos": [
-    { "tipo": "correo", "entrada": "AJUMTAMENT@VALLDE LAGUAR.ES", "salida": "ajuntament@valldelaguar.es" },
-    { "tipo": "correo", "entrada": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM", "salida": "recepcion.muchamiel@grupocasaverde.com" },
-    { "tipo": "correo", "entrada": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC", "salida": "viviendasupervisada@comiteantisidavalencia.org" }
+    {
+      "tipo": "correo",
+      "entrada": "AJUMTAMENT@VALLDE LAGUAR.ES",
+      "salida": "ajuntament@valldelaguar.es"
+    },
+    {
+      "tipo": "correo",
+      "entrada": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM",
+      "salida": "recepcion.muchamiel@grupocasaverde.com"
+    },
+    {
+      "tipo": "correo",
+      "entrada": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC",
+      "salida": "viviendasupervisada@comiteantisidavalencia.org"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "PlaçaDel'Esglèsia,s/n",
+      "salida": "Plaça de l'Església, s/n"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "Ramblad'Egara,3402n",
+      "salida": "Rambla d'Egara, 3402n"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "CarrerCentre10àtic",
+      "salida": "Carrer Centre, 10 àtic"
+    },
+    {
+      "tipo": "nombre",
+      "entrada": "AssociacióperlaInserció",
+      "salida": "Associació per la Inserció"
+    },
+    {
+      "tipo": "nombre",
+      "entrada": "CiutadellaNova",
+      "salida": "Ciutadella Nova"
+    },
+    {
+      "tipo": "nombre",
+      "entrada": "FundacióServeiGironídePedagogiaSocial",
+      "salida": "Fundació Servei Gironí de Pedagogia Social"
+    }
+  ],
+  "conectores": [
+    "para",
+    "sense",
+    "dels",
+    "del",
+    "per",
+    "amb",
+    "les",
+    "els",
+    "los",
+    "las",
+    "de",
+    "la",
+    "el",
+    "en",
+    "al"
+  ],
+  "particulas_largas": [
+    "sense",
+    "dels",
+    "del",
+    "para",
+    "amb"
+  ],
+  "reglas_de_texto": [
+    "Cada mayúscula tras una minúscula abre una palabra nueva (nombres y direcciones pegados).",
+    "Direcciones pegadas: coma antes del número de la vía y espacio entre número y planta/puerta (84baixos -> 84 baixos; 1a, 7e se mantienen).",
+    "Apóstrofos: «Del'Església» -> «de l'Església»; «Ramblad'Egara» -> «Rambla d'Egara».",
+    "Conectores pegados (para, per, sense, amb, del, dels, de, la…): solo se parten con una base de 8+ letras, para no romper «Ciutadella»."
   ]
 }

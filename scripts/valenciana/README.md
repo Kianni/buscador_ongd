@@ -86,7 +86,8 @@ Nunca se borran ni se fusionan. El informe compara el resto de campos (direcció
 
 | Errata | Corrección | Ejemplo |
 |---|---|---|
-| `AJUMTAMENT` | `ajuntament` | `AJUMTAMENT@VALLDE LAGUAR.ES` → `ajuntament@valldelaguar.es` (ids 3, 14, 15) |
+| `AJUMTAMENT` | `ajuntament` | `AJUMTAMENT@VALLDE LAGUAR.ES` → `ajuntament@valldelaguar.es` (ids 3, 14, 15). Ámbito: correo y url |
+| `Esglèsia` | `Església` | `PlaçaDel'Esglèsia` → `Plaça de l'Església`. Ámbito: nombre y direccion |
 
 Para un caso nuevo y verificado, se añade una entrada y un ejemplo en el mismo archivo (`npm test` comprueba que funciona). Cada cambio queda en «Datos reparados» con el valor antes y después.
 
@@ -97,3 +98,14 @@ Para un caso nuevo y verificado, se añade una entrada y un ejemplo en el mismo 
 3. Añade en `ejemplos` el dato original (`entrada`) y el resultado esperado (`salida`).
 4. Ejecuta `npm test`: si el ejemplo no se repara como indicas, falla.
 5. Vuelve a cargar los datos: la corrección se aplica en todas las fuentes y cada cambio queda en «Datos reparados».
+
+## Reglas globales de texto (nombres y direcciones pegados)
+
+Definidas en `lib/correcciones.json` (`conectores`, `particulas_largas`, `reglas_de_texto`) y aplicadas por `lib/nombres.mjs`:
+
+- Cada mayúscula tras una minúscula abre una palabra nueva.
+- Direcciones: coma antes del número de la vía y espacio entre número y planta/puerta (`84baixos` → `84 baixos`; `1a`, `7e` se mantienen).
+- Apóstrofos: `Del'Església` → `de l'Església`; `Ramblad'Egara` → `Rambla d'Egara`.
+- Conectores pegados (`para`, `per`, `sense`, `amb`, `del`, `dels`, `de`, `la`…): solo se parten con una base de 8 o más letras, para no romper `Ciutadella`.
+
+Cada regla nueva lleva un ejemplo en `ejemplos` (`tipo`: correo, url, nombre o direccion); `npm test` los comprueba todos.

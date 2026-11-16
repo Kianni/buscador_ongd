@@ -151,10 +151,10 @@ test('erratas conocidas: AJUMTAMENT -> ajuntament en correos y webs', () => {
 
 test('lib/correcciones.json: todos los ejemplos documentados se reparan como indican', async () => {
   const { CORRECCIONES, procesarUrl } = await import('../lib/contacto.mjs');
+  const { separarNombre, normalizarDireccion } = await import('../lib/nombres.mjs');
   assert.ok(CORRECCIONES.ejemplos.length > 0);
   for (const e of CORRECCIONES.ejemplos) {
-    const r = e.tipo === 'url' ? procesarUrl(e.entrada) : procesarEmails(e.entrada);
-    assert.equal(r.valor, e.salida, `ejemplo "${e.entrada}"`);
-    assert.equal(r.estado, 'reparado');
+    const salida = e.tipo === 'url' ? procesarUrl(e.entrada).valor : e.tipo === 'nombre' ? separarNombre(e.entrada) : e.tipo === 'direccion' ? normalizarDireccion(e.entrada) : procesarEmails(e.entrada).valor;
+    assert.equal(salida, e.salida, `ejemplo ${e.tipo} "${e.entrada}"`);
   }
 });

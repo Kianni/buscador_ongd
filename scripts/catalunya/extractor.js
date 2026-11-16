@@ -231,7 +231,7 @@ async function extraerCAT(textoXml, opciones = {}) {
   const libUrl = nombre => pathToFileURL(path.join(__dirname, '..', '..', 'lib', nombre)).href;
   const { procesarEmails, procesarTelefonos, procesarUrl, SEPARADOR } = await import(libUrl('contacto.mjs'));
   const { contarPorCategoria, posiblesDuplicados } = await import(libUrl('informe.mjs'));
-  const { separarNombre } = await import(libUrl('nombres.mjs'));
+  const { separarNombre, normalizarDireccion } = await import(libUrl('nombres.mjs'));
   const diccionario = opciones.diccionario ?? cargarDiccionarioDesdeCSV(RUTA_CSV_MUNICIPIOS, true);
   if (!textoXml || textoXml.trim() === '') throw new Error('El archivo XML está vacío.');
 
@@ -307,7 +307,10 @@ async function extraerCAT(textoXml, opciones = {}) {
       avisar('codi_postal', `El código postal ${cp} no corresponde a la provincia ${info.p_codigo} del municipio ${info.l_codigo}. Manda el municipio.`, 'semantico');
     }
 
-    if (!limpiar(item.adre_a)) avisar('adre_a', 'La entidad no tiene dirección en el origen. direccion = null.', 'faltante');
+    const direccionOrigen = limpiar(item.adre_a);
+    const direccion = normalizarDireccion(direccionOrigen) || null;
+    if (direccion !== (direccionOrigen || null)) informe.resumen.direcciones_normalizadas = (informe.resumen.direcciones_normalizadas ?? 0) + 1;
+    if (!direccionOrigen) avisar('adre_a', 'La entidad no tiene dirección en el origen. direccion = null.', 'faltante');
 
     // --- Contacto, teléfonos y correo (reparar solo si queda válido)
     const tel = procesarTelefonos((item.tel_fon ?? '') + (item.tel_fon_m_bil ? '\n' + item.tel_fon_m_bil : ''));
@@ -327,7 +330,7 @@ async function extraerCAT(textoXml, opciones = {}) {
       cod_entidad: `${PREFIJO_FUENTE}:${id}`,
       nombre,
       ambito: null,
-      direccion: limpiar(item.adre_a),
+      direccion: direccion,
       codigo_postal: cp,
       longitud: null,
       latitud: null,

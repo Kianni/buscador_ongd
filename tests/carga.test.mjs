@@ -92,7 +92,7 @@ test('Supabase: llama a las funciones SQL y traduce FUENTE_YA_CARGADA', async ()
 
 test('Cataluña: formato común, duplicados, rechazos y reparaciones del archivo de prueba', async () => {
   const { entidades, informe } = await extraerCAT(leer('prueba_cat.xml'));
-  const { por_categoria: porCategoria, nombres_separados: separados, ...resumen } = informe.resumen;
+  const { por_categoria: porCategoria, nombres_separados: separados, direcciones_normalizadas: _dn, ...resumen } = informe.resumen;
   assert.ok(separados > 0, 'se restauran espacios en los nombres pegados');
   assert.deepEqual(resumen, { leidos: 12, cargados: 9, rechazados: 1, duplicados: 2, con_reparaciones: 9, con_avisos: 2 });
   // Tipología del enunciado: formato, faltante, rango, duplicado y semántico.
@@ -157,4 +157,30 @@ test('nombres pegados: se restauran los espacios por fronteras seguras', async (
   assert.equal(separarNombre('AmigosdeTanzania'), 'Amigos de Tanzania');
   assert.equal(separarNombre('Fundacion Verde'), 'Fundacion Verde', 'si ya tiene espacios no se toca');
   assert.equal(separarNombre('AMAZÒNIACAT'), 'AMAZÒNIACAT', 'sin frontera segura no se inventa');
+});
+
+test('direcciones pegadas: espacios, tipo de vía separado y coma antes del número', async () => {
+  const { normalizarDireccion } = await import('../lib/nombres.mjs');
+  const casos = {
+    'TravesseradeGràcia,84baixos': 'Travessera de Gràcia, 84 baixos',
+    'CarrerCentre10àtic': 'Carrer Centre, 10 àtic',
+    'CostaiCuxart,10àtic1a': 'Costa i Cuxart, 10 àtic 1a',
+    'AvRasosdePeguera,67baixos1': 'Av Rasos de Peguera, 67 baixos 1',
+    'CarrerPirineus,52local7e': 'Carrer Pirineus, 52 local 7e',
+    'CarrerJosepAguileraiMartí19': 'Carrer Josep Aguilera i Martí, 19',
+    'CarrerLlibertat,47,baixos': 'Carrer Llibertat, 47, baixos',
+  };
+  for (const [entrada, salida] of Object.entries(casos)) assert.equal(normalizarDireccion(entrada), salida);
+  assert.equal(normalizarDireccion('Carrer Major, 5'), 'Carrer Major, 5', 'si ya trae espacios no se toca');
+  assert.equal(normalizarDireccion(''), '');
+});
+
+test('nombres y direcciones: conectores pegados y apóstrofos', async () => {
+  const { separarNombre, normalizarDireccion } = await import('../lib/nombres.mjs');
+  assert.equal(separarNombre('AssociacióperlaInserció'), 'Associació per la Inserció');
+  assert.equal(separarNombre('AsociaciónparalaAcciónDelDesarrollo'), 'Asociación para la Acción Del Desarrollo');
+  assert.equal(separarNombre('CiutadellaNova'), 'Ciutadella Nova', 'no se parten palabras reales');
+  assert.equal(normalizarDireccion("PlaçaDel'Església,s/n"), "Plaça de l'Església, s/n");
+  assert.equal(normalizarDireccion("Ramblad'Egara,3402n"), "Rambla d'Egara, 3402n");
+  assert.equal(normalizarDireccion('CarrerdelsSalvadors,5bis'), 'Carrer dels Salvadors, 5 bis');
 });
