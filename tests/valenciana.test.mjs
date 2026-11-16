@@ -53,7 +53,7 @@ test('conversión UTM -> lon/lat (referencia calculada con pyproj)', () => {
 
 test('correos: se repara solo si queda válido; si no, se conserva el original', () => {
   assert.equal(procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES').valor, 'ajumtament@valldelaguar.es');
-  assert.equal(procesarEmails('ALICIA@OLIVA.ES  MP@OLIVA.ES').valor, 'alicia@oliva.es | mp@oliva.es');
+  assert.equal(procesarEmails('ALICIA@OLIVA.ES  MP@OLIVA.ES').valor, 'alicia@oliva.es, mp@oliva.es');
   assert.equal(procesarEmails('INFO@VINAROS. ORG').valor, 'info@vinaros.org');
   const truncado = procesarEmails('TORREMANZANA@TORREMANZA.E');
   assert.equal(truncado.estado, 'conservado');
@@ -63,8 +63,8 @@ test('correos: se repara solo si queda válido; si no, se conserva el original',
 test('teléfonos: marcador 0, separadores y números incompletos (se conservan)', () => {
   assert.equal(procesarTelefonos('0').estado, 'marcador');
   assert.equal(procesarTelefonos('96 189 90 97').valor, '961899097');
-  assert.equal(procesarTelefonos('964360002; 964367054').valor, '964360002 | 964367054');
-  assert.equal(procesarTelefonos('961366865 676422994').valor, '961366865 | 676422994');
+  assert.equal(procesarTelefonos('964360002; 964367054').valor, '964360002, 964367054');
+  assert.equal(procesarTelefonos('961366865 676422994').valor, '961366865, 676422994');
   assert.equal(procesarTelefonos('012').valor, '012');
   const parcial = procesarTelefonos('964398869 - 96439828');
   assert.equal(parcial.estado, 'conservado');
@@ -76,7 +76,7 @@ test('contacto inválido no se descarta: se conserva el original y se avisa', ()
   const csv = prueba.split('\n')[0] + '\n' +
     'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,TORREMANZANA@TORREMANZA.E,96265155,,700000,4370000\n';
   const r = extraerCV(csv);
-  assert.equal(r.entidades[0].contacto, '96265155 | TORREMANZANA@TORREMANZA.E');
+  assert.equal(r.entidades[0].contacto, '96265155, TORREMANZANA@TORREMANZA.E');
   assert.ok(r.informe.avisos.some(a => a.campo === 'email' && /conserva el original/.test(a.mensaje)));
 });
 
@@ -108,5 +108,5 @@ test('parseCsv admite comillas, comas y saltos de línea dentro de campos', () =
 });
 
 test('correos separados por barra se separan', () => {
-  assert.equal(procesarEmails('administracion@avapace.org/contabilidad@avapace.org').valor, 'administracion@avapace.org | contabilidad@avapace.org');
+  assert.equal(procesarEmails('administracion@avapace.org/contabilidad@avapace.org').valor, 'administracion@avapace.org, contabilidad@avapace.org');
 });

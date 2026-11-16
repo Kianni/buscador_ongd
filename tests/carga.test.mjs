@@ -112,13 +112,27 @@ test('Cataluña: el archivo completo se carga sin rechazos', async () => {
 
 test('regla de reparación: solo si queda válido; si no, se conserva el original', () => {
   assert.equal(procesarEmails('info@fundaciosergiorg').valor, 'info@fundaciosergi.org');
-  const sinReparar = procesarEmails('boms1961@yahoofr');
-  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'boms1961@yahoofr']);
+  const sinReparar = procesarEmails('sakadawaorggmailcom');
+  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'sakadawaorggmailcom']);
   assert.equal(procesarEmails('jpedro1@xteCarrercat').valor, 'jpedro1@xtec.cat');
   assert.equal(procesarUrl('http://wwwaeryCarrerorg/').valor, 'http://www.aeryc.org/');
-  assert.equal(procesarTelefonos('934216102\n658577264').valor, '934216102 | 658577264');
-  assert.equal(procesarTelefonos('932065910 Ext187').estado, 'conservado');
+  assert.equal(procesarTelefonos('934216102\n658577264').valor, '934216102, 658577264');
+  assert.equal(procesarTelefonos('934228074 93431426').estado, 'conservado', 'número de 8 dígitos');
   assert.equal(procesarUrl('http://https://wwwisilcat').valor, 'https://www.isil.cat');
   assert.equal(procesarUrl('http://wwwaslong/es/').estado, 'conservado');
   assert.equal(procesarUrl('http://codafestl/').estado, 'conservado');
+});
+
+test('reparaciones ampliadas: correos pegados, extensiones, números abreviados y redes sociales', () => {
+  assert.equal(procesarEmails('patypall@yahooesacedicar@yahooes').valor, 'patypall@yahoo.es, acedicar@yahoo.es');
+  assert.equal(procesarEmails('ingman@ingmancatmaria_novella@igmancat').valor, 'ingman@ingman.cat, maria_novella@igman.cat');
+  assert.equal(procesarEmails('germanetesje@gmailcoom').valor, 'germanetesje@gmail.com');
+  assert.equal(procesarEmails('juliamargarita@yahooes(personal)').valor, 'juliamargarita@yahoo.es');
+  assert.equal(procesarEmails('infoarrobaproinfantsorg').valor, 'info@proinfants.org');
+  assert.equal(procesarTelefonos('934328526 915327478/9 649490635').valor, '934328526, 915327478, 915327479, 649490635');
+  assert.equal(procesarTelefonos('932065910 Ext187').valor, '932065910 ext. 187');
+  assert.equal(procesarUrl('http://https://alasgambia@org').valor, 'https://alasgambia.org');
+  assert.equal(procesarUrl('http://@teixpetaniloyant(Instagram)').valor, 'https://www.instagram.com/teixpetaniloyant');
+  assert.equal(procesarUrl('http://https://xcom/BretxaOBS').valor, 'https://x.com/BretxaOBS');
+  assert.equal(procesarUrl('http://htpp://edpaCarrercat').valor, 'http://edpac.cat');
 });

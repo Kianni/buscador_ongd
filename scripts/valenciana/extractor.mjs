@@ -10,7 +10,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { procesarEmails, procesarTelefonos } from '../../lib/contacto.mjs';
+import { procesarEmails, procesarTelefonos, SEPARADOR } from '../../lib/contacto.mjs';
 import { contarPorCategoria, posiblesDuplicados } from '../../lib/informe.mjs';
 
 export const PREFIJO_FUENTE = 'CV';
@@ -270,7 +270,7 @@ export function extraerCV(textoCsv, opciones = {}) {
       longitud,
       latitud,
       descripcion: limpiar(r.tipo_centro),
-      contacto: contactos.length ? contactos.join(' | ') : null,
+      contacto: contactos.length ? contactos.join(SEPARADOR) : null,
       url: null,
       en_localidad: {
         codigo: codigoIne,

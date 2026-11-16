@@ -26,7 +26,7 @@ const { entidades, informe } = extraerCV(textoCsv);   // lanza Error si el CSV n
 {
   "cod_entidad": "CV:1491", "nombre": "…", "ambito": "INCLUSION_SOCIAL", "direccion": "…",
   "codigo_postal": null, "longitud": -0.389809, "latitud": 39.462275,
-  "descripcion": "VIVIENDAS TUTELADAS", "contacto": "963496977 | correo@dominio.es", "url": null,
+  "descripcion": "VIVIENDAS TUTELADAS", "contacto": "963496977, correo@dominio.es", "url": null,
   "en_localidad": { "codigo": "46250", "nombre": "València",
                     "en_provincia": { "codigo": "46", "nombre": "València/Valencia" } }
 }
@@ -53,7 +53,7 @@ El mapping completo está en `Mappings_CV_ComunitatValenciana.docx`.
 - **Municipio:** `municipios_cv.csv` (333 municipios, derivada del propio CSV completo, donde código y nombre son 1 a 1). Si el nombre no corresponde al código, el registro se rechaza.
 - **Coordenadas:** UTM 30N (EPSG:25830) → WGS84. Coma decimal se corrige; si x/y faltan se recuperan del campo `WKT`; marcadores como `9999999` quedan en `null`.
 - **Ámbito:** desde `sector`. Un sector desconocido deja `ambito: null` con aviso.
-- **Contacto:** teléfonos y correos válidos unidos con ` | `.
+- **Contacto:** teléfonos y correos válidos unidos con `, ` (coma y espacio).
 
 ## Pruebas
 

@@ -229,7 +229,7 @@ function variantesMunicipio(texto) {
  */
 async function extraerCAT(textoXml, opciones = {}) {
   const libUrl = nombre => pathToFileURL(path.join(__dirname, '..', '..', 'lib', nombre)).href;
-  const { procesarEmails, procesarTelefonos, procesarUrl } = await import(libUrl('contacto.mjs'));
+  const { procesarEmails, procesarTelefonos, procesarUrl, SEPARADOR } = await import(libUrl('contacto.mjs'));
   const { contarPorCategoria, posiblesDuplicados } = await import(libUrl('informe.mjs'));
   const diccionario = opciones.diccionario ?? cargarDiccionarioDesdeCSV(RUTA_CSV_MUNICIPIOS, true);
   if (!textoXml || textoXml.trim() === '') throw new Error('El archivo XML está vacío.');
@@ -283,7 +283,7 @@ async function extraerCAT(textoXml, opciones = {}) {
     if (cp && !/^\d{5}$/.test(cp)) {
       avisar('codi_postal', `Código postal con formato no válido: "${cp}". Se conserva el original.`, 'formato');
     } else if (cp && !TABLA_PROVINCIAS_CP[cp.slice(0, 2)]) {
-      avisar('codi_postal', `Código postal "${cp}" ${Number(cp.slice(0, 2)) > 52 ? 'fuera de rango (no existe esa provincia)' : 'de fuera de Catalunya'}. Se conserva el original.`, Number(cp.slice(0, 2)) > 52 ? 'rango' : 'semantico');
+      avisar('codi_postal', `Código postal "${cp}" ${(Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00') ? 'fuera de rango (no existe esa provincia)' : 'de fuera de Catalunya'}. Se conserva el original.`, (Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00') ? 'rango' : 'semantico');
     }
     if (!cp) avisar('codi_postal', 'La entidad no tiene código postal en el origen.', 'faltante');
 
@@ -328,7 +328,7 @@ async function extraerCAT(textoXml, opciones = {}) {
       longitud: null,
       latitud: null,
       descripcion: limpiar(item.naturalesa),
-      contacto: contactos.length ? contactos.join(' | ') : null,
+      contacto: contactos.length ? contactos.join(SEPARADOR) : null,
       url: web.valor,
       en_localidad: {
         codigo: info.l_codigo,

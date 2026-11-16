@@ -85,7 +85,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
-      "despues": "alicia@oliva.es | mp@oliva.es",
+      "despues": "alicia@oliva.es, mp@oliva.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -94,7 +94,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
-      "despues": "alicia@oliva.es | mp@oliva.es",
+      "despues": "alicia@oliva.es, mp@oliva.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -121,7 +121,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "administracion@avapace.org/contabilidad@avapace.org",
-      "despues": "administracion@avapace.org | contabilidad@avapace.org",
+      "despues": "administracion@avapace.org, contabilidad@avapace.org",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -130,7 +130,7 @@
       "campo": "telefono",
       "categoria": "formato",
       "antes": "964360002; 964367054",
-      "despues": "964360002 | 964367054",
+      "despues": "964360002, 964367054",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -166,7 +166,7 @@
       "campo": "telefono",
       "categoria": "formato",
       "antes": "961366865 676422994",
-      "despues": "961366865 | 676422994",
+      "despues": "961366865, 676422994",
       "motivo": "Valor no válido reparado; el resultado es válido."
     }
   ],
