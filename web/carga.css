@@ -46,3 +46,7 @@ th, td { text-align: left; border-bottom: 1px solid #e5e5e5; padding: 4px 8px 4p
 .nota { font-size: .8rem; color: #666; margin: 4px 0; }
 .descargar { font-size: .85rem; color: var(--acento); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 @media (max-width: 640px) { fieldset { flex-direction: column; } legend { float: none; margin: 0 0 12px; } }
+
+.cuenta { font: inherit; font-weight: 600; color: #1b7f3b; background: none; border: 0; border-bottom: 1px dashed #1b7f3b; cursor: pointer; padding: 0 2px; }
+.cuenta.activa, .cuenta:hover { background: #eef8f1; }
+.detalle-tipo { margin-top: 8px; }

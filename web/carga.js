@@ -91,6 +91,41 @@ function seccion(titulo, filas, columnas) {
   return el('details', {}, el('summary', { textContent: `${titulo} (${filas.length})` }), tabla(columnas, filas));
 }
 
+// Resumen por tipo de error: cada cifra distinta de 0 se puede pulsar y muestra los registros concretos.
+const DETALLE = {
+  rechazados: i => i.motivo,
+  duplicados: i => i.tipo === 'posible' ? `Se parece al id ${i.duplica_a} (${i.nombre_duplica_a}). Se conservan ambos.` : `${i.tipo}: repite la fila ${i.fila_original ?? '?'}. ${i.accion ?? ''}`,
+  reparados: i => `"${i.antes ?? ''}" → "${i.despues ?? ''}". ${i.motivo ?? ''}`,
+  avisos: i => i.mensaje,
+};
+const NOMBRE_LISTA = { rechazados: 'rechazados', duplicados: 'duplicados', reparados: 'reparados', avisos: 'avisos' };
+
+function registrosDe(informe, lista, categoria) {
+  const origen = lista === 'duplicados' ? [...(informe.duplicados ?? []), ...(informe.posibles_duplicados ?? [])] : (informe[lista] ?? []);
+  return origen.filter(i => i.categoria === categoria).map(i => ({ fila: i.fila ?? '', id: i.id ?? '', entidad: i.nombre ?? '', campo: i.campo ?? '', detalle: DETALLE[lista](i) }));
+}
+
+function resumenInteractivo(pc, informe) {
+  const detalle = el('div', { className: 'detalle-tipo' });
+  let activa = null;
+  const columnas = [['fila', 'Fila'], ['id', 'Id'], ['entidad', 'Entidad'], ['campo', 'Campo'], ['detalle', 'Detalle']];
+  const celda = (lista, categoria, n, boton) => {
+    if (!n) return el('td', { textContent: '0' });
+    const b = el('button', { type: 'button', className: 'cuenta', textContent: String(n), title: 'Ver cuáles son' });
+    b.addEventListener('click', () => {
+      if (activa === b) { detalle.replaceChildren(); b.classList.remove('activa'); activa = null; return; }
+      activa?.classList.remove('activa'); activa = b; b.classList.add('activa');
+      detalle.replaceChildren(el('p', { className: 'nota', textContent: `${TIPOS[categoria]} · ${NOMBRE_LISTA[lista]}` }), (() => { const filas = registrosDe(informe, lista, categoria); return tabla(columnas.filter(([c]) => filas.some(f => f[c] !== '')), filas); })());
+    });
+    return el('td', {}, b);
+  };
+  const cuerpo = Object.entries(TIPOS).map(([k, nombre]) => el('tr', {}, el('td', { textContent: nombre }),
+    ...['rechazados', 'duplicados', 'reparados', 'avisos'].map(l => celda(l, k, pc[k]?.[l] ?? 0))));
+  return el('details', { open: true }, el('summary', { textContent: 'Resumen por tipo de error (pulsa una cifra para ver cuáles son)' }),
+    el('table', {}, el('thead', {}, el('tr', {}, ['Tipo de error', 'Rechazados', 'Duplicados', 'Reparados', 'Avisos'].map(t => el('th', { textContent: t })))), el('tbody', {}, cuerpo)),
+    detalle);
+}
+
 function descargarInforme(r) {
   const blob = new Blob([JSON.stringify(r.informe, null, 2)], { type: 'application/json' });
   const a = el('a', { href: URL.createObjectURL(blob), download: `informe_${r.fuente}.json` });
@@ -106,12 +141,7 @@ function tarjeta(r) {
     nodo.append(el('p', { className: 'cifras' },
       [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos]]
         .map(([n, v]) => el('span', {}, `${n}: `, el('b', { textContent: String(v) })))));
-    const pc = s.por_categoria;
-    if (pc) {
-      const filas = Object.entries(TIPOS).map(([k, n]) => ({ tipo: n, ...pc[k] }));
-      nodo.append(el('details', {}, el('summary', { textContent: 'Resumen por tipo de error' }),
-        tabla([['tipo', 'Tipo de error'], ['rechazados', 'Rechazados'], ['duplicados', 'Duplicados'], ['reparados', 'Reparados'], ['avisos', 'Avisos']], filas)));
-    }
+    if (s.por_categoria) nodo.append(resumenInteractivo(s.por_categoria, r.informe));
     const i = r.informe;
     nodo.append(...[
       seccion('Registros rechazados', i.rechazados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['motivo', 'Motivo']]),
