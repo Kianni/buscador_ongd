@@ -116,6 +116,7 @@ function tarjeta(r) {
     nodo.append(...[
       seccion('Registros rechazados', i.rechazados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['motivo', 'Motivo']]),
       seccion('Duplicados', i.duplicados, [['fila', 'Fila repetida'], ['fila_original', 'Primera aparición'], ['id', 'Id'], ['nombre', 'Entidad'], ['tipo', 'Tipo'], ['accion', 'Acción']]),
+      seccion('Posibles duplicados (se conservan ambos)', i.posibles_duplicados, [['id', 'Id'], ['nombre', 'Entidad'], ['localidad', 'Localidad'], ['duplica_a', 'Se parece al Id'], ['nombre_duplica_a', 'Entidad con la que coincide']]),
       seccion('Datos reparados', i.reparados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['antes', 'Antes'], ['despues', 'Después'], ['motivo', 'Motivo']]),
       seccion('Avisos (se conserva el original)', i.avisos, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['mensaje', 'Aviso']])].filter(Boolean));
     nodo.append(el('button', { type: 'button', className: 'descargar', textContent: 'Descargar informe completo (JSON)', onclick: () => descargarInforme(r) }));

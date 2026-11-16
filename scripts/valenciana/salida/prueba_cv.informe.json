@@ -45,16 +45,20 @@
     {
       "fila": 6,
       "id": "1491",
+      "nombre": "Accem - V.T. colect. desfavorecidos Cuenca",
+      "fila_original": 1,
       "categoria": "duplicado",
       "tipo": "idéntico",
-      "accion": "Se conserva la primera aparición."
+      "accion": "Se conserva la primera aparición (fila 1)."
     },
     {
       "fila": 11,
       "id": "911",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES BALLESOL COSTA BLANCA",
+      "fila_original": 7,
       "categoria": "duplicado",
       "tipo": "idéntico",
-      "accion": "Se conserva la primera aparición."
+      "accion": "Se conserva la primera aparición (fila 7)."
     }
   ],
   "reparados": [
@@ -102,5 +106,6 @@
   "sin_dato_en_origen": {
     "codigo_postal": 10,
     "url": 10
-  }
+  },
+  "posibles_duplicados": []
 }

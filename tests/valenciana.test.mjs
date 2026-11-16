@@ -119,3 +119,15 @@ test('correos CV: tildes, ,com, .com que falta, .e, apóstrofo y 2 por @', () =>
   assert.equal(procesarEmails("CENTRODEMAYORES@SANTJOAND'ALACANT.ES").valor, 'centrodemayores@santjoandalacant.es');
   assert.equal(procesarEmails('DIRECCION2FUNDACIONSALUDINFANTIL.ORG').valor, 'direccion@fundacionsaludinfantil.org');
 });
+
+test('duplicados: el informe indica qué se duplica (fila original y nombre) y los posibles con otro id', () => {
+  const r = extraerCV(prueba);
+  assert.deepEqual(r.informe.duplicados.map(d => [d.fila, d.fila_original, d.id]), [[6, 1, '1491'], [11, 7, '911']]);
+  assert.ok(r.informe.duplicados.every(d => d.nombre));
+  const csv = prueba.split('\n')[0] + '\n' +
+    'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,,,,700000,4370000\n' +
+    'POINT (700000 4370000),21,2,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,,,,700000,4370000\n';
+  const p = extraerCV(csv).informe.posibles_duplicados;
+  assert.equal(p.length, 1);
+  assert.equal(p[0].duplica_a, '20');
+});

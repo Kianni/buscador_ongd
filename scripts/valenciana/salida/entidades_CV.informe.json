@@ -29,8 +29,8 @@
       "duplicado": {
         "rechazados": 0,
         "reparados": 0,
-        "avisos": 33,
-        "duplicados": 0
+        "avisos": 0,
+        "duplicados": 33
       },
       "semantico": {
         "rechazados": 0,
@@ -429,237 +429,6 @@
       "campo": "domici",
       "categoria": "faltante",
       "mensaje": "El centro no tiene dirección en el origen. direccion = null."
-    },
-    {
-      "fila": null,
-      "id": "7",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:6: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "203",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:202: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "205",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:204: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "379",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:378: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "380",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:378: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "381",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:378: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "541",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:540: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "700",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:699: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1023",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1022: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1024",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1022: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1061",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1060: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1251",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1250: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1253",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1252: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1395",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1396",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1397",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1398",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1399",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1400",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1394: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1458",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1457: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1476",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1457: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1483",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1457: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1512",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1511: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1680",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1664: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1681",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1657: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1683",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1662: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1691",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1658: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1692",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1663: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1697",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1656: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1698",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1654: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1699",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1655: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1701",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1665: mismo nombre y localidad con otro identificador. Se conservan ambos."
-    },
-    {
-      "fila": null,
-      "id": "1706",
-      "campo": "nombre",
-      "categoria": "duplicado",
-      "mensaje": "Posible duplicado de CV:1666: mismo nombre y localidad con otro identificador. Se conservan ambos."
     }
   ],
   "marcadores_sin_dato": {
@@ -669,5 +438,337 @@
   "sin_dato_en_origen": {
     "codigo_postal": 1697,
     "url": 1697
-  }
+  },
+  "posibles_duplicados": [
+    {
+      "id": "7",
+      "nombre": "RESIDENCIA MIXTA MONDUBER",
+      "localidad": "Barx",
+      "duplica_a": "6",
+      "nombre_duplica_a": "RESIDENCIA MIXTA MONDUBER",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "203",
+      "nombre": "RESIDENCIA MIXTA DOMUSVI MONTEARSE",
+      "localidad": "Sagunt/Sagunto",
+      "duplica_a": "202",
+      "nombre_duplica_a": "RESIDENCIA MIXTA DOMUSVI MONTEARSE",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "205",
+      "nombre": "RESIDENCIA MIXTA SAN LORENZO DE BRINDIS",
+      "localidad": "Massamagrell",
+      "duplica_a": "204",
+      "nombre_duplica_a": "RESIDENCIA MIXTA SAN LORENZO DE BRINDIS",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "379",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "380",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "381",
+      "nombre": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "localidad": "Villena",
+      "duplica_a": "378",
+      "nombre_duplica_a": "RESIDENCIA MIXTA CENTRO GERIÁTRICO LA MORENICA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "541",
+      "nombre": "RESIDENCIA MIXTA SANITAS RESIDENCIAL MAS CAMARENA",
+      "localidad": "Bétera",
+      "duplica_a": "540",
+      "nombre_duplica_a": "RESIDENCIA MIXTA SANITAS RESIDENCIAL MAS CAMARENA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "700",
+      "nombre": "RESIDENCIA MIXTA GERISAN",
+      "localidad": "Favara",
+      "duplica_a": "699",
+      "nombre_duplica_a": "RESIDENCIA MIXTA GERISAN",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1023",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "localidad": "Ayora",
+      "duplica_a": "1022",
+      "nombre_duplica_a": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1024",
+      "nombre": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "localidad": "Ayora",
+      "duplica_a": "1022",
+      "nombre_duplica_a": "RESIDENCIA PARA PERSONAS MAYORES DEPENDIENTES AYORA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1061",
+      "nombre": "CENTRO DE TIPOLOGÍA MIXTA DE QUART DE POBLET",
+      "localidad": "Quart de Poblet",
+      "duplica_a": "1060",
+      "nombre_duplica_a": "CENTRO DE TIPOLOGÍA MIXTA DE QUART DE POBLET",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1251",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 2",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1250",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 2",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1253",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 1",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1252",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 1",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1395",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1396",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1397",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1398",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1399",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1400",
+      "nombre": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1394",
+      "nombre_duplica_a": "CENTRO DE ATENCIÓN ESPECIAL PARA PERSONAS EN SITUACIÓN DE DEPENDENCIA GRAN VIA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1458",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1476",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1483",
+      "nombre": "Alojamiento Alternativo Puente",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1457",
+      "nombre_duplica_a": "Alojamiento Alternativo Puente",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1512",
+      "nombre": "PISO ACOGIDA ELCHE ACOGE 3",
+      "localidad": "Elx/Elche",
+      "duplica_a": "1511",
+      "nombre_duplica_a": "PISO ACOGIDA ELCHE ACOGE 3",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1680",
+      "nombre": "VIVIENDA TUTELADA SUPERVISADA LLUERNA",
+      "localidad": "Paiporta",
+      "duplica_a": "1664",
+      "nombre_duplica_a": "VIVIENDA TUTELADA SUPERVISADA LLUERNA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1681",
+      "nombre": "CENTRO RESIDENCIAL DE CARACTER CONVIVENCIAL DE APOYO LIMITADO O INTERMITENTE PARA PERSONAS CON PROBLEMAS DE SALUD MENTAL \"EL REFUGI\"",
+      "localidad": "Ibi",
+      "duplica_a": "1657",
+      "nombre_duplica_a": "CENTRO RESIDENCIAL DE CARACTER CONVIVENCIAL DE APOYO LIMITADO O INTERMITENTE PARA PERSONAS CON PROBLEMAS DE SALUD MENTAL \"EL REFUGI\"",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1683",
+      "nombre": "VIVIENDA TUTELADA NOVAEDAT ALBERIC",
+      "localidad": "Alberic",
+      "duplica_a": "1662",
+      "nombre_duplica_a": "VIVIENDA TUTELADA NOVAEDAT ALBERIC",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1691",
+      "nombre": "CENTRO SOCIAL MUNICIPAL DE ATENCIÓN PRIMARIA DEL AYUNTAMIENTO DE MONCOFA",
+      "localidad": "Moncofa",
+      "duplica_a": "1658",
+      "nombre_duplica_a": "CENTRO SOCIAL MUNICIPAL DE ATENCIÓN PRIMARIA DEL AYUNTAMIENTO DE MONCOFA",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1692",
+      "nombre": "Centre d'Atenció Primària de Serveis Socials Carcaixent",
+      "localidad": "Carcaixent",
+      "duplica_a": "1663",
+      "nombre_duplica_a": "Centre d'Atenció Primària de Serveis Socials Carcaixent",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1697",
+      "nombre": "CENTRO DE DÍA PARA PERSONAS MAYORES DEPENDIENTES",
+      "localidad": "Benaguasil",
+      "duplica_a": "1656",
+      "nombre_duplica_a": "CENTRO DE DÍA PARA PERSONAS MAYORES DEPENDIENTES",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1698",
+      "nombre": "Centro de Día Benicàssim",
+      "localidad": "Benicàssim/Benicasim",
+      "duplica_a": "1654",
+      "nombre_duplica_a": "Centro de Día Benicàssim",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1699",
+      "nombre": "CIM Benicàssim",
+      "localidad": "Benicàssim/Benicasim",
+      "duplica_a": "1655",
+      "nombre_duplica_a": "CIM Benicàssim",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1701",
+      "nombre": "Residencia para Personas Mayores 'La Beneficiencia'",
+      "localidad": "Ontinyent",
+      "duplica_a": "1665",
+      "nombre_duplica_a": "Residencia para Personas Mayores 'La Beneficiencia'",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    },
+    {
+      "id": "1706",
+      "nombre": "SAN JOSÉ",
+      "localidad": "Castelló de la Plana",
+      "duplica_a": "1666",
+      "nombre_duplica_a": "SAN JOSÉ",
+      "categoria": "duplicado",
+      "tipo": "posible",
+      "accion": "Mismo nombre y localidad con otro identificador. Se conservan ambos."
+    }
+  ]
 }
