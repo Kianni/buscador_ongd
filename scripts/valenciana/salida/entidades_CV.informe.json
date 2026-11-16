@@ -5,13 +5,13 @@
     "cargados": 1697,
     "rechazados": 0,
     "duplicados": 0,
-    "con_reparaciones": 27,
-    "con_avisos": 20,
+    "con_reparaciones": 28,
+    "con_avisos": 19,
     "por_categoria": {
       "formato": {
         "rechazados": 0,
-        "reparados": 27,
-        "avisos": 12,
+        "reparados": 28,
+        "avisos": 11,
         "duplicados": 0
       },
       "faltante": {
@@ -170,6 +170,15 @@
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
+      "fila": 804,
+      "id": "804",
+      "campo": "telefono",
+      "categoria": "formato",
+      "antes": "964398869 - 96439828",
+      "despues": "964398869",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
       "fila": 881,
       "id": "881",
       "campo": "email",
@@ -294,13 +303,6 @@
       "campo": "email",
       "categoria": "formato",
       "mensaje": "No se puede reparar: se conserva el original \"RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM\"."
-    },
-    {
-      "fila": 804,
-      "id": "804",
-      "campo": "telefono",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"964398869 - 96439828\"."
     },
     {
       "fila": 853,

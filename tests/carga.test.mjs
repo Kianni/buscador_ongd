@@ -112,14 +112,15 @@ test('Cataluña: el archivo completo se carga sin rechazos', async () => {
 
 test('regla de reparación: solo si queda válido; si no, se conserva el original', () => {
   assert.equal(procesarEmails('info@fundaciosergiorg').valor, 'info@fundaciosergi.org');
-  const sinReparar = procesarEmails('sakadawaorggmailcom');
-  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'sakadawaorggmailcom']);
+  const sinReparar = procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
+  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'VIVIENDASUPERVISADA@COMITEANTISIDAVALENC']);
   assert.equal(procesarEmails('jpedro1@xteCarrercat').valor, 'jpedro1@xtec.cat');
   assert.equal(procesarUrl('http://wwwaeryCarrerorg/').valor, 'http://www.aeryc.org/');
   assert.equal(procesarTelefonos('934216102\n658577264').valor, '934216102, 658577264');
-  assert.equal(procesarTelefonos('934228074 93431426').estado, 'conservado', 'número de 8 dígitos');
+  assert.equal(procesarTelefonos('934228074 93431426').valor, '934228074', 'se conserva el válido');
+  assert.equal(procesarTelefonos('96265155').estado, 'conservado', 'número de 8 dígitos');
   assert.equal(procesarUrl('http://https://wwwisilcat').valor, 'https://www.isil.cat');
-  assert.equal(procesarUrl('http://wwwaslong/es/').estado, 'conservado');
+  assert.equal(procesarUrl('http://wwwaslong/es/').valor, 'http://www.asl.ong/es/');
   assert.equal(procesarUrl('http://codafestl/').estado, 'conservado');
 });
 
@@ -135,4 +136,15 @@ test('reparaciones ampliadas: correos pegados, extensiones, números abreviados 
   assert.equal(procesarUrl('http://@teixpetaniloyant(Instagram)').valor, 'https://www.instagram.com/teixpetaniloyant');
   assert.equal(procesarUrl('http://https://xcom/BretxaOBS').valor, 'https://x.com/BretxaOBS');
   assert.equal(procesarUrl('http://htpp://edpaCarrercat').valor, 'http://edpac.cat');
+});
+
+test('reparaciones globales: dominios compuestos, @ que falta, punto volado, tildes en webs', () => {
+  assert.equal(procesarEmails('sakadawaorggmailcom').valor, 'sakadawaorg@gmail.com');
+  assert.equal(procesarEmails('barcelona@fundacionimagoorgco').valor, 'barcelona@fundacionimago.org.co');
+  assert.equal(procesarEmails('col·lectiu@yahoocom').valor, 'collectiu@yahoo.com');
+  assert.equal(procesarUrl('http://https://wwwaslong/es/inicio/').valor, 'https://www.asl.ong/es/inicio/');
+  assert.equal(procesarUrl('http://wwwfundacionimagoorgco').valor, 'http://www.fundacionimago.org.co');
+  assert.equal(procesarUrl('http://wwwfundaciótalibesorg').valor, 'http://www.fundaciotalibes.org');
+  assert.equal(procesarUrl('http://wwwbadalonacuba').estado, 'conservado', 'sin dominio deducible');
+  assert.equal(procesarTelefonos('964398869 - 96439828').valor, '964398869');
 });

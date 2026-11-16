@@ -67,8 +67,8 @@ test('teléfonos: marcador 0, separadores y números incompletos (se conservan)'
   assert.equal(procesarTelefonos('961366865 676422994').valor, '961366865, 676422994');
   assert.equal(procesarTelefonos('012').valor, '012');
   const parcial = procesarTelefonos('964398869 - 96439828');
-  assert.equal(parcial.estado, 'conservado');
-  assert.equal(parcial.valor, '964398869 - 96439828');
+  assert.equal(parcial.estado, 'reparado');
+  assert.equal(parcial.valor, '964398869');
   assert.equal(procesarTelefonos('96265155').valor, '96265155');
 });
 
