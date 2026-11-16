@@ -49,7 +49,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
-      "despues": "ajumtament@valldelaguar.es",
+      "despues": "ajuntament@valldelaguar.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -58,7 +58,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
-      "despues": "ajumtament@valldelaguar.es",
+      "despues": "ajuntament@valldelaguar.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -67,7 +67,7 @@
       "campo": "email",
       "categoria": "formato",
       "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
-      "despues": "ajumtament@valldelaguar.es",
+      "despues": "ajuntament@valldelaguar.es",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {

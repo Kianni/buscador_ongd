@@ -61,14 +61,14 @@ Desde la raíz del repositorio: `node --test tests/valenciana.test.mjs`.
 
 ## Dominios conocidos (correcciones futuras)
 
-`lib/contacto.mjs` guarda en `DOMINIOS_CONOCIDOS` dominios oficiales verificados a mano. Con ellos se reparan dos errores que el texto solo no permite deducir:
+`lib/correcciones.json` (clave `dominios_conocidos`) guarda dominios oficiales verificados a mano. Con ellos se reparan dos errores que el texto solo no permite deducir:
 
 | Error | Ejemplo | Resultado |
 |---|---|---|
 | Un punto ocupa el lugar de la `@` | `RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM` (id 797) | `recepcion.muchamiel@grupocasaverde.com` |
 | Dominio cortado en el origen (el texto es el comienzo de un único dominio conocido, mínimo 8 letras) | `VIVIENDASUPERVISADA@COMITEANTISIDAVALENC` (id 884) | `viviendasupervisada@comiteantisidavalencia.org` |
 
-Para corregir un caso nuevo, verifica el dominio oficial y añádelo a esa lista; la regla se aplica a todas las fuentes. Los dominios que no estén en la lista siguen como aviso con el original conservado.
+Para corregir un caso nuevo, verifica el dominio oficial, añádelo a esa lista y añade un ejemplo en `ejemplos`; `npm test` comprueba que se repara. La regla se aplica a todas las fuentes. Los dominios que no estén en la lista siguen como aviso con el original conservado.
 
 ## Posibles duplicados (mismo nombre y localidad, otro id)
 
@@ -79,3 +79,21 @@ Nunca se borran ni se fusionan. El informe compara el resto de campos (direcció
 | `identica` | Idénticos salvo el id: probable fila repetida del volcado (p. ej. ids 1680–1706 repiten 1654–1666) | Revisar y borrar una a mano |
 | `una_incompleta` | Iguales, pero una tiene campos vacíos | Quedarse con la más completa |
 | `distintos` | Se distinguen en descripción/ámbito/otros: recursos distintos del mismo centro | Conservar ambos |
+
+## Erratas conocidas (corrección global)
+
+`lib/correcciones.json` (clave `erratas`) guarda una lista de patrones que se corrigen en correos y webs de cualquier fuente. Hoy:
+
+| Errata | Corrección | Ejemplo |
+|---|---|---|
+| `AJUMTAMENT` | `ajuntament` | `AJUMTAMENT@VALLDE LAGUAR.ES` → `ajuntament@valldelaguar.es` (ids 3, 14, 15) |
+
+Para un caso nuevo y verificado, se añade una entrada y un ejemplo en el mismo archivo (`npm test` comprueba que funciona). Cada cambio queda en «Datos reparados» con el valor antes y después.
+
+## Cómo automatizar una corrección nueva
+
+1. Abre `lib/correcciones.json`.
+2. Añade la errata (`buscar` → `por`) o el dominio oficial verificado.
+3. Añade en `ejemplos` el dato original (`entrada`) y el resultado esperado (`salida`).
+4. Ejecuta `npm test`: si el ejemplo no se repara como indicas, falla.
+5. Vuelve a cargar los datos: la corrección se aplica en todas las fuentes y cada cambio queda en «Datos reparados».

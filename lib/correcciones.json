@@ -1,0 +1,15 @@
+{
+  "ayuda": "Correcciones conocidas y verificadas a mano. Para automatizar un caso nuevo: añade una errata o un dominio y un ejemplo; `npm test` comprueba que se repara. Se aplica a correos y webs de todas las fuentes.",
+  "erratas": [
+    { "buscar": "ajumtament", "por": "ajuntament" }
+  ],
+  "dominios_conocidos": [
+    "grupocasaverde.com",
+    "comiteantisidavalencia.org"
+  ],
+  "ejemplos": [
+    { "tipo": "correo", "entrada": "AJUMTAMENT@VALLDE LAGUAR.ES", "salida": "ajuntament@valldelaguar.es" },
+    { "tipo": "correo", "entrada": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM", "salida": "recepcion.muchamiel@grupocasaverde.com" },
+    { "tipo": "correo", "entrada": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC", "salida": "viviendasupervisada@comiteantisidavalencia.org" }
+  ]
+}

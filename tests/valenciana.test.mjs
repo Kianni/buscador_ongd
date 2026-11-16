@@ -52,7 +52,7 @@ test('conversión UTM -> lon/lat (referencia calculada con pyproj)', () => {
 });
 
 test('correos: se repara solo si queda válido; si no, se conserva el original', () => {
-  assert.equal(procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES').valor, 'ajumtament@valldelaguar.es');
+  assert.equal(procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES').valor, 'ajuntament@valldelaguar.es');
   assert.equal(procesarEmails('ALICIA@OLIVA.ES  MP@OLIVA.ES').valor, 'alicia@oliva.es, mp@oliva.es');
   assert.equal(procesarEmails('INFO@VINAROS. ORG').valor, 'info@vinaros.org');
   const truncado = procesarEmails('VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO');
@@ -139,4 +139,22 @@ test('correos CV: dominios conocidos (sin @ y dominio cortado)', () => {
   assert.equal(procesarEmails('RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM').valor, 'recepcion.muchamiel@grupocasaverde.com');
   assert.equal(procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC').valor, 'viviendasupervisada@comiteantisidavalencia.org');
   assert.equal(procesarEmails('x@comite').estado, 'conservado', 'prefijo demasiado corto: no se completa');
+});
+
+test('erratas conocidas: AJUMTAMENT -> ajuntament en correos y webs', () => {
+  const r = procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES');
+  assert.equal(r.valor, 'ajuntament@valldelaguar.es');
+  assert.equal(r.estado, 'reparado');
+  assert.equal(procesarEmails('ajumtament@oliva.es').valor, 'ajuntament@oliva.es');
+  assert.equal(procesarEmails('ajuntament@oliva.es').estado, 'valido');
+});
+
+test('lib/correcciones.json: todos los ejemplos documentados se reparan como indican', async () => {
+  const { CORRECCIONES, procesarUrl } = await import('../lib/contacto.mjs');
+  assert.ok(CORRECCIONES.ejemplos.length > 0);
+  for (const e of CORRECCIONES.ejemplos) {
+    const r = e.tipo === 'url' ? procesarUrl(e.entrada) : procesarEmails(e.entrada);
+    assert.equal(r.valor, e.salida, `ejemplo "${e.entrada}"`);
+    assert.equal(r.estado, 'reparado');
+  }
 });
