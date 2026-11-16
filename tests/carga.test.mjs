@@ -112,8 +112,8 @@ test('Cataluña: el archivo completo se carga sin rechazos', async () => {
 
 test('regla de reparación: solo si queda válido; si no, se conserva el original', () => {
   assert.equal(procesarEmails('info@fundaciosergiorg').valor, 'info@fundaciosergi.org');
-  const sinReparar = procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
-  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'VIVIENDASUPERVISADA@COMITEANTISIDAVALENC']);
+  const sinReparar = procesarEmails('VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO');
+  assert.deepEqual([sinReparar.estado, sinReparar.valor], ['conservado', 'VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO']);
   assert.equal(procesarEmails('jpedro1@xteCarrercat').valor, 'jpedro1@xtec.cat');
   assert.equal(procesarUrl('http://wwwaeryCarrerorg/').valor, 'http://www.aeryc.org/');
   assert.equal(procesarTelefonos('934216102\n658577264').valor, '934216102, 658577264');

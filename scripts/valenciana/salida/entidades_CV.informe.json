@@ -5,13 +5,13 @@
     "cargados": 1697,
     "rechazados": 0,
     "duplicados": 0,
-    "con_reparaciones": 28,
-    "con_avisos": 19,
+    "con_reparaciones": 30,
+    "con_avisos": 17,
     "por_categoria": {
       "formato": {
         "rechazados": 0,
-        "reparados": 28,
-        "avisos": 11,
+        "reparados": 30,
+        "avisos": 9,
         "duplicados": 0
       },
       "faltante": {
@@ -170,6 +170,15 @@
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
+      "fila": 797,
+      "id": "797",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM",
+      "despues": "recepcion.muchamiel@grupocasaverde.com",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
       "fila": 804,
       "id": "804",
       "campo": "telefono",
@@ -185,6 +194,15 @@
       "categoria": "formato",
       "antes": "administracion@avapace.org/contabilidad@avapace.org",
       "despues": "administracion@avapace.org, contabilidad@avapace.org",
+      "motivo": "Valor no válido reparado; el resultado es válido."
+    },
+    {
+      "fila": 884,
+      "id": "884",
+      "campo": "email",
+      "categoria": "formato",
+      "antes": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC",
+      "despues": "viviendasupervisada@comiteantisidavalencia.org",
       "motivo": "Valor no válido reparado; el resultado es válido."
     },
     {
@@ -298,13 +316,6 @@
   ],
   "avisos": [
     {
-      "fila": 797,
-      "id": "797",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM\"."
-    },
-    {
       "fila": 853,
       "id": "853",
       "campo": "telefono",
@@ -317,13 +328,6 @@
       "campo": "telefono",
       "categoria": "formato",
       "mensaje": "No se puede reparar: se conserva el original \"96265155\"."
-    },
-    {
-      "fila": 884,
-      "id": "884",
-      "campo": "email",
-      "categoria": "formato",
-      "mensaje": "No se puede reparar: se conserva el original \"VIVIENDASUPERVISADA@COMITEANTISIDAVALENC\"."
     },
     {
       "fila": 1090,

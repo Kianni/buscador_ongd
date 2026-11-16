@@ -58,3 +58,14 @@ El mapping completo está en `Mappings_CV_ComunitatValenciana.docx`.
 ## Pruebas
 
 Desde la raíz del repositorio: `node --test tests/valenciana.test.mjs`.
+
+## Dominios conocidos (correcciones futuras)
+
+`lib/contacto.mjs` guarda en `DOMINIOS_CONOCIDOS` dominios oficiales verificados a mano. Con ellos se reparan dos errores que el texto solo no permite deducir:
+
+| Error | Ejemplo | Resultado |
+|---|---|---|
+| Un punto ocupa el lugar de la `@` | `RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM` (id 797) | `recepcion.muchamiel@grupocasaverde.com` |
+| Dominio cortado en el origen (el texto es el comienzo de un único dominio conocido, mínimo 8 letras) | `VIVIENDASUPERVISADA@COMITEANTISIDAVALENC` (id 884) | `viviendasupervisada@comiteantisidavalencia.org` |
+
+Para corregir un caso nuevo, verifica el dominio oficial y añádelo a esa lista; la regla se aplica a todas las fuentes. Los dominios que no estén en la lista siguen como aviso con el original conservado.

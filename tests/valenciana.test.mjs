@@ -55,9 +55,9 @@ test('correos: se repara solo si queda válido; si no, se conserva el original',
   assert.equal(procesarEmails('AJUMTAMENT@VALLDE LAGUAR.ES').valor, 'ajumtament@valldelaguar.es');
   assert.equal(procesarEmails('ALICIA@OLIVA.ES  MP@OLIVA.ES').valor, 'alicia@oliva.es, mp@oliva.es');
   assert.equal(procesarEmails('INFO@VINAROS. ORG').valor, 'info@vinaros.org');
-  const truncado = procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
+  const truncado = procesarEmails('VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO');
   assert.equal(truncado.estado, 'conservado');
-  assert.equal(truncado.valor, 'VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
+  assert.equal(truncado.valor, 'VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO');
 });
 
 test('teléfonos: marcador 0, separadores y números incompletos (se conservan)', () => {
@@ -74,9 +74,9 @@ test('teléfonos: marcador 0, separadores y números incompletos (se conservan)'
 
 test('contacto inválido no se descarta: se conserva el original y se avisa', () => {
   const csv = prueba.split('\n')[0] + '\n' +
-    'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,VIVIENDASUPERVISADA@COMITEANTISIDAVALENC,96265155,,700000,4370000\n';
+    'POINT (700000 4370000),20,1,TIPO,Centro,10,ENT,"C/ X",Entidad Privada,46250,València/Valencia,València,València,PERSONAS MAYORES,PERSONAS MAYORES,1,VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO,96265155,,700000,4370000\n';
   const r = extraerCV(csv);
-  assert.equal(r.entidades[0].contacto, '96265155, VIVIENDASUPERVISADA@COMITEANTISIDAVALENC');
+  assert.equal(r.entidades[0].contacto, '96265155, VIVIENDASUPERVISADA@DOMINIOCORTADODESCONOCIDO');
   assert.ok(r.informe.avisos.some(a => a.campo === 'email' && /conserva el original/.test(a.mensaje)));
 });
 
@@ -130,4 +130,10 @@ test('duplicados: el informe indica qué se duplica (fila original y nombre) y l
   const p = extraerCV(csv).informe.posibles_duplicados;
   assert.equal(p.length, 1);
   assert.equal(p[0].duplica_a, '20');
+});
+
+test('correos CV: dominios conocidos (sin @ y dominio cortado)', () => {
+  assert.equal(procesarEmails('RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM').valor, 'recepcion.muchamiel@grupocasaverde.com');
+  assert.equal(procesarEmails('VIVIENDASUPERVISADA@COMITEANTISIDAVALENC').valor, 'viviendasupervisada@comiteantisidavalencia.org');
+  assert.equal(procesarEmails('x@comite').estado, 'conservado', 'prefijo demasiado corto: no se completa');
 });
