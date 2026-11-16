@@ -92,8 +92,7 @@ test('Supabase: llama a las funciones SQL y traduce FUENTE_YA_CARGADA', async ()
 
 test('Cataluña: formato común, duplicados, rechazos y reparaciones del archivo de prueba', async () => {
   const { entidades, informe } = await extraerCAT(leer('prueba_cat.xml'));
-  const { por_categoria: porCategoria, nombres_separados: separados, direcciones_normalizadas: _dn, ...resumen } = informe.resumen;
-  assert.ok(separados > 0, 'se restauran espacios en los nombres pegados');
+  const { por_categoria: porCategoria, ...resumen } = informe.resumen;
   assert.deepEqual(resumen, { leidos: 12, cargados: 9, rechazados: 1, duplicados: 2, con_reparaciones: 9, con_avisos: 2 });
   // Tipología del enunciado: formato, faltante, rango, duplicado y semántico.
   assert.equal(porCategoria.faltante.rechazados, 1);
@@ -183,4 +182,12 @@ test('nombres y direcciones: conectores pegados y apóstrofos', async () => {
   assert.equal(normalizarDireccion("PlaçaDel'Església,s/n"), "Plaça de l'Església, s/n");
   assert.equal(normalizarDireccion("Ramblad'Egara,3402n"), "Rambla d'Egara, 3402n");
   assert.equal(normalizarDireccion('CarrerdelsSalvadors,5bis'), 'Carrer dels Salvadors, 5 bis');
+});
+
+test('cada nombre o dirección modificado aparece en «Datos reparados» con el antes y el después', async () => {
+  const { informe } = await extraerCAT(leer('prueba_cat.xml'));
+  const nombres = informe.reparados.filter(r => r.campo === 'nom_de_l_entitat');
+  const direcciones = informe.reparados.filter(r => r.campo === 'adre_a');
+  assert.ok(nombres.length > 0 && direcciones.length > 0);
+  for (const r of [...nombres, ...direcciones]) assert.ok(r.antes && r.despues && r.antes !== r.despues);
 });

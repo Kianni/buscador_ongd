@@ -80,7 +80,7 @@ async function refrescar() {
 
 // ---------------------------------------------------------------- resultados
 
-function tabla(columnas, filas, limite = 100) {
+function tabla(columnas, filas, limite = 2000) {
   const cuerpo = filas.slice(0, limite).map(f => el('tr', {}, columnas.map(([clave]) => el('td', { textContent: clave === 'categoria' ? (TIPOS[f.categoria] ?? '') : (f[clave] ?? '') }))));
   return el('table', {}, el('thead', {}, el('tr', {}, columnas.map(([, titulo]) => el('th', { textContent: titulo })))), el('tbody', {}, cuerpo),
     filas.length > limite ? el('caption', { className: 'nota', textContent: `Se muestran ${limite} de ${filas.length}. El informe completo se puede descargar.` }) : null);
@@ -139,7 +139,7 @@ function tarjeta(r) {
   const s = r.resumen;
   if (s) {
     nodo.append(el('p', { className: 'cifras' },
-      [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos], ...(s.nombres_separados ? [['Nombres con espacios restaurados', s.nombres_separados]] : []), ...(s.direcciones_normalizadas ? [['Direcciones normalizadas', s.direcciones_normalizadas]] : [])]
+      [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos]]
         .map(([n, v]) => el('span', {}, `${n}: `, el('b', { textContent: String(v) })))));
     if (s.por_categoria) nodo.append(resumenInteractivo(s.por_categoria, r.informe));
     const i = r.informe;

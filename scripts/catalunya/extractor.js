@@ -274,7 +274,7 @@ async function extraerCAT(textoXml, opciones = {}) {
 
     const nombreOrigen = limpiar(item.nom_de_l_entitat);
     const nombre = separarNombre(nombreOrigen);
-    if (nombre !== nombreOrigen) informe.resumen.nombres_separados = (informe.resumen.nombres_separados ?? 0) + 1;
+    if (nombre !== nombreOrigen) reparar('nom_de_l_entitat', nombreOrigen, nombre, 'Nombre pegado en el origen: espacios restaurados y erratas corregidas (lib/correcciones.json).');
     if (!nombre) return rechazar('nom_de_l_entitat', 'El nombre de la entidad está vacío.');
 
     // --- Código postal: espacios y ceros iniciales se reparan; si no es un CP de Catalunya se conserva y se avisa.
@@ -309,7 +309,7 @@ async function extraerCAT(textoXml, opciones = {}) {
 
     const direccionOrigen = limpiar(item.adre_a);
     const direccion = normalizarDireccion(direccionOrigen) || null;
-    if (direccion !== (direccionOrigen || null)) informe.resumen.direcciones_normalizadas = (informe.resumen.direcciones_normalizadas ?? 0) + 1;
+    if (direccionOrigen && direccion !== direccionOrigen) reparar('adre_a', direccionOrigen, direccion, 'Dirección pegada en el origen: espacios, coma antes del número y erratas corregidas (lib/correcciones.json).');
     if (!direccionOrigen) avisar('adre_a', 'La entidad no tiene dirección en el origen. direccion = null.', 'faltante');
 
     // --- Contacto, teléfonos y correo (reparar solo si queda válido)
