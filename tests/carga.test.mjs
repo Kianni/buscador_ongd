@@ -92,7 +92,8 @@ test('Supabase: llama a las funciones SQL y traduce FUENTE_YA_CARGADA', async ()
 
 test('Cataluña: formato común, duplicados, rechazos y reparaciones del archivo de prueba', async () => {
   const { entidades, informe } = await extraerCAT(leer('prueba_cat.xml'));
-  const { por_categoria: porCategoria, ...resumen } = informe.resumen;
+  const { por_categoria: porCategoria, nombres_separados: separados, ...resumen } = informe.resumen;
+  assert.ok(separados > 0, 'se restauran espacios en los nombres pegados');
   assert.deepEqual(resumen, { leidos: 12, cargados: 9, rechazados: 1, duplicados: 2, con_reparaciones: 9, con_avisos: 2 });
   // Tipología del enunciado: formato, faltante, rango, duplicado y semántico.
   assert.equal(porCategoria.faltante.rechazados, 1);
@@ -147,4 +148,13 @@ test('reparaciones globales: dominios compuestos, @ que falta, punto volado, til
   assert.equal(procesarUrl('http://wwwfundaciótalibesorg').valor, 'http://www.fundaciotalibes.org');
   assert.equal(procesarUrl('http://wwwbadalonacuba').estado, 'conservado', 'sin dominio deducible');
   assert.equal(procesarTelefonos('964398869 - 96439828').valor, '964398869');
+});
+
+test('nombres pegados: se restauran los espacios por fronteras seguras', async () => {
+  const { separarNombre } = await import('../lib/nombres.mjs');
+  assert.equal(separarNombre('FundacióServeiGironídePedagogiaSocial'), 'Fundació Servei Gironí de Pedagogia Social');
+  assert.equal(separarNombre('AccióSolidàriadelVallès'), 'Acció Solidària del Vallès');
+  assert.equal(separarNombre('AmigosdeTanzania'), 'Amigos de Tanzania');
+  assert.equal(separarNombre('Fundacion Verde'), 'Fundacion Verde', 'si ya tiene espacios no se toca');
+  assert.equal(separarNombre('AMAZÒNIACAT'), 'AMAZÒNIACAT', 'sin frontera segura no se inventa');
 });

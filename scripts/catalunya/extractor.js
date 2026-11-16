@@ -231,6 +231,7 @@ async function extraerCAT(textoXml, opciones = {}) {
   const libUrl = nombre => pathToFileURL(path.join(__dirname, '..', '..', 'lib', nombre)).href;
   const { procesarEmails, procesarTelefonos, procesarUrl, SEPARADOR } = await import(libUrl('contacto.mjs'));
   const { contarPorCategoria, posiblesDuplicados } = await import(libUrl('informe.mjs'));
+  const { separarNombre } = await import(libUrl('nombres.mjs'));
   const diccionario = opciones.diccionario ?? cargarDiccionarioDesdeCSV(RUTA_CSV_MUNICIPIOS, true);
   if (!textoXml || textoXml.trim() === '') throw new Error('El archivo XML está vacío.');
 
@@ -271,7 +272,9 @@ async function extraerCAT(textoXml, opciones = {}) {
     }
     vistos.set(id, { firma, fila });
 
-    const nombre = limpiar(item.nom_de_l_entitat);
+    const nombreOrigen = limpiar(item.nom_de_l_entitat);
+    const nombre = separarNombre(nombreOrigen);
+    if (nombre !== nombreOrigen) informe.resumen.nombres_separados = (informe.resumen.nombres_separados ?? 0) + 1;
     if (!nombre) return rechazar('nom_de_l_entitat', 'El nombre de la entidad está vacío.');
 
     // --- Código postal: espacios y ceros iniciales se reparan; si no es un CP de Catalunya se conserva y se avisa.

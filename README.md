@@ -31,6 +31,8 @@ Botones: «Cargar» (cada fuente solo una vez; una segunda carga se rechaza) y �
 |---|---|
 | Reparación de teléfonos, correos y URLs (común a todas las fuentes) | `lib/contacto.mjs` |
 | Informe de errores por categoría y posibles duplicados | `lib/informe.mjs` |
+| Correcciones conocidas (erratas, dominios) y sus ejemplos | `lib/correcciones.json` |
+| Espacios de nombres pegados (Cataluña) | `lib/nombres.mjs` |
 | Extractor Cataluña + mapping | `scripts/catalunya/extractor.js` |
 | Extractor Comunitat Valenciana + mapping | `scripts/valenciana/extractor.mjs`, `scripts/valenciana/README.md` |
 | Canarias | no implementado (aparece como «no disponible») |

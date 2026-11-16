@@ -139,7 +139,7 @@ function tarjeta(r) {
   const s = r.resumen;
   if (s) {
     nodo.append(el('p', { className: 'cifras' },
-      [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos]]
+      [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos], ...(s.nombres_separados ? [['Nombres con espacios restaurados', s.nombres_separados]] : [])]
         .map(([n, v]) => el('span', {}, `${n}: `, el('b', { textContent: String(v) })))));
     if (s.por_categoria) nodo.append(resumenInteractivo(s.por_categoria, r.informe));
     const i = r.informe;
