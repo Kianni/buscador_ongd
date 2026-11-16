@@ -109,3 +109,5 @@ Definidas en `lib/correcciones.json` (`conectores`, `particulas_largas`, `reglas
 - Conectores pegados (`para`, `per`, `sense`, `amb`, `del`, `dels`, `de`, `la`…): solo se parten con una base de 8 o más letras, para no romper `Ciutadella`.
 
 Cada regla nueva lleva un ejemplo en `ejemplos` (`tipo`: correo, url, nombre o direccion); `npm test` los comprueba todos.
+
+Reglas de texto añadidas a `lib/correcciones.json` (con su ejemplo comprobado por `npm test`): letra de bloque pegada a la planta (`Dbaixos` → `D baixos`, lista `unidades_de_vivienda`), tipo de vía + conectores (`Carrerdela Lluna` → `Carrer de la Lluna`, lista `tipos_de_via`), `nº`/`número` pegado a la calle (lista `marcadores_de_numero`), conectores castellanos (`por`, `con`, `sin`, `y`) y apóstrofos en direcciones (`Rambladel'Exposició` → `Rambla de l'Exposició`).

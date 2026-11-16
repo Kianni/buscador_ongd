@@ -67,6 +67,56 @@
       "tipo": "nombre",
       "entrada": "FundacióServeiGironídePedagogiaSocial",
       "salida": "Fundació Servei Gironí de Pedagogia Social"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "PladelVinyet,9BlocDbaixos",
+      "salida": "Pladel Vinyet, 9 Bloc D baixos"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "CarrerMajor,12EscalaBàtic",
+      "salida": "Carrer Major, 12 Escala B àtic"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "CarrerdelaLluna,11",
+      "salida": "Carrer de la Lluna, 11"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "PasseigdelaFumada,8",
+      "salida": "Passeig de la Fumada, 8"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "CarrerSantandernº,12",
+      "salida": "Carrer Santander nº, 12"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "Calabrianúmero,251",
+      "salida": "Calabria número, 251"
+    },
+    {
+      "tipo": "nombre",
+      "entrada": "AsociaciónEcuatorianaporlosDerechosyla",
+      "salida": "Asociación Ecuatoriana por los Derechos y la"
+    },
+    {
+      "tipo": "nombre",
+      "entrada": "InserciósocialiLaboral",
+      "salida": "Inserciósociali Laboral"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "Rambladel'Exposició,61-69",
+      "salida": "Rambla de l'Exposició, 61-69"
+    },
+    {
+      "tipo": "direccion",
+      "entrada": "AvdaD'Alella,32",
+      "salida": "Avda d'Alella, 32"
     }
   ],
   "conectores": [
@@ -75,7 +125,10 @@
     "dels",
     "del",
     "per",
+    "por",
     "amb",
+    "con",
+    "sin",
     "les",
     "els",
     "los",
@@ -84,7 +137,9 @@
     "la",
     "el",
     "en",
-    "al"
+    "al",
+    "y",
+    "i"
   ],
   "particulas_largas": [
     "sense",
@@ -97,6 +152,54 @@
     "Cada mayúscula tras una minúscula abre una palabra nueva (nombres y direcciones pegados).",
     "Direcciones pegadas: coma antes del número de la vía y espacio entre número y planta/puerta (84baixos -> 84 baixos; 1a, 7e se mantienen).",
     "Apóstrofos: «Del'Església» -> «de l'Església»; «Ramblad'Egara» -> «Rambla d'Egara».",
-    "Conectores pegados (para, per, sense, amb, del, dels, de, la…): solo se parten con una base de 8+ letras, para no romper «Ciutadella»."
+    "Conectores pegados (para, per, sense, amb, del, dels, de, la…): solo se parten con una base de 8+ letras, para no romper «Ciutadella».",
+    "Letra suelta de bloque/escalera/portal pegada a la planta o puerta: «Dbaixos» -> «D baixos» (lista unidades_de_vivienda).",
+    "Tipo de vía seguido de conectores pegados: «Carrerdela Lluna» -> «Carrer de la Lluna» (lista tipos_de_via).",
+    "Marcador de número pegado a la calle: «Santandernº» -> «Santander nº»; «Calabrianúmero» -> «Calabria número» (lista marcadores_de_numero).",
+    "Conectores castellanos pegados («Ecuatorianaporlos» -> «Ecuatoriana por los», «Derechosyla» -> «Derechos y la»): solo en rachas de 2+ conectores y sin acabar en «i»/«y» suelta.",
+    "Apóstrofos en direcciones: «Rambladel'Exposició» -> «Rambla de l'Exposició»; « D'Alella» -> « d'Alella»."
+  ],
+  "unidades_de_vivienda": [
+    "baixos",
+    "baixo",
+    "entresòl",
+    "entresuelo",
+    "àtic",
+    "atic",
+    "sobreàtic",
+    "local",
+    "principal",
+    "porta",
+    "pis",
+    "escala",
+    "bis",
+    "dreta",
+    "esquerra",
+    "bajos",
+    "ático",
+    "derecha",
+    "izquierda"
+  ],
+  "tipos_de_via": [
+    "Carrer",
+    "Passeig",
+    "Avinguda",
+    "Carretera",
+    "Travessera",
+    "Plaça",
+    "Passatge",
+    "Rambla",
+    "Ronda",
+    "Camí",
+    "Via",
+    "Calle",
+    "Avenida",
+    "Paseo",
+    "Plaza"
+  ],
+  "marcadores_de_numero": [
+    "nº",
+    "número",
+    "núm"
   ]
 }
