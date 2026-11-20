@@ -1,0 +1,321 @@
+Resumen:
+
+{
+  "leidos": 1697,
+  "cargados": 1697,
+  "rechazados": 0,
+  "duplicados": 0,
+  "con_reparaciones": 30,
+  "con_avisos": 17,
+  "por_categoria": {
+    "formato": {
+      "rechazados": 0,
+      "reparados": 30,
+      "avisos": 9,
+      "duplicados": 0
+    },
+    "faltante": {
+      "rechazados": 0,
+      "reparados": 0,
+      "avisos": 8,
+      "duplicados": 0
+    },
+    "rango": {
+      "rechazados": 0,
+      "reparados": 0,
+      "avisos": 0,
+      "duplicados": 0
+    },
+    "duplicado": {
+      "rechazados": 0,
+      "reparados": 0,
+      "avisos": 0,
+      "duplicados": 33
+    },
+    "semantico": {
+      "rechazados": 0,
+      "reparados": 0,
+      "avisos": 0,
+      "duplicados": 0
+    }
+  }
+}
+
+Registros Reparados:
+
+[
+  {
+    "fila": 13,
+    "id": "13",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+    "despues": "ajuntament@valldelaguar.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 14,
+    "id": "14",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+    "despues": "ajuntament@valldelaguar.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 15,
+    "id": "15",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "AJUMTAMENT@VALLDE LAGUAR.ES",
+    "despues": "ajuntament@valldelaguar.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 128,
+    "id": "128",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "TORREMANZANA@TORREMANZA.E",
+    "despues": "torremanzana@torremanza.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 131,
+    "id": "131",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "REGISTRO@AIGÜES.ES",
+    "despues": "registro@aigues.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 160,
+    "id": "160",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "TERCERA EDAD @TORREVIEJA.EU",
+    "despues": "terceraedad@torrevieja.eu",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 201,
+    "id": "201",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "C_O_JOSEALCAMI@HOTMAIL",
+    "despues": "c_o_josealcami@hotmail.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 316,
+    "id": "316",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
+    "despues": "alicia@oliva.es, mp@oliva.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 437,
+    "id": "437",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "ALICIA@OLIVA.ES  MP@OLIVA.ES",
+    "despues": "alicia@oliva.es, mp@oliva.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 490,
+    "id": "490",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "INFO@XALÓ.ORG",
+    "despues": "info@xalo.org",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 499,
+    "id": "499",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "CDIAT@DOWNCASTELLÓN.COM",
+    "despues": "cdiat@downcastellon.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 595,
+    "id": "595",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "ACLIENTE.NOVAIRESANVICENTE@SARQUAVITAE.E",
+    "despues": "acliente.novairesanvicente@sarquavitae.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 660,
+    "id": "660",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "96 189 90 97",
+    "despues": "961899097",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 688,
+    "id": "688",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "INFO@VINAROS. ORG",
+    "despues": "info@vinaros.org",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 797,
+    "id": "797",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "RECEPCION.MUCHAMIEL.GRUPOCASAVERDE.COM",
+    "despues": "recepcion.muchamiel@grupocasaverde.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 804,
+    "id": "804",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "964398869 - 96439828",
+    "despues": "964398869",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 881,
+    "id": "881",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "administracion@avapace.org/contabilidad@avapace.org",
+    "despues": "administracion@avapace.org, contabilidad@avapace.org",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 884,
+    "id": "884",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "VIVIENDASUPERVISADA@COMITEANTISIDAVALENC",
+    "despues": "viviendasupervisada@comiteantisidavalencia.org",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 893,
+    "id": "893",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "ADMINISTRACIÓN@CACER.NET",
+    "despues": "administracion@cacer.net",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 978,
+    "id": "978",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "CENTRODEMAYORES@SANTJOAND'ALACANT.ES",
+    "despues": "centrodemayores@santjoandalacant.es",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1028,
+    "id": "1028",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "DIRECCION2FUNDACIONSALUDINFANTIL.ORG",
+    "despues": "direccion@fundacionsaludinfantil.org",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1069,
+    "id": "1069",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "964360002; 964367054",
+    "despues": "964360002, 964367054",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1070,
+    "id": "1070",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "LA SALETA@LASALETA.COM",
+    "despues": "lasaleta@lasaleta.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1135,
+    "id": "1135",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "buendiaresidencia@hotmail,com",
+    "despues": "buendiaresidencia@hotmail.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1361,
+    "id": "1361",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+    "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1362,
+    "id": "1362",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+    "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1363,
+    "id": "1363",
+    "campo": "email",
+    "categoria": "formato",
+    "antes": "dirección.ceembenidorm@grupoelcastillo.com",
+    "despues": "direccion.ceembenidorm@grupoelcastillo.com",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1433,
+    "id": "1433",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "96 486 79 22",
+    "despues": "964867922",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1543,
+    "id": "1543",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "964 51 50 14",
+    "despues": "964515014",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  },
+  {
+    "fila": 1601,
+    "id": "1601",
+    "campo": "telefono",
+    "categoria": "formato",
+    "antes": "961366865 676422994",
+    "despues": "961366865, 676422994",
+    "motivo": "Valor no válido reparado; el resultado es válido."
+  }
+]
+
+Registros Rechazados:
+
+[]
