@@ -44,6 +44,20 @@ export const mapUrl = (url) => {
     return clean;
 };
 
+// modify phone number field from telefono
+export const mapPhoneNumber = (phone1, phone2) => {
+    const clean1 = replace_U_with_null(phone1?.trim());
+    const clean2 = replace_U_with_null(phone2?.trim());
+    const phones = [clean1, clean2].filter(Boolean);
+    if (phones.length === 0) return null;
+
+    // remove all non-digit characters
+    // const digits = phones.map(p => p.replace(/\D/g, '')).filter(Boolean);
+    if (phones.length === 0) return null;
+
+    return phones.join(', ');
+};
+
 // modify ambito
 const ambito_dict = {
     "Tercera Edad": "MAYORES",
@@ -151,7 +165,7 @@ export const mapCanariasRecords = (data) => {
             longitud: null,
             latitud: null,
             descripcion: null,
-            contacto: record.contacto ?? null,
+            contacto: mapPhoneNumber(record.telefono_1, record.telefono_2) ?? null,
             url: mapUrl(record.pagina_web) ?? null,
             en_localidad: {
                 codigo: replace_U_with_null(record.direccion_municipio_id) ?? null,

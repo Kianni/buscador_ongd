@@ -172,13 +172,13 @@ test('mapCanariasRecords uses the selected source row for both activity area and
             numero_registro: '101',
             area_nombre: 'Varios',
             subarea_nombre: 'Otros',
-            contacto: '922111111'
+            telefono_1: '922111111'
         },
         {
             numero_registro: '101',
             area_nombre: 'Varios',
             subarea_nombre: 'Migración',
-            contacto: '922222222'
+            telefono_2: '922222222'
         }
     ];
 
