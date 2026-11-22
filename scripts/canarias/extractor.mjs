@@ -4,6 +4,9 @@ import { pathToFileURL } from 'node:url';
 // modify value for code_entidad
 export const addCodeEntidad = item => "CAN:" + item.numero_registro;
 
+// if source contain _U replace it with null
+export const replace_U_with_null = (field) => field === '_U' ? null : field;
+
 // modify ambito
 const ambito_dict = {
     "Tercera Edad": "MAYORES",
@@ -107,18 +110,18 @@ export const mapCanariasRecords = (data) => {
             nombre: record.denominacion,
             ambito: chosen ? mapIntoGlobal(chosen).ambito : null,
             direccion: record.direccion  ?? null,
-            codigo_postal: record.codigo_postal ?? null,
-            longitud: record.longitude ?? null,
-            latitud: record.latitude ?? null,
-            descripcion: record.descripcion ?? null,
+            codigo_postal: null,
+            longitud: null,
+            latitud: null,
+            descripcion: null,
             contacto: record.contacto ?? null,
             URL: record.URL ?? null,
             en_localidad: {
-                codigo: record.codigo_localidad ?? null,
-                nombre: record.localidad ?? null,
+                codigo: replace_U_with_null(record.direccion_municipio_id) ?? null,
+                nombre: replace_U_with_null(record.direccion_municipio_nombre) ?? null,
                 en_provincia: {
-                    codigo: record.codigo_provincia ?? null,
-                    nombre: record.provincia ?? null
+                    codigo: replace_U_with_null(record.direccion_provincia_id) ?? null,
+                    nombre: replace_U_with_null(record.direccion_provincia_nombre) ?? null
                 }
             }
         };
@@ -132,7 +135,7 @@ function main() {
     const sample = new URL('../../data/entrega1/datos-abiertos-csv-segundo-trimestre26.json', import.meta.url);
     const fileContent = fs.readFileSync(process.argv[2] ?? sample, 'utf-8');
     const data = JSON.parse(fileContent);
-    console.log(mapCanariasRecords(data));
+    console.dir(mapCanariasRecords(data), { depth: null });;
 }
 
 // Run the CLI only when Node launches this file directly.

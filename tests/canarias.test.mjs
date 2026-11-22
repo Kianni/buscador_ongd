@@ -129,3 +129,29 @@ test('mapCanariasRecords uses the selected source row for both activity area and
         }
     ]);
 });
+
+test('mapCanariasRecords converts _U to null in locality and province fields', () => {
+    const rows = [
+        {
+            numero_registro: '101',
+            direccion_municipio_id: '38060',
+            direccion_municipio_nombre: 'Arona',
+            direccion_provincia_id: '_U',
+            direccion_provincia_nombre: '_U'
+        },
+        {
+            numero_registro: '102',
+            direccion_municipio_id: '_U',
+            direccion_municipio_nombre: '_U',
+            direccion_provincia_id: '35',
+            direccion_provincia_nombre: 'Las Palmas'
+        }
+    ];
+
+    const { mappedCanariasRecords } = mapCanariasRecords(rows);
+
+    assert.deepEqual(mappedCanariasRecords.map(record => record.en_localidad), [
+        { codigo: '38060', nombre: 'Arona', en_provincia: { codigo: null, nombre: null } },
+        { codigo: null, nombre: null, en_provincia: { codigo: '35', nombre: 'Las Palmas' } }
+    ]);
+});
