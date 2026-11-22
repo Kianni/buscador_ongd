@@ -29,6 +29,21 @@ export const mapStreetAddress = (record) => {
     return address || null;       
 };
 
+// modify url field from pagina_web
+export const mapUrl = (url) => {
+    const clean = replace_U_with_null(url?.trim());
+    if (!clean) return null;
+
+    if (clean.includes(" ") || clean.includes("%20") || clean.includes("@")) {
+        return null;
+    }
+    if (clean.startsWith("hhtps://") || !clean.includes(".")) {
+        return null;
+    }
+
+    return clean;
+};
+
 // modify ambito
 const ambito_dict = {
     "Tercera Edad": "MAYORES",
@@ -137,7 +152,7 @@ export const mapCanariasRecords = (data) => {
             latitud: null,
             descripcion: null,
             contacto: record.contacto ?? null,
-            URL: record.URL ?? null,
+            url: mapUrl(record.pagina_web) ?? null,
             en_localidad: {
                 codigo: replace_U_with_null(record.direccion_municipio_id) ?? null,
                 nombre: replace_U_with_null(record.direccion_municipio_nombre) ?? null,

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { addCodeEntidad, mapStreetAddress, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
+import { addCodeEntidad, mapStreetAddress, mapUrl, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
 
 test('mapStreetAddress omits the _U complement marker', () => {
     const row = {
@@ -223,3 +223,32 @@ test('mapCanariasRecords converts _U to null in locality and province fields', (
         { codigo: null, nombre: null, en_provincia: { codigo: '35', nombre: 'Las Palmas' } }
     ]);
 });
+
+test('mapCanariasRecords writes pagina_web to url and converts _U to null', () => {
+    const rows = [
+        { numero_registro: '101', pagina_web: 'https://example.org' },
+        { numero_registro: '102', pagina_web: '_U' }
+    ];
+
+    const { mappedCanariasRecords } = mapCanariasRecords(rows);
+
+    assert.deepEqual(mappedCanariasRecords.map(record => record.url), [
+        'https://example.org',
+        null
+    ]);
+});
+
+for (const [description, input, expected] of [
+    ['keeps a website without a scheme', 'www.example.org', 'www.example.org'],
+    ['keeps a complete HTTPS URL', 'https://example.org/about', 'https://example.org/about'],
+    ['returns null for a missing value', undefined, null],
+    ['returns null for a blank value', '   ', null],
+    ['rejects an email address', 'info@example.org', null],
+    ['rejects a description', 'en migración a nuevo dominio', null],
+    ['rejects a single word', 'pendiente', null],
+    ['rejects a misspelled scheme', 'hhtps://example.org', null]
+]) {
+    test(`mapUrl ${description}`, () => {
+        assert.equal(mapUrl(input), expected);
+    });
+}
