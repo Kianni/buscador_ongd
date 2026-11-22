@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { addCodeEntidad, mapStreetAddress, mapUrl, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
+import { addCodeEntidad, mapStreetAddress, mapUrl, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords, extraerCAN } from '../scripts/canarias/extractor.mjs';
 
 test('mapStreetAddress omits the _U complement marker', () => {
     const row = {
@@ -164,6 +164,19 @@ test('each registration keeps its own activity area when the NIF is shared', () 
         { cod_entidad: 'CAN:ERE2022TF00115', ambito: 'INCLUSION_SOCIAL' },
         { cod_entidad: 'CAN:ERE2024TF00037', ambito: 'DISCAPACIDAD' }
     ]);
+});
+
+test('extraerCAN exposes activity choices as loader notices', () => {
+    const fixture = new URL('./fixtures/canarias-shared-nif.json', import.meta.url);
+    const { informe } = extraerCAN(readFileSync(fixture, 'utf8'));
+
+    assert.equal(informe.resumen.con_avisos, 1);
+    assert.deepEqual(informe.avisos, [{
+        id: 'CAN:ERE2022TF00115',
+        campo: 'ambito',
+        categoria: 'semantico',
+        mensaje: 'Opciones de origen (2): \nExclusión Social/_U | Voluntariado/Servicios Sociales. \n\nSe seleccionó: \nExclusión Social/_U → INCLUSION_SOCIAL.'
+    }]);
 });
 
 test('mapCanariasRecords uses the selected source row for both activity area and contact', () => {

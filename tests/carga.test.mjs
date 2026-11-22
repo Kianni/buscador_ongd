@@ -48,7 +48,7 @@ test('borrar el almacén permite volver a cargar', () => conServidor(async llama
 test('cada fuente de una petición múltiple se resuelve por separado', () => conServidor(async llamar => {
   await llamar('POST', '/api/carga', { fuentes: [{ fuente: 'CV', contenido: leer('prueba_cv.csv') }] });
   const { datos } = await llamar('POST', '/api/carga', { fuentes: [{ fuente: 'CV' }, { fuente: 'CAT', contenido: leer('prueba_cat.xml') }, { fuente: 'CAN' }, { fuente: 'XX' }] });
-  assert.deepEqual(datos.resultados.map(r => r.estado), ['ya_cargada', 'cargada', 'no_disponible', 'desconocida']);
+  assert.deepEqual(datos.resultados.map(r => r.estado), ['ya_cargada', 'cargada', 'cargada', 'desconocida']);
 }));
 
 test('un archivo ilegible no toca el almacén', () => conServidor(async llamar => {

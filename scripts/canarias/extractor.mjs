@@ -180,6 +180,39 @@ export const mapCanariasRecords = (data) => {
     return { mappedCanariasRecords: mappedOrganisationRecords, journal };
 }
 
+export const extraerCAN = (texttoJson) => {
+    
+    const rows = JSON.parse(texttoJson);
+
+    const { mappedCanariasRecords, journal } = mapCanariasRecords(rows);
+    const avisos = journal.map(({ numero_registro, all_areas, chosen, ambito }) => {
+        const opciones = all_areas.join(' | ');
+        const eleccion = chosen
+            ? `Se seleccionó: \n${chosen} → ${ambito}.`
+            : 'Ninguna opción tiene correspondencia en el esquema global.';
+
+        return {
+            id: `CAN:${numero_registro}`,
+            campo: 'ambito',
+            categoria: 'semantico',
+            mensaje: `Opciones de origen (${all_areas.length}): \n${opciones}. \n\n${eleccion}`
+        };
+    });
+
+    return {
+        entidades: mappedCanariasRecords,
+        informe: {
+            resumen:{
+                leidos: rows.length,
+                cargados: 0,
+                rechazados: 0,
+                con_avisos: avisos.length,
+            },
+            rechazados: [],
+            avisos
+        }
+    };
+};
 
 function main() {
     console.log('Extractor script running');

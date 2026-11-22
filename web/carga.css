@@ -43,6 +43,10 @@ details { margin: 6px 0; }
 summary { cursor: pointer; }
 table { border-collapse: collapse; width: 100%; font-size: .82rem; margin-top: 6px; }
 th, td { text-align: left; border-bottom: 1px solid #e5e5e5; padding: 4px 8px 4px 0; vertical-align: top; overflow-wrap: anywhere; }
+.tabla-avisos { overflow-x: auto; }
+.tabla-avisos th,
+.tabla-avisos td:not(:last-child) { white-space: nowrap; padding-right: 12px; }
+.tabla-avisos td:last-child { min-width: 16rem; overflow-wrap: break-word; white-space: pre-line;}
 .nota { font-size: .8rem; color: #666; margin: 4px 0; }
 .descargar { font-size: .85rem; color: var(--acento); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 @media (max-width: 640px) { fieldset { flex-direction: column; } legend { float: none; margin: 0 0 12px; } }

@@ -91,6 +91,15 @@ function seccion(titulo, filas, columnas) {
   return el('details', {}, el('summary', { textContent: `${titulo} (${filas.length})` }), tabla(columnas, filas));
 }
 
+function seccionAvisos(avisos) {
+  if (!avisos?.length) return null;
+  const columnas = [['id', 'Id'], ['categoria', 'Tipo de aviso'], ['campo', 'Campo'], ['mensaje', 'Aviso']];
+  if (avisos.some(aviso => aviso.fila != null && aviso.fila !== '')) columnas.unshift(['fila', 'Fila']);
+  return el('details', {},
+    el('summary', { textContent: `Avisos (${avisos.length})` }),
+    el('div', { className: 'tabla-avisos' }, tabla(columnas, avisos)));
+}
+
 // Resumen por tipo de error: cada cifra distinta de 0 se puede pulsar y muestra los registros concretos.
 const DETALLE = {
   rechazados: i => i.motivo,
@@ -148,7 +157,7 @@ function tarjeta(r) {
       seccion('Duplicados', i.duplicados, [['fila', 'Fila repetida'], ['fila_original', 'Primera aparición'], ['id', 'Id'], ['nombre', 'Entidad'], ['tipo', 'Tipo'], ['accion', 'Acción']]),
       seccion('Posibles duplicados (se conservan ambos)', i.posibles_duplicados, [['id', 'Id'], ['nombre', 'Entidad'], ['localidad', 'Localidad'], ['duplica_a', 'Se parece al Id'], ['accion', 'Qué dicen las demás columnas']]),
       seccion('Datos reparados', i.reparados, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['antes', 'Antes'], ['despues', 'Después'], ['motivo', 'Motivo']]),
-      seccion('Avisos (se conserva el original)', i.avisos, [['fila', 'Fila'], ['id', 'Id'], ['categoria', 'Tipo de error'], ['campo', 'Campo'], ['mensaje', 'Aviso']])].filter(Boolean));
+      seccionAvisos(i.avisos)].filter(Boolean));
     nodo.append(el('button', { type: 'button', className: 'descargar', textContent: 'Descargar informe completo (JSON)', onclick: () => descargarInforme(r) }));
   }
   return nodo;
