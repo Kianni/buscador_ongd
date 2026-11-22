@@ -25,4 +25,4 @@ Respuesta de carga: por fuente `estado` = `cargada`, `ya_cargada`, `no_disponibl
 - **Doble carga**: se comprueba antes de extraer y la base de datos lo impone con una clave primaria en `carga_fuente` (`FUENTE_YA_CARGADA`). Es atómico: si algo falla no queda nada a medias ni la fuente bloqueada.
 - **Regla de datos**: se repara solo si el resultado queda válido; si no, se conserva el original y se informa.
 - Antes de subir se valida cada entidad contra el esquema (prefijo de fuente, enum Ámbito, coordenadas, localidad y provincia).
-- **Canarias**: pendiente; para integrarlo, añadir su `extraer(texto) => {entidades, informe}` en `api/fuentes.mjs`.
+- **Canarias**: usa `data/datos-abiertos-csv-segundo-trimestre26.json`. `_U` y valores en blanco se tratan como ausentes; las filas sin nombre o código de localidad se rechazan y se informan. Por cada `numero_registro` se conserva la primera fila y las repeticiones se detallan en duplicados. Las áreas sin equivalencia aprobada quedan en `ambito = null` con aviso.

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node api/server.mjs",
     "start:mvp-antiguo": "node scripts/serve.mjs",
-    "test": "node --test tests/adapters.test.mjs tests/i18n.test.mjs tests/valenciana.test.mjs tests/carga.test.mjs",
+    "test": "node --test tests/adapters.test.mjs tests/i18n.test.mjs tests/valenciana.test.mjs tests/canarias.test.mjs tests/carga.test.mjs",
     "test:browser": "node tests/browser-smoke.mjs",
     "api": "node api/server.mjs",
     "postinstall": "npm install --prefix scripts/catalunya --silent"

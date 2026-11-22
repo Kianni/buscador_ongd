@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { extraerCV } from '../scripts/valenciana/extractor.mjs';
+import { extraerCAN } from '../scripts/canarias/extractor.mjs';
 
 const require = createRequire(import.meta.url);
 
@@ -20,8 +21,7 @@ export const FUENTES = [
   {
     id: 'CAN', nombre: 'Canarias', formato: 'JSON', extension: '.json',
     archivoPorDefecto: 'datos-abiertos-csv-segundo-trimestre26.json',
-    extraer: null, // extractor pendiente: lo desarrolla otro integrante del equipo
-    motivoNoDisponible: 'El extractor de Canarias aún no está integrado.',
+    extraer: texto => extraerCAN(texto),
   },
 ];
 
