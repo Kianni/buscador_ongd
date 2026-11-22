@@ -7,6 +7,28 @@ export const addCodeEntidad = item => "CAN:" + item.numero_registro;
 // if source contain _U replace it with null
 export const replace_U_with_null = (field) => field === '_U' ? null : field;
 
+// create a standardized street address object from the record
+export const mapStreetAddress = (record) => {
+    const clean = value => replace_U_with_null(value?.trim());
+
+    const type = clean(record.direccion_tipo_via);
+    const name = clean(record.direccion_nombre_via);
+    const number = clean(record.direccion_numero);
+    const complement = clean(record.direccion_complemento);
+
+    // do not repeat the street type if it's already included in the name
+    const hasStreetType = name && type &&
+        name.toLowerCase().startsWith(type.toLowerCase() + " ");
+    const street = hasStreetType ? [name].filter(Boolean).join(" ") : [type, name].filter(Boolean).join(" ");
+    
+    //do not repeat the house number if it's already included in the street
+    const hasHouseNumber = name && type &&
+            street.endsWith(" " + number);
+    const address = hasHouseNumber ? [street, complement].filter(Boolean).join(", ") : [street, number, complement].filter(Boolean).join(", ");
+
+    return address || null;       
+};
+
 // modify ambito
 const ambito_dict = {
     "Tercera Edad": "MAYORES",
@@ -109,7 +131,7 @@ export const mapCanariasRecords = (data) => {
             cod_entidad: addCodeEntidad(record),
             nombre: record.denominacion,
             ambito: chosen ? mapIntoGlobal(chosen).ambito : null,
-            direccion: record.direccion  ?? null,
+            direccion: mapStreetAddress(record) ?? null,
             codigo_postal: null,
             longitud: null,
             latitud: null,

@@ -1,7 +1,75 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { addCodeEntidad, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
+import { addCodeEntidad, mapStreetAddress, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
+
+test('mapStreetAddress omits the _U complement marker', () => {
+    const row = {
+        direccion_tipo_via: 'Calle',
+        direccion_nombre_via: 'Real',
+        direccion_numero: '132',
+        direccion_complemento: '_U'
+    };
+
+    assert.equal(mapStreetAddress(row), 'Calle Real, 132');
+});
+
+test('mapStreetAddress trims and preserves a meaningful complement', () => {
+    const row = {
+        direccion_tipo_via: 'Calle',
+        direccion_nombre_via: 'Juan Rejon',
+        direccion_numero: '141',
+        direccion_complemento: '  3º B '
+    };
+
+    assert.equal(mapStreetAddress(row), 'Calle Juan Rejon, 141, 3º B');
+});
+
+test('mapStreetAddress omits an empty street type', () => {
+    const row = {
+        direccion_tipo_via: ' ',
+        direccion_nombre_via: 'Real',
+        direccion_numero: '132',
+        direccion_complemento: 'Bajo'
+    };
+
+    assert.equal(mapStreetAddress(row), 'Real, 132, Bajo');
+});
+
+test('mapStreetAddress returns null when all address parts are missing', () => {
+    assert.equal(mapStreetAddress({}), null);
+});
+
+test('mapStreetAddress avoids repeating a street type already in the name', () => {
+    const row = {
+        direccion_tipo_via: 'CALLE',
+        direccion_nombre_via: 'Calle Alcalde Garcia Ramos',
+        direccion_numero: '6',
+        direccion_complemento: '11 D 2'
+    };
+
+    assert.equal(mapStreetAddress(row), 'Calle Alcalde Garcia Ramos, 6, 11 D 2');
+});
+
+test('mapStreetAddress omits a house number already at the end of the street name', () => {
+    const row = {
+        direccion_tipo_via: 'Calle',
+        direccion_nombre_via: 'La Gomera 63',
+        direccion_numero: '63'
+    };
+
+    assert.equal(mapStreetAddress(row), 'Calle La Gomera 63');
+});
+
+test('mapStreetAddress keeps a house number that matches only part of the street suffix', () => {
+    const row = {
+        direccion_tipo_via: 'Calle',
+        direccion_nombre_via: 'La Gomera 163',
+        direccion_numero: '63'
+    };
+
+    assert.equal(mapStreetAddress(row), 'Calle La Gomera 163, 63');
+});
 
 test('addCodeEntidad adds the CAN prefix to the registration number', () => {
     const input = { nif: 'G38640769', numero_registro: 'ERE2003CA00013' };
