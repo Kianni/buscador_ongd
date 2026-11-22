@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { addCodeEntidad, mapIntoGlobal, groupByRegistration, chooseArea, mapRows } from '../scripts/canarias/extractor.mjs';
+import { addCodeEntidad, mapIntoGlobal, groupByRegistration, chooseArea, mapCanariasRecords } from '../scripts/canarias/extractor.mjs';
 
 test('addCodeEntidad adds the CAN prefix to the registration number', () => {
     const input = { nif: 'G38640769', numero_registro: 'ERE2003CA00013' };
@@ -89,10 +89,43 @@ test('group full rows by registration even when they share a NIF', () => {
 test('each registration keeps its own activity area when the NIF is shared', () => {
     const fixture = new URL('./fixtures/canarias-shared-nif.json', import.meta.url);
     const rows = JSON.parse(readFileSync(fixture, 'utf8'));
-    const entities = mapRows(rows).map(({ cod_entidad, ambito }) => ({ cod_entidad, ambito }));
+    const { mappedCanariasRecords } = mapCanariasRecords(rows);
+    const entities = mappedCanariasRecords.map(({ cod_entidad, ambito }) => ({ cod_entidad, ambito }));
 
     assert.deepEqual(entities, [
         { cod_entidad: 'CAN:ERE2022TF00115', ambito: 'INCLUSION_SOCIAL' },
         { cod_entidad: 'CAN:ERE2024TF00037', ambito: 'DISCAPACIDAD' }
+    ]);
+});
+
+test('mapCanariasRecords uses the selected source row for both activity area and contact', () => {
+    const rows = [
+        {
+            numero_registro: '101',
+            area_nombre: 'Varios',
+            subarea_nombre: 'Otros',
+            contacto: '922111111'
+        },
+        {
+            numero_registro: '101',
+            area_nombre: 'Varios',
+            subarea_nombre: 'Migración',
+            contacto: '922222222'
+        }
+    ];
+
+    const { mappedCanariasRecords: entities, journal } = mapCanariasRecords(rows);
+
+    assert.equal(entities.length, 1);
+    assert.equal(entities[0].cod_entidad, 'CAN:101');
+    assert.equal(entities[0].ambito, 'MIGRACION');
+    assert.equal(entities[0].contacto, '922222222');
+    assert.deepEqual(journal, [
+        {
+            numero_registro: '101',
+            all_areas: ['Varios/Otros', 'Varios/Migración'],
+            chosen: 'Varios/Migración',
+            ambito: 'MIGRACION'
+        }
     ]);
 });

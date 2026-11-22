@@ -74,35 +74,56 @@ export const chooseArea = (rows) => {
     return rows.find(item => mapIntoGlobal(item).ambito !== null);
 }
 
-export const mapRows = (data) => {
-    const groupedData = groupByRegistration(data);
+// Return one entity per registration number, plus a journal of activity choices.
+export const mapCanariasRecords = (data) => {
+    const organisationRecords = groupByRegistration(data);
+    const journal = [];
 
-    const mappedData = [...groupedData.values()].map(areasGrouped => {
-        const item = areasGrouped[0];
+    const mappedOrganisationRecords = [...organisationRecords.values()].map(areasGrouped => {
         const chosen = chooseArea(areasGrouped);
+        const record = chosen ?? areasGrouped[0];
+
+        // Log the area names to make clear what was omitted in the result
+        const area_names = areasGrouped.map(org_obj => org_obj.area_nombre + '/' + org_obj.subarea_nombre);
+        const area_names_withoutDuplicates = [...new Set(area_names)];
+        // console.log(`Area names for ${record.numero_registro}: ${area_names_withoutDuplicates.length}\n`, area_names_withoutDuplicates);
+        
+        if (area_names_withoutDuplicates.length > 1) {
+            // if (chosen) {
+            //     console.log(`Chosen area for ${record.numero_registro}:`, chosen.area_nombre + '/' + chosen.subarea_nombre);
+            // } else {
+            //     console.log(`No chosen area for ${record.numero_registro}`);
+            // }
+            journal.push({
+                numero_registro: record.numero_registro,
+                all_areas: area_names_withoutDuplicates,
+                chosen: chosen ? chosen.area_nombre + '/' + chosen.subarea_nombre : null,
+                ambito: chosen ? mapIntoGlobal(chosen).ambito : null
+            });
+        }
 
         return {
-        cod_entidad: addCodeEntidad(item),
-        nombre: item.denominacion,
-        ambito: chosen ? mapIntoGlobal(chosen).ambito : null,
-        direccion: item.direccion  ?? null,
-        codigo_postal: item.codigo_postal ?? null,
-        longitud: item.longitude ?? null,
-        latitud: item.latitude ?? null,
-        descripcion: item.descripcion ?? null,
-        contacto: item.contacto ?? null,
-        URL: item.URL ?? null,
-        en_localidad: {
-            codigo: item.codigo_localidad ?? null,
-            nombre: item.localidad ?? null,
-            en_provincia: {
-                codigo: item.codigo_provincia ?? null,
-                nombre: item.provincia ?? null
+            cod_entidad: addCodeEntidad(record),
+            nombre: record.denominacion,
+            ambito: chosen ? mapIntoGlobal(chosen).ambito : null,
+            direccion: record.direccion  ?? null,
+            codigo_postal: record.codigo_postal ?? null,
+            longitud: record.longitude ?? null,
+            latitud: record.latitude ?? null,
+            descripcion: record.descripcion ?? null,
+            contacto: record.contacto ?? null,
+            URL: record.URL ?? null,
+            en_localidad: {
+                codigo: record.codigo_localidad ?? null,
+                nombre: record.localidad ?? null,
+                en_provincia: {
+                    codigo: record.codigo_provincia ?? null,
+                    nombre: record.provincia ?? null
+                }
             }
-        }
         };
     });
-    return mappedData;
+    return { mappedCanariasRecords: mappedOrganisationRecords, journal };
 }
 
 
@@ -111,7 +132,7 @@ function main() {
     const sample = new URL('../../data/entrega1/datos-abiertos-csv-segundo-trimestre26.json', import.meta.url);
     const fileContent = fs.readFileSync(process.argv[2] ?? sample, 'utf-8');
     const data = JSON.parse(fileContent);
-    console.log(mapRows(data));
+    console.log(mapCanariasRecords(data));
 }
 
 // Run the CLI only when Node launches this file directly.
