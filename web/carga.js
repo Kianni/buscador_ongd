@@ -132,12 +132,31 @@ function descargarInforme(r) {
   a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
+function descargarTxt(nombre, texto) {
+  const url = URL.createObjectURL(new Blob([texto], { type: 'text/plain;charset=utf-8' }));
+  const a = el('a', { href: url, download: nombre });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function enlaceTxt(nombre, texto) {
+  const url = URL.createObjectURL(new Blob([texto], { type: 'text/plain;charset=utf-8' }));
+  const enlace = el('a', { className: 'descargar', href: url, download: nombre, textContent: `Descargar ${nombre}` });
+  setTimeout(() => URL.revokeObjectURL(url), 5 * 60 * 1000);
+  return enlace;
+}
+
 function tarjeta(r) {
   const nodo = el('article', { className: 'fuente' },
     el('h3', {}, r.nombre ?? r.fuente, el('span', { className: `estado ${r.estado}`, textContent: ETIQUETAS[r.estado] ?? r.estado })),
     el('p', { className: 'mensaje', textContent: r.mensaje ?? '' }));
   const s = r.resumen;
   if (s) {
+    if (r.entrega) nodo.append(el('p', { className: 'mensaje' },
+      'TXT generados: ', enlaceTxt(`Datos_${r.fuente}.txt`, r.entrega.datosTxt), ' · ',
+      enlaceTxt(`Informe_${r.fuente}.txt`, r.entrega.informeTxt)));
     nodo.append(el('p', { className: 'cifras' },
       [['Leídas', s.leidos], ['Cargadas', s.cargados], ['Rechazadas', s.rechazados], ['Duplicadas', s.duplicados], ['Con reparaciones', s.con_reparaciones], ['Con avisos', s.con_avisos]]
         .map(([n, v]) => el('span', {}, `${n}: `, el('b', { textContent: String(v) })))));
@@ -175,6 +194,11 @@ async function cargar(evento) {
     const { resultados, estado: nuevo } = await api('POST', '/api/carga', { fuentes });
     estado.almacen = nuevo;
     estado.archivos.clear();
+    for (const resultado of resultados) {
+      if (resultado.estado !== 'cargada' || !resultado.entrega) continue;
+      descargarTxt(`Datos_${resultado.fuente}.txt`, resultado.entrega.datosTxt);
+      descargarTxt(`Informe_${resultado.fuente}.txt`, resultado.entrega.informeTxt);
+    }
     mostrar(...resultados.map(tarjeta));
   } catch (e) {
     mostrarMensaje(`No se pudo completar la carga: ${e.message}`, 'mensaje');

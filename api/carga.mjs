@@ -2,6 +2,7 @@
 import { fuentePorId, leerArchivoPorDefecto } from './fuentes.mjs';
 import { problemasDeEntidad } from './validar.mjs';
 import { ErrorAlmacen } from './almacen-memoria.mjs';
+import { aTsv, textoInforme } from '../scripts/exportar-entrega.mjs';
 
 // Estados de cada fuente en la respuesta:
 //   cargada | ya_cargada | no_disponible | error_datos | error_almacen | desconocida
@@ -43,10 +44,14 @@ async function cargarUna(almacen, peticion, dirDatos, yaCargadas) {
   if (validas.length === 0) {
     return { ...base, estado: 'error_datos', mensaje: 'No hay ninguna entidad válida que cargar. No se ha modificado el almacén.', resumen: informe.resumen, informe };
   }
+  const entrega = {
+    datosTxt: aTsv(validas),
+    informeTxt: textoInforme(informe, fuente.id === 'CAN'),
+  };
   try {
     const subida = await almacen.cargar(fuente.id, validas);
     yaCargadas.add(fuente.id);
-    return { ...base, estado: 'cargada', mensaje: `${validas.length} entidades cargadas.`, resumen: informe.resumen, subida, informe };
+    return { ...base, estado: 'cargada', mensaje: `${validas.length} entidades cargadas.`, resumen: informe.resumen, subida, informe, entrega };
   } catch (e) {
     if (e instanceof ErrorAlmacen && e.codigo === 'FUENTE_YA_CARGADA') {
       yaCargadas.add(fuente.id);

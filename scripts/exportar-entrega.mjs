@@ -37,7 +37,7 @@ export function aTsv(entidades) {
   return [columnas.join('\t'), ...filas].join('\n');
 }
 
-function textoInforme(informe, incluirIncidenciasCanarias) {
+export function textoInforme(informe, incluirIncidenciasCanarias) {
   const secciones = [
     'Resumen:',
     JSON.stringify(informe.resumen, null, 2),
