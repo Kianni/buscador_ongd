@@ -5,6 +5,8 @@ const readline = require('readline/promises');
 const { stdin, stdout } = require('process');
 const { pathToFileURL } = require('url');
 const { XMLParser } = require('fast-xml-parser');
+const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 // ==========================================
 // 1. FUNCIONES DE LIMPIEZA Y FORMATEO
@@ -241,19 +243,10 @@ function variantesMunicipio(texto) {
 }
 
 // ==========================================
-// 3. GEOCODIFICACIÓN CON CARTOCIUDAD
+// 3. GEOCODIFICACIÓN CON SELENIUM
 // ==========================================
 
-const URL_CARTOCIUDAD =
-  'https://www.cartociudad.es/geocoder/api/geocoder';
-
-function extraerResultados(datos) {
-  if (Array.isArray(datos)) return datos;
-  if (Array.isArray(datos?.result)) return datos.result;
-  if (Array.isArray(datos?.results)) return datos.results;
-  if (datos && typeof datos === 'object') return [datos];
-  return [];
-}
+const URL_COORDENADAS_GPS = 'https://www.coordenadas-gps.com/';
 
 function coordenadasValidas(lat, lon) {
   return (
@@ -264,7 +257,6 @@ function coordenadasValidas(lat, lon) {
   );
 }
 
-// MISMA SIMPLIFICACIÓN QUE LA PRUEBA INDEPENDIENTE.
 function simplificarDireccionParaBusqueda(direccion) {
   const texto = limpiar(String(direccion ?? '')) || '';
 
@@ -276,90 +268,75 @@ function simplificarDireccionParaBusqueda(direccion) {
     .replace(/[,\s]+$/, '');
 }
 
-async function consultarCartoCiudad(endpoint, parametros) {
-  const url = new URL(`${URL_CARTOCIUDAD}/${endpoint}`);
+async function asegurarPaginaCoordenadasLista(driver) {
+  let urlActual = '';
+  try {
+    urlActual = await driver.getCurrentUrl();
+  } catch {}
 
-  for (const [clave, valor] of Object.entries(parametros)) {
-    if (valor !== null && valor !== undefined && valor !== '') {
-      url.searchParams.set(clave, String(valor));
-    }
+  if (urlActual.startsWith(URL_COORDENADAS_GPS)) {
+    const yaLista = await driver.executeScript(() =>
+      Boolean(document.getElementById('address')) &&
+      typeof window.gl_map === 'object' &&
+      window.gl_map !== null &&
+      !document.querySelector('.fc-consent-root')
+    );
+    if (yaLista) return;
   }
 
-  const respuesta = await fetch(url, {
-    headers: { Accept: 'application/json' },
-    signal: AbortSignal.timeout(15000)
+  await driver.get(URL_COORDENADAS_GPS);
+
+  // Espera al aviso de Google Funding Choices («Consentir») si aparece de forma asíncrona.
+  try {
+    const botonConsentir = await driver.wait(
+      until.elementLocated(By.css('button.fc-cta-consent')),
+      5000
+    );
+    if (await botonConsentir.isDisplayed()) {
+      await botonConsentir.click();
+      await driver.wait(
+        async () => !(await driver.executeScript(() => Boolean(document.querySelector('.fc-consent-root')))),
+        5000
+      );
+      console.log('[GEOCODIFICACIÓN] Se pulsó «Consentir».');
+    }
+  } catch {
+    console.log('[GEOCODIFICACIÓN] No apareció el aviso «Consentir» (consentimiento ya guardado).');
+  }
+
+  // Desplaza la vista al mapa/formulario para activar la inicialización diferida (gl_map).
+  await driver.wait(until.elementLocated(By.id('address')), 15000);
+  await driver.executeScript(() => {
+    document.getElementById('map_canvas')?.scrollIntoView({ block: 'center' });
+    document.getElementById('address')?.scrollIntoView({ block: 'center' });
   });
 
-  const cuerpo = await respuesta.text();
+  await driver.wait(
+    async () => driver.executeScript(() => {
+      if (typeof window.gl_map === 'object' && window.gl_map !== null) return true;
+      if (typeof window.initializeMap === 'function' && !window.mapLoaded) {
+        try {
+          window.appeared = 1;
+          if (window.geoloc === 0) window.geoloc = 2;
+          window.initializeMap();
+        } catch {}
+      }
+      return typeof window.gl_map === 'object' && window.gl_map !== null;
+    }),
+    10000
+  );
 
-  if (!respuesta.ok) {
-    throw new Error(
-      `${endpoint} HTTP ${respuesta.status}: ${cuerpo.slice(0, 300)}`
-    );
-  }
-
-  if (!cuerpo.trim()) {
-    throw new Error(`${endpoint} ha devuelto una respuesta vacía.`);
-  }
-
-  try {
-    return JSON.parse(cuerpo);
-  } catch {
-    throw new Error(
-      `${endpoint} no ha devuelto JSON válido: ${cuerpo.slice(0, 300)}`
-    );
-  }
+  // Evita que alert("Error de geolocalización.") bloquee Selenium si una dirección no tiene resultados.
+  await driver.executeScript(() => {
+    if (!window.__alertSilenciado) {
+      window.alert = msg => { window.__geoAlert = String(msg ?? ''); };
+      window.__alertSilenciado = true;
+    }
+  });
 }
 
-// MISMA PUNTUACIÓN QUE LA PRUEBA INDEPENDIENTE.
-function puntuarCandidato(
-  c,
-  numeroPortal,
-  cp,
-  municipio,
-  provincia
-) {
-  let puntos = 0;
-
-  if (c.type === 'portal') puntos += 100;
-
-  if (
-    numeroPortal &&
-    String(c.portalNumber ?? '') === numeroPortal
-  ) {
-    puntos += 80;
-  }
-
-  if (
-    cp &&
-    String(c.postalCode ?? '') === String(cp)
-  ) {
-    puntos += 40;
-  }
-
-  if (
-    municipio &&
-    c.muni &&
-    normalizarClaveMunicipio(c.muni) ===
-      normalizarClaveMunicipio(municipio)
-  ) {
-    puntos += 20;
-  }
-
-  if (
-    provincia &&
-    c.province &&
-    normalizarClaveMunicipio(c.province) ===
-      normalizarClaveMunicipio(provincia)
-  ) {
-    puntos += 10;
-  }
-
-  return puntos;
-}
-
-// MISMO FLUJO QUE probar-geocodificacion.cjs.
 async function obtenerCoordenadas(
+  driver,
   direccion,
   codigoPostal,
   municipio,
@@ -381,208 +358,68 @@ async function obtenerCoordenadas(
     direccionBusqueda,
     codigoPostal,
     municipio,
-    provincia,
+    provincia && normalizarTexto(provincia) !== normalizarTexto(municipio) ? provincia : null,
     'España'
   ].filter(Boolean).join(', ');
 
   try {
-    console.log('\n' + '='.repeat(72));
-    console.log(`[GEOCODIFICACIÓN] Dirección original: ${direccion}`);
-    console.log(`[GEOCODIFICACIÓN] Dirección simplificada: ${direccionBusqueda}`);
-    console.log(`[GEOCODIFICACIÓN] Consulta de referencia: ${consulta}`);
+    console.log(`[GEOCODIFICACIÓN] Buscando con Selenium: ${consulta}`);
+    await asegurarPaginaCoordenadasLista(driver);
 
-    // 1. Primera búsqueda con filtros de código postal y municipio.
-    const parametros = {
-      q: direccionBusqueda,
-      limit: '10'
-    };
-
-    if (codigoPostal && /^\d{5}$/.test(String(codigoPostal))) {
-      parametros.cod_postal_filter = codigoPostal;
-    }
-
-    if (municipio) {
-      parametros.municipio_filter = municipio;
-    }
-
-    let candidatos = extraerResultados(
-      await consultarCartoCiudad('candidates', parametros)
-    );
-
-    // 2. Si no hay resultados, repetir sin filtros,
-    // incluyendo municipio y provincia en el texto de búsqueda.
-    if (!candidatos.length) {
-      console.log(
-        '[GEOCODIFICACIÓN] Sin resultados con filtros; se repite sin filtros.'
-      );
-
-      candidatos = extraerResultados(
-        await consultarCartoCiudad('candidates', {
-          q: [
-            direccionBusqueda,
-            municipio,
-            provincia,
-            'España'
-          ].filter(Boolean).join(', '),
-          limit: '10'
-        })
-      );
-    }
-
-    if (!candidatos.length) {
-      console.log(
-        '[GEOCODIFICACIÓN] RESULTADO: no se han encontrado candidatos.'
-      );
-      return null;
-    }
-
-    const muniNorm = normalizarClaveMunicipio(municipio);
-    const provNorm = normalizarClaveMunicipio(provincia);
-
-    const numeroPortal =
-      direccionBusqueda.match(/\b(\d{1,5})\b/)?.[1] ?? null;
-
-    // 3. Descartar candidatos que contradigan municipio,
-    // provincia o código postal.
-    const validos = candidatos.filter(c => {
-      if (
-        c.muni &&
-        muniNorm &&
-        normalizarClaveMunicipio(c.muni) !== muniNorm
-      ) {
-        return false;
+    // Limpia coordenadas previas, fija la dirección exacta (con ç/acentos) y reinicia avisos.
+    await driver.executeScript(texto => {
+      window.__geoAlert = null;
+      const latEl = document.getElementById('latitude');
+      const lonEl = document.getElementById('longitude');
+      if (latEl) latEl.value = '';
+      if (lonEl) lonEl.value = '';
+      const addrEl = document.getElementById('address');
+      if (addrEl) {
+        addrEl.value = texto;
+        addrEl.dispatchEvent(new Event('input', { bubbles: true }));
+        addrEl.dispatchEvent(new Event('change', { bubbles: true }));
       }
+    }, consulta);
 
-      if (
-        c.province &&
-        provNorm &&
-        normalizarClaveMunicipio(c.province) !== provNorm
-      ) {
-        return false;
-      }
-
-      if (
-        codigoPostal &&
-        c.postalCode &&
-        String(c.postalCode) !== String(codigoPostal)
-      ) {
-        return false;
-      }
-
-      return true;
-    });
-
-    console.log(
-      `[GEOCODIFICACIÓN] Candidatos recibidos: ${candidatos.length}`
+    const boton = await driver.wait(
+      until.elementLocated(By.xpath("//button[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'obtener coordenadas gps')]|//input[@type='submit' and contains(translate(@value, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'obtener coordenadas gps')]")),
+      15000
     );
+    await boton.click();
 
-    console.log(
-      `[GEOCODIFICACIÓN] Candidatos válidos: ${validos.length}`
-    );
-
-    if (!validos.length) {
-      console.log(
-        '[GEOCODIFICACIÓN] RESULTADO: todos contradicen municipio, provincia o CP.'
-      );
-      return null;
+    try {
+      await driver.wait(async () => {
+        const res = await driver.executeScript(() => ({
+          lat: document.getElementById('latitude')?.value ?? '',
+          lon: document.getElementById('longitude')?.value ?? '',
+          err: window.__geoAlert
+        }));
+        return Boolean(res.err) || (res.lat !== '' && res.lon !== '');
+      }, 8000);
+    } catch {
+      // Si la API no devuelve resultados a tiempo, los campos permanecen vacíos.
     }
 
-    // 4. Ordenar según la puntuación de la prueba.
-    validos.sort((a, b) =>
-      puntuarCandidato(
-        b,
-        numeroPortal,
-        codigoPostal,
-        municipio,
-        provincia
-      ) -
-      puntuarCandidato(
-        a,
-        numeroPortal,
-        codigoPostal,
-        municipio,
-        provincia
-      )
-    );
+    const valores = await driver.executeScript(() => ({
+      lat: document.getElementById('latitude')?.value ?? '',
+      lon: document.getElementById('longitude')?.value ?? '',
+      err: window.__geoAlert ?? null
+    }));
+    const lat = Number(String(valores.lat).replace(',', '.'));
+    const lon = Number(String(valores.lon).replace(',', '.'));
 
-    console.log('\n[GEOCODIFICACIÓN] Candidatos válidos ordenados:');
-
-    validos.forEach((c, i) => {
-      console.log({
-        posicion: i + 1,
-        puntuacion: puntuarCandidato(
-          c,
-          numeroPortal,
-          codigoPostal,
-          municipio,
-          provincia
-        ),
-        address: c.address,
-        type: c.type,
-        portalNumber: c.portalNumber,
-        postalCode: c.postalCode,
-        muni: c.muni,
-        province: c.province,
-        lat: c.lat,
-        lng: c.lng,
-        id: c.id
-      });
-    });
-
-    const candidato = validos[0];
-
-    let lat = Number(candidato.lat);
-    let lon = Number(candidato.lng);
-
-    // 5. Consultar find únicamente si las coordenadas no son válidas.
-    if (
-      !coordenadasValidas(lat, lon) &&
-      candidato.id &&
-      candidato.type
-    ) {
-      console.log(
-        '[GEOCODIFICACIÓN] Coordenadas no válidas; se consulta find.'
-      );
-
-      const encontrado = extraerResultados(
-        await consultarCartoCiudad('find', {
-          id: candidato.id,
-          type: candidato.type,
-          portal: candidato.portalNumber
-        })
-      )[0];
-
-      if (encontrado) {
-        lat = Number(encontrado.lat);
-        lon = Number(encontrado.lng);
-      }
-    }
-
-    // 6. Si no hay coordenadas válidas, no se devuelve nada.
     if (!coordenadasValidas(lat, lon)) {
-      console.log(
-        '[GEOCODIFICACIÓN] RESULTADO: el candidato seleccionado no tiene coordenadas válidas.'
-      );
+      const detalle = valores.err ? ` (${valores.err})` : '';
+      console.log(`[GEOCODIFICACIÓN] Sin coordenadas válidas para: ${consulta}${detalle}`);
       return null;
     }
 
-    const resultado = {
-      latitud: lat,
-      longitud: lon,
-      direccion: candidato.address ?? null,
-      tipo: candidato.type ?? null,
-      numeroPortal: candidato.portalNumber ?? null,
-      codigoPostal: candidato.postalCode ?? null,
-      municipio: candidato.muni ?? null,
-      provincia: candidato.province ?? null
-    };
-
-    console.log('\n[GEOCODIFICACIÓN] CANDIDATO SELECCIONADO:');
-    console.log(resultado);
-
-    return resultado;
+    return { latitud: lat, longitud: lon };
 
   } catch (error) {
+    if (/invalid session id|session deleted|not connected to devtools|disconnected/i.test(error.message)) {
+      throw error;
+    }
     console.error(
       `[GEOCODIFICACIÓN] Error buscando "${consulta}": ${error.message}`
     );
@@ -595,24 +432,64 @@ async function completarCoordenadas(entidades, informe) {
   let obtenidas = 0;
   let noObtenidas = 0;
   let indice = 0;
+  let driver;
+
+  async function crearNavegador() {
+    const opciones = new chrome.Options();
+    opciones.addArguments('--headless=new', '--disable-dev-shm-usage', '--no-sandbox', '--log-level=3', '--deny-permission-prompts');
+    opciones.setUserPreferences({
+      'profile.default_content_setting_values.geolocation': 2,
+      'profile.managed_default_content_settings.geolocation': 2
+    });
+    return new Builder().forBrowser('chrome').setChromeOptions(opciones).build();
+  }
+
+  if (entidades.length === 0) {
+    informe.resumen.coordenadas_obtenidas = 0;
+    informe.resumen.coordenadas_no_obtenidas = 0;
+    return;
+  }
 
   async function trabajador() {
     while (indice < entidades.length) {
       const entidad = entidades[indice++];
 
-      // El XML no proporciona coordenadas.
-      // Se buscan mediante CartoCiudad.
-      const resultado = await obtenerCoordenadas(
-        entidad.direccion,
-        entidad.codigo_postal,
-        entidad.en_localidad?.nombre,
-        entidad.en_localidad?.en_provincia?.nombre
-      );
+      // El XML no proporciona coordenadas; se buscan en la web con Selenium.
+      let resultado = null;
+      try {
+        resultado = await obtenerCoordenadas(
+          driver,
+          entidad.direccion,
+          entidad.codigo_postal,
+          entidad.en_localidad?.nombre,
+          entidad.en_localidad?.en_provincia?.nombre
+        );
+      } catch (error) {
+        console.error(`[GEOCODIFICACIÓN] Chrome perdió la sesión; se reinicia y reintenta: ${error.message}`);
+        try { await driver.quit(); } catch {}
+        driver = await crearNavegador();
+        resultado = await obtenerCoordenadas(
+          driver,
+          entidad.direccion,
+          entidad.codigo_postal,
+          entidad.en_localidad?.nombre,
+          entidad.en_localidad?.en_provincia?.nombre
+        );
+      }
 
       if (resultado) {
         entidad.latitud = resultado.latitud;
         entidad.longitud = resultado.longitud;
         obtenidas++;
+
+        informe.reparados.push({
+          id: entidad.cod_entidad.replace(/^CAT:/, ''),
+          campo: 'latitud_longitud',
+          categoria: 'faltante',
+          antes: null,
+          despues: `${resultado.latitud}, ${resultado.longitud}`,
+          motivo: 'El XML no incluye coordenadas; obtenidas mediante geocodificación con Selenium (coordenadas-gps.com).'
+        });
       } else {
         // Si no se encuentra, las coordenadas siguen siendo null.
         entidad.latitud = null;
@@ -629,14 +506,291 @@ async function completarCoordenadas(entidades, informe) {
     }
   }
 
-  const numeroTrabajadores = Math.min(5, entidades.length);
-
-  await Promise.all(
-    Array.from({ length: numeroTrabajadores }, () => trabajador())
-  );
+  driver = await crearNavegador();
+  try {
+    // Una sola sesión y consultas secuenciales para reutilizar el navegador.
+    await trabajador();
+  } finally {
+    if (driver) await driver.quit();
+  }
 
   informe.resumen.coordenadas_obtenidas = obtenidas;
   informe.resumen.coordenadas_no_obtenidas = noObtenidas;
+
+  informe.resumen.con_reparaciones = new Set(
+    informe.reparados.map(reparacion => reparacion.id).filter(Boolean)
+  ).size;
+
+  informe.resumen.con_avisos = new Set(
+    informe.avisos.map(aviso => aviso.id).filter(Boolean)
+  ).size;
+}
+
+// ==========================================
+// 3B. CLASIFICACIÓN DE ÁMBITO CON IA
+// ==========================================
+
+const URL_IA_POLLINATIONS = 'https://text.pollinations.ai/openai';
+const RUTA_CACHE_AMBITOS = path.join(__dirname, 'cache_ambitos.json');
+const RUTA_ENV = path.join(__dirname, '..', '..', '.env');
+
+function leerVariableConfig(nombre) {
+  const deEnv = (process.env[nombre] ?? '').trim();
+  if (deEnv) return deEnv;
+  try {
+    if (!fs.existsSync(RUTA_ENV)) return '';
+    for (const linea of fs.readFileSync(RUTA_ENV, 'utf8').split(/\r?\n/)) {
+      const m = /^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/.exec(linea);
+      if (m && !linea.trim().startsWith('#') && m[1] === nombre) {
+        return m[2].replace(/^(['"])(.*)\1$/, '$2').trim();
+      }
+    }
+  } catch {}
+  return '';
+}
+
+function proveedorIAConfigurado() {
+  if (leerVariableConfig('GEMINI_API_KEY')) return 'Gemini';
+  if (leerVariableConfig('GROQ_API_KEY')) return 'Groq';
+  if (leerVariableConfig('OPENAI_API_KEY')) return 'OpenAI';
+  return 'Pollinations.ai';
+}
+
+const AMBITOS_VALIDOS = [
+  'MAYORES',
+  'DISCAPACIDAD',
+  'SALUD_MENTAL',
+  'INFANCIA_Y_JUVENTUD',
+  'MUJER',
+  'MIGRACION',
+  'INCLUSION_SOCIAL',
+  'EDUCACION_Y_FORMACION',
+  'EMPLEO_E_INSERCION_LABORAL',
+  'SALUD_Y_ATENCION_SOCIOSANITARIA',
+  'VOLUNTARIADO_Y_PARTICIPACION_COMUNITARIA',
+  'CULTURA_Y_DESARROLLO_COMUNITARIO'
+];
+const SET_AMBITOS_VALIDOS = new Set(AMBITOS_VALIDOS);
+
+function cargarCacheAmbitos() {
+  try {
+    if (fs.existsSync(RUTA_CACHE_AMBITOS)) {
+      const datos = JSON.parse(fs.readFileSync(RUTA_CACHE_AMBITOS, 'utf8'));
+      if (datos && typeof datos === 'object') return datos;
+    }
+  } catch {}
+  return {};
+}
+
+function guardarCacheAmbitos(cache) {
+  try {
+    fs.writeFileSync(RUTA_CACHE_AMBITOS, JSON.stringify(cache, null, 2), 'utf8');
+  } catch {}
+}
+
+function extraerJsonArray(texto) {
+  const limpio = String(texto ?? '')
+    .replace(/```json\s*/gi, '')
+    .replace(/```/g, '')
+    .trim();
+  const inicio = limpio.indexOf('[');
+  const fin = limpio.lastIndexOf(']');
+  if (inicio === -1 || fin === -1 || fin < inicio) {
+    throw new Error('La respuesta de la IA no contiene un array JSON.');
+  }
+  return JSON.parse(limpio.slice(inicio, fin + 1));
+}
+
+async function llamarProveedorIA(prompt) {
+  const geminiKey = leerVariableConfig('GEMINI_API_KEY');
+  if (geminiKey) {
+    console.log('[IA ÁMBITO] Enviando petición a Gemini...');
+    const resp = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': geminiKey
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0,
+            responseMimeType: 'application/json',
+            responseSchema: {
+              type: 'ARRAY',
+              items: {
+                type: 'OBJECT',
+                properties: {
+                  id: { type: 'STRING' },
+                  ambito: { type: 'STRING', enum: AMBITOS_VALIDOS }
+                },
+                required: ['id', 'ambito']
+              }
+            }
+          }
+        }),
+        signal: AbortSignal.timeout(45000)
+      }
+    );
+    if (!resp.ok) {
+      const detalle = await resp.text();
+      throw new Error(`Gemini HTTP ${resp.status} ${resp.statusText}: ${detalle.slice(0, 1000)}`);
+    }
+    const data = await resp.json();
+    return {
+      proveedor: 'Gemini',
+      contenido: data?.candidates?.[0]?.content?.parts?.[0]?.text
+    };
+  }
+
+  const groqKey = leerVariableConfig('GROQ_API_KEY');
+  const openaiKey = leerVariableConfig('OPENAI_API_KEY');
+  const endpoint = groqKey
+    ? 'https://api.groq.com/openai/v1/chat/completions'
+    : openaiKey
+      ? 'https://api.openai.com/v1/chat/completions'
+      : URL_IA_POLLINATIONS;
+  const apiKey = groqKey || openaiKey;
+  const modelo = groqKey ? 'llama-3.3-70b-versatile' : openaiKey ? 'gpt-4o-mini' : 'openai-fast';
+  const proveedor = groqKey ? 'Groq' : openaiKey ? 'OpenAI' : 'Pollinations.ai';
+  console.log(`[IA ÁMBITO] Enviando petición a ${proveedor}...`);
+
+  const headers = { 'Content-Type': 'application/json' };
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+
+  const resp = await fetch(endpoint, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      model: modelo,
+      temperature: 0,
+      messages: [{ role: 'user', content: prompt }]
+    }),
+    signal: AbortSignal.timeout(45000)
+  });
+
+  if (!resp.ok) throw new Error(`${proveedor} HTTP ${resp.status} ${resp.statusText}`);
+  const data = await resp.json();
+  return {
+    proveedor,
+    contenido: data?.choices?.[0]?.message?.content
+  };
+}
+
+async function clasificarAmbitosLote(lote) {
+  const prompt = [
+    'Eres un clasificador de entidades (ONGD y asociaciones de Cataluña).',
+    `Asigna a cada entidad exactamente UNO de estos ámbitos: ${AMBITOS_VALIDOS.join(', ')}.`,
+    'Clasifica basándote en el nombre de la entidad. Usa CULTURA_Y_DESARROLLO_COMUNITARIO o INCLUSION_SOCIAL si el nombre indica cooperación o solidaridad general. No devuelvas valores fuera de la lista.',
+    'Responde ÚNICAMENTE con un array JSON válido con el formato [{"id":"...","ambito":"..."}].',
+    '',
+    'Entidades:',
+    JSON.stringify(lote)
+  ].join('\n');
+
+  let ultimoError = null;
+  for (let intento = 1; intento <= 3; intento++) {
+    try {
+      if (intento > 1) console.log(`[IA ÁMBITO] Reintento ${intento}/3...`);
+      const { contenido } = await llamarProveedorIA(prompt);
+      const lista = extraerJsonArray(contenido);
+
+      const mapa = new Map();
+      for (const item of lista) {
+        if (!item || typeof item.id !== 'string') continue;
+        const val = typeof item.ambito === 'string' ? item.ambito.trim().toUpperCase() : null;
+        mapa.set(item.id, SET_AMBITOS_VALIDOS.has(val) ? val : null);
+      }
+      return mapa;
+    } catch (error) {
+      ultimoError = error;
+      console.error(`[IA ÁMBITO] Intento ${intento}/3 fallido: ${error.message}`);
+      if (/HTTP (?:400|401|403|404|429)\b/i.test(error.message)) break;
+      if (intento < 3) {
+        await new Promise(r => setTimeout(r, 1500 * intento));
+      }
+    }
+  }
+
+  throw ultimoError;
+}
+
+async function completarAmbitos(entidades, informe) {
+  if (entidades.length === 0) {
+    informe.resumen.ambitos_obtenidos = 0;
+    informe.resumen.ambitos_no_obtenidos = 0;
+    return;
+  }
+
+  const cache = cargarCacheAmbitos();
+  const pendientes = entidades.filter(e => !SET_AMBITOS_VALIDOS.has(cache[e.cod_entidad]));
+  const TAM_LOTE = 25;
+
+  for (let i = 0; i < pendientes.length; i += TAM_LOTE) {
+    const loteEntidades = pendientes.slice(i, i + TAM_LOTE);
+    const lotePayload = loteEntidades.map(e => ({
+      id: e.cod_entidad,
+      nombre: e.nombre
+    }));
+
+    console.log(
+      `[IA ÁMBITO] Clasificando lote ${Math.floor(i / TAM_LOTE) + 1}/${Math.ceil(pendientes.length / TAM_LOTE)} (${lotePayload.length} entidades) con ${proveedorIAConfigurado()}...`
+    );
+
+    try {
+      const resultado = await clasificarAmbitosLote(lotePayload);
+      for (const e of loteEntidades) {
+        cache[e.cod_entidad] = resultado.has(e.cod_entidad)
+          ? resultado.get(e.cod_entidad)
+          : null;
+      }
+      guardarCacheAmbitos(cache);
+    } catch (error) {
+      console.error(`[IA ÁMBITO] Error en lote: ${error.message}`);
+    }
+  }
+
+  let obtenidos = 0;
+  let noObtenidos = 0;
+
+  for (const entidad of entidades) {
+    const ambito = SET_AMBITOS_VALIDOS.has(cache[entidad.cod_entidad])
+      ? cache[entidad.cod_entidad]
+      : null;
+
+    if (ambito) {
+      entidad.ambito = ambito;
+      obtenidos++;
+
+      informe.reparados.push({
+        id: entidad.cod_entidad.replace(/^CAT:/, ''),
+        campo: 'ambito',
+        categoria: 'faltante',
+        antes: null,
+        despues: ambito,
+        motivo: 'El XML no incluye ámbito; inferido mediante IA a partir del nombre y dentro de la lista de ámbitos permitidos.'
+      });
+    } else {
+      entidad.ambito = null;
+      noObtenidos++;
+
+      informe.avisos.push({
+        id: entidad.cod_entidad,
+        campo: 'ambito',
+        categoria: 'servicio_externo',
+        mensaje: 'No se ha podido inferir el ámbito de la entidad mediante IA.'
+      });
+    }
+  }
+
+  informe.resumen.ambitos_obtenidos = obtenidos;
+  informe.resumen.ambitos_no_obtenidos = noObtenidos;
+
+  informe.resumen.con_reparaciones = new Set(
+    informe.reparados.map(reparacion => reparacion.id).filter(Boolean)
+  ).size;
 
   informe.resumen.con_avisos = new Set(
     informe.avisos.map(aviso => aviso.id).filter(Boolean)
@@ -863,27 +1017,6 @@ async function extraerCAT(textoXml, opciones = {}) {
       cp = arreglado;
     }
 
-    if (cp && !/^\d{5}$/.test(cp)) {
-      avisar(
-        'codi_postal',
-        `Código postal con formato no válido: "${cp}". Se conserva el original.`,
-        'formato'
-      );
-
-    } else if (cp && !TABLA_PROVINCIAS_CP[cp.slice(0, 2)]) {
-      avisar(
-        'codi_postal',
-        `Código postal "${cp}" ${
-          Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00'
-            ? 'fuera de rango (no existe esa provincia)'
-            : 'de fuera de Catalunya'
-        }. Se conserva el original.`,
-        Number(cp.slice(0, 2)) > 52 || cp.slice(0, 2) === '00'
-          ? 'rango'
-          : 'semantico'
-      );
-    }
-
     if (!cp) {
       avisar(
         'codi_postal',
@@ -915,15 +1048,31 @@ async function extraerCAT(textoXml, opciones = {}) {
       );
     }
 
-    if (
-      cp &&
-      /^\d{5}$/.test(cp) &&
-      TABLA_PROVINCIAS_CP[cp.slice(0, 2)] &&
-      cp.slice(0, 2) !== info.p_codigo
-    ) {
-      avisar(
+    if (cp && !/^\d{5}$/.test(cp)) {
+      return rechazar(
         'codi_postal',
-        `El código postal ${cp} no corresponde a la provincia ${info.p_codigo} del municipio ${info.l_codigo}. Manda el municipio.`,
+        `Código postal con formato no válido: "${cp}" y no se puede corregir con los datos disponibles del municipio.`,
+        'formato'
+      );
+    }
+
+    if (cp && !TABLA_PROVINCIAS_CP[cp.slice(0, 2)]) {
+      const prefijo = cp.slice(0, 2);
+      return rechazar(
+        'codi_postal',
+        `Código postal "${cp}" ${
+          Number(prefijo) > 52 || prefijo === '00'
+            ? 'fuera de rango (no existe esa provincia)'
+            : 'de fuera de Catalunya'
+        }. La localidad corresponde a ${info.p_nombre}, pero no hay datos para reconstruir con seguridad los cinco dígitos.`,
+        Number(prefijo) > 52 || prefijo === '00' ? 'rango' : 'semantico'
+      );
+    }
+
+    if (cp && cp.slice(0, 2) !== info.p_codigo) {
+      return rechazar(
+        'codi_postal',
+        `El código postal ${cp} no corresponde a la provincia ${info.p_codigo} (${info.p_nombre}) del municipio ${info.l_codigo}. No se puede reconstruir con seguridad el código postal completo usando solo la localidad.`,
         'semantico'
       );
     }
@@ -1048,7 +1197,7 @@ async function extraerCAT(textoXml, opciones = {}) {
   // 5. GEOCODIFICACIÓN DE LAS ENTIDADES
   // ==========================================
 
-  console.log('\nIniciando geocodificación con CartoCiudad...');
+  console.log('\nIniciando geocodificación con Selenium y coordenadas-gps.com...');
 
   await completarCoordenadas(entidades, informe);
 
@@ -1061,6 +1210,65 @@ async function extraerCAT(textoXml, opciones = {}) {
   );
 
   // ==========================================
+  // 5B. CLASIFICACIÓN DE ÁMBITO CON IA
+  // ==========================================
+
+  console.log(`\nIniciando clasificación de ámbito con IA (${proveedorIAConfigurado()})...`);
+
+  await completarAmbitos(entidades, informe);
+
+  console.log(`Ámbitos obtenidos: ${informe.resumen.ambitos_obtenidos}`);
+  console.log(`Ámbitos no obtenidos: ${informe.resumen.ambitos_no_obtenidos}`);
+
+  // ==========================================
+  // 5C. RECHAZO DE ENTIDADES INCOMPLETAS TRAS PROCESAMIENTO
+  // ==========================================
+
+  const esVacio = v =>
+    v === null || v === undefined || (typeof v === 'string' && v.trim() === '');
+
+  const entidadesCompletas = [];
+  let rechazadasPost = 0;
+
+  for (const entidad of entidades) {
+    const idRaw = entidad.cod_entidad ? entidad.cod_entidad.replace(/^CAT:/, '') : '';
+    const faltantes = [];
+
+    if (esVacio(entidad.cod_entidad) || esVacio(idRaw)) faltantes.push('id');
+    if (esVacio(entidad.nombre)) faltantes.push('nombre');
+    if (esVacio(entidad.ambito)) faltantes.push('ambito');
+    if (esVacio(entidad.direccion)) faltantes.push('direccion');
+    if (esVacio(entidad.codigo_postal)) faltantes.push('codigo_postal');
+    if (esVacio(entidad.latitud) || !Number.isFinite(entidad.latitud)) faltantes.push('latitud');
+    if (esVacio(entidad.longitud) || !Number.isFinite(entidad.longitud)) faltantes.push('longitud');
+    if (
+      esVacio(entidad.en_localidad?.codigo) ||
+      esVacio(entidad.en_localidad?.nombre) ||
+      esVacio(entidad.en_localidad?.en_provincia?.codigo) ||
+      esVacio(entidad.en_localidad?.en_provincia?.nombre)
+    ) {
+      faltantes.push('localizacion');
+    }
+
+    if (faltantes.length > 0) {
+      rechazadasPost++;
+      informe.rechazados.push({
+        id: idRaw || null,
+        campo: faltantes.join(', '),
+        categoria: 'faltante',
+        motivo: `Entidad rechazada tras el procesamiento por tener campos obligatorios nulos o en blanco: ${faltantes.join(', ')}.`
+      });
+    } else {
+      entidadesCompletas.push(entidad);
+    }
+  }
+
+  entidades.splice(0, entidades.length, ...entidadesCompletas);
+  if (rechazadasPost > 0) {
+    console.log(`Rechazadas tras procesamiento por campos faltantes: ${rechazadasPost}`);
+  }
+
+  // ==========================================
   // 6. FINALIZACIÓN DEL INFORME
   // ==========================================
 
@@ -1069,6 +1277,8 @@ async function extraerCAT(textoXml, opciones = {}) {
 
   informe.sin_dato_en_origen.latitud_longitud =
     informe.resumen.coordenadas_no_obtenidas;
+  informe.sin_dato_en_origen.ambito =
+    informe.resumen.ambitos_no_obtenidos;
 
   posiblesDuplicados(entidades, informe);
   contarPorCategoria(informe);
@@ -1176,7 +1386,8 @@ module.exports = {
   PREFIJO_FUENTE,
   normalizarClaveMunicipio,
   parsearCSV,
-  obtenerCoordenadas
+  obtenerCoordenadas,
+  clasificarAmbitosLote
 };
 
 if (require.main === module) {

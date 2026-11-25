@@ -4,6 +4,7 @@
   "description": "Script de extracción y mapeo XML a JSON",
   "main": "extractor.js",
   "dependencies": {
-    "fast-xml-parser": "^5.11.2"
+    "fast-xml-parser": "^5.11.2",
+    "selenium-webdriver": "^4.28.1"
   }
 }
